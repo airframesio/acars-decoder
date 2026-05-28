@@ -106,7 +106,9 @@ function emitParseStep(step: ParseStep, out: string[], indent: string): void {
     case "regex": {
       const onExpr = renderExpr({ kind: "var", ref: step.on });
       out.push(`${indent}let ${step.into}_re = helpers::regex(${rustString(step.pattern)});`);
-      out.push(`${indent}let ${step.into} = match ${step.into}_re.captures(${onExpr}) {`);
+      // .captures(&str) — pass a reference; works whether onExpr is String
+      // (message.text) or &str (parts[n]) via Rust's deref coercion.
+      out.push(`${indent}let ${step.into} = match ${step.into}_re.captures(&${onExpr}) {`);
       out.push(`${indent}    Some(c) => c,`);
       out.push(`${indent}    None => return result.fail_unknown(&message.text),`);
       out.push(`${indent}};`);
@@ -151,7 +153,8 @@ function emitParseStep(step: ParseStep, out: string[], indent: string): void {
       break;
     case "deflate": {
       const srcExpr = renderExpr({ kind: "var", ref: step.source });
-      const sliced = step.offset ? `&${srcExpr}[${step.offset}..]` : srcExpr;
+      // helpers::inflate takes &[u8]; src is Vec<u8>, so always borrow.
+      const sliced = step.offset ? `&${srcExpr}[${step.offset}..]` : `&${srcExpr}`;
       out.push(
         `${indent}let ${step.into} = helpers::inflate(${sliced}, ${rustString(step.format)});`,
       );
@@ -163,8 +166,9 @@ function emitParseStep(step: ParseStep, out: string[], indent: string): void {
       );
       break;
     case "text_decode":
+      // helpers::text_decode takes &[u8]; src is Vec<u8>, so borrow.
       out.push(
-        `${indent}let ${step.into} = helpers::text_decode(${renderExpr({ kind: "var", ref: step.source })}, ${rustString(step.encoding)});`,
+        `${indent}let ${step.into} = helpers::text_decode(&${renderExpr({ kind: "var", ref: step.source })}, ${rustString(step.encoding)});`,
       );
       break;
     case "hex_decode":
@@ -349,11 +353,25 @@ function renderRustArg(v: unknown): string {
 function renderDecodeCall(call: DecodeCall, valueExpr: string): string {
   // Always emit two arguments — runtime helpers all accept (value, args_json)
   // even when args is empty ('{}'). Uniform signature simplifies the runtime.
+  //
+  // Borrow the value expr so String / owned vars are passed as &str. For
+  // already-&str vars (e.g. parts[N] from Vec<&str>), Rust's auto-deref
+  // collapses the extra reference layer.
   const argsJson = rustString(JSON.stringify(call.args));
+  const borrowed = needsBorrow(valueExpr) ? `&${valueExpr}` : valueExpr;
   if (call.fn === "custom") {
-    return `escape_hatches::${call.name}(${valueExpr}, ${argsJson})`;
+    return `escape_hatches::${call.name}(${borrowed}, ${argsJson})`;
   }
-  return `helpers::${call.fn}(${valueExpr}, ${argsJson})`;
+  return `helpers::${call.fn}(${borrowed}, ${argsJson})`;
+}
+
+function needsBorrow(expr: string): boolean {
+  // Skip explicit borrows / dereferences / numeric literals — they're
+  // already in the right shape.
+  if (expr.startsWith("&")) return false;
+  if (expr.startsWith("*")) return false;
+  if (/^-?\d/.test(expr)) return false;
+  return true;
 }
 
 function renderExpr(expr: ValueExpr): string {
