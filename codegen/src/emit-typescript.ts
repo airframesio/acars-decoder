@@ -207,8 +207,13 @@ function emitField(
     : renderExpr(field.from);
   const skipAutoRaw = consumedByFormatter.has(field.name);
   if (field.when) {
+    // Declare outside the if so downstream formatters / variant-shared code
+    // can still reference the variable when the guard fails — it'll be
+    // undefined, matching the original hand-written plugins' implicit
+    // missing-field pattern.
+    out.push(`${indent}let ${field.name};`);
     out.push(`${indent}if (${renderCondition(field.when)}) {`);
-    out.push(`${indent}  const ${field.name} = ${decodeExpr};`);
+    out.push(`${indent}  ${field.name} = ${decodeExpr};`);
     if (!skipAutoRaw) out.push(`${indent}  result.raw.${field.name} = ${field.name};`);
     out.push(`${indent}}`);
   } else {
