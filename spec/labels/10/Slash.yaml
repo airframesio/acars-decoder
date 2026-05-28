@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_10_Slash
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["10"]
+  preambles: ["/"]
+parse:
+  # Pure escape hatch: 17-field slash split, ETA + waypoint route construction
+  # with multiple time stamps, conditional departure airport, and trailing
+  # unknownArr from non-contiguous indices.
+  custom: label_10_slash_decode
+formatted:
+  description: "Position Report"
+  custom: label_10_slash_format

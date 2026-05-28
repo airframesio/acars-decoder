@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_20_CFB01
+  type: text
+  decode_level: FULL
+qualifiers:
+  labels: ["20"]
+  preambles: ["#CFB.01"]
+parse:
+  # Pure escape hatch: named-group regex with combined coords, current-year
+  # epoch computation using Date.parse, fuel-in-tons stored to raw only when
+  # not "***"/"****". Raw-only fields with no formatter output.
+  custom: label_20_cfb01_decode
+formatted:
+  description: "Crew Flight Bag Message"
+  custom: label_20_cfb01_format

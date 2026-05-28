@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_16_POSA1
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["16"]
+  preambles: ["POSA1"]
+parse:
+  # Pure escape hatch: comma split with strict 11-field count, "POSA1"
+  # substring strip, route construction with two waypoint+time entries, and
+  # altitude * 100. Route formatter is not in DSL.
+  custom: label_16_posa1_decode
+formatted:
+  description: "Position Report"
+  custom: label_16_posa1_format

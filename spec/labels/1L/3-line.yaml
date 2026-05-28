@@ -1,0 +1,15 @@
+spec_version: "1"
+plugin:
+  name: Label_1L_3Line
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["1L"]
+parse:
+  # Pure escape hatch: strict 3-line check, Map-based key/value parsing across
+  # slash- and newline-separated tokens, DAY+UTC combined into epoch, signed
+  # coords from LAT/LON pair, dynamic remaining.text built from leftover keys.
+  custom: label_1l_3line_decode
+formatted:
+  description: "Position Report"
+  custom: label_1l_3line_format

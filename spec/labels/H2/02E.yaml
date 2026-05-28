@@ -1,0 +1,20 @@
+spec_version: "1"
+plugin:
+  name: Label_H2_02E
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["H2"]
+  preambles: ["02E"]
+parse:
+  # Whole-plugin escape hatch:
+  #   - Space-split message, last part must be "Q" sentinel.
+  #   - 45-char header parses 02E + day + departure ICAO + arrival ICAO + first wind.
+  #   - Each subsequent space-separated chunk must start with "Q" and contains a 32-char weather record.
+  #   - Failed parses get appended (space-joined) to remaining.text.
+  #   - decode level is "full" if remaining.text empty, else "partial".
+  # The iterative accumulation of remaining.text and dynamic wind-data array don't fit DSL primitives.
+  custom: label_h2_02e_dispatch
+formatted:
+  description: "Weather Report"
+  custom: label_h2_02e_format

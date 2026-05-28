@@ -1,0 +1,23 @@
+spec_version: "1"
+plugin:
+  name: Label_QQ
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["QQ"]
+parse:
+  # Whole-plugin escape hatch:
+  #   - departure_icao = text[0:4], arrival_icao = text[4:8]
+  #   - Variant A: text[12:19] == "\r\n001FE":
+  #       day=text[19:21]; OFF time=HHMMSSToTod(text[21:27]);
+  #       position from text[27:34]/[34:42] (NSDDMM.M / EWDDDMM.M packed)
+  #       unknown(text[42:45]) then position; if that unknown != "---" then groundspeed=int(text[45:48])
+  #       else unknown(text[45:48]); finally unknown(text[48:]).
+  #   - Variant B (fallback): OFF time=HHMMSSToTod(text[8:12]+"00"); unknown(text[12:]).
+  #   - Order-sensitive side effects on remaining.text via ResultFormatter.unknown.
+  # The position-vs-groundspeed branching keyed on prior "remaining" content makes this
+  # whole-plugin escape hatch the cleanest route to byte-for-byte parity.
+  custom: label_qq_dispatch
+formatted:
+  description: "OFF Report"
+  custom: label_qq_format

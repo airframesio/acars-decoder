@@ -1,0 +1,15 @@
+spec_version: "1"
+plugin:
+  name: Label_2P_FM5
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["2P"]
+parse:
+  # Splits on ',' (12 fields), then header = parts[0].split('FM5 ').
+  # Bare-number coords with space stripping, trimmed flight number at parts[10].
+  # Whole-plugin hatch.
+  custom: label_2p_fm5_decode
+formatted:
+  description: "Flight Report"
+  custom: label_2p_fm5_format

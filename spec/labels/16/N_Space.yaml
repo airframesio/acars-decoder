@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_16_N_Space
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["16"]
+  preambles: ["N ", "S "]
+parse:
+  # Pure escape hatch: two alternative regexes (comma-delimited with altitude
+  # / unknown fields vs slash-delimited coords-only), each with its own
+  # decode level (partial vs full).
+  custom: label_16_n_space_decode
+formatted:
+  description: "Position Report"
+  custom: label_16_n_space_format

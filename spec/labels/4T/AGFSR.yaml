@@ -1,0 +1,18 @@
+spec_version: "1"
+plugin:
+  name: Label_4T_AGFSR
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["4T"]
+  preambles: ["AGFSR"]
+parse:
+  # Substring slice + split on '/' with 20-part length gate, plus inline
+  # lat/lon parsing (deg from digits, minutes from sub-digits, N/S/E/W sign
+  # via CoordinateUtils.getDirection). Many positional fields with
+  # IATA-coded airport prefixes and unknown-array tails — beyond the
+  # declarative spec without adding new primitives.
+  custom: label_4t_agfsr_parse
+formatted:
+  description: "Position Report"
+  custom: label_4t_agfsr_format

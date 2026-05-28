@@ -1,0 +1,18 @@
+spec_version: "1"
+plugin:
+  name: Label_H1_WRN
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["H1"]
+  preambles: ["WRN", "#CFBWRN"]
+parse:
+  # Split on '/WN'; header fields[1..] become unknown items. Body[0..20] is
+  # metadata: YYMMDDHHMMSS at [0..12] reassembled as DDMMYY (slices
+  # (4,6)+(2,4)+(0,2)) for convertDateTimeToEpoch. Body[20..] is the
+  # warning message stored as a custom 'warning'-type item with code 'WRN'.
+  # Mirrors Label_H1_FLR structure but with different prefix and item type.
+  custom: label_h1_wrn_parse
+formatted:
+  description: "Warning Message"
+  custom: label_h1_wrn_format

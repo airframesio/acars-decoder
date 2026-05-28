@@ -1,0 +1,17 @@
+spec_version: "1"
+plugin:
+  name: Label_QR
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["QR"]
+parse:
+  # Whole-plugin escape hatch (mirrors QP, but emits ON time instead of OUT):
+  #   - departure_icao = text[0:4], arrival_icao = text[4:8]
+  #   - on_time = HHMMSSToTod(text[8:12])
+  #   - remaining.text = text[12:]
+  #   - decodeLevel "full" iff remaining empty, else "partial".
+  custom: label_qr_dispatch
+formatted:
+  description: "ON Report"
+  custom: label_qr_format

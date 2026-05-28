@@ -1,0 +1,17 @@
+spec_version: "1"
+plugin:
+  name: Label_H1_M_POS
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["H1"]
+parse:
+  # M[NN]A[AA][NNNN] header regex; remainder split on ',' with a 7-field
+  # minimum (origin, dest, DDHHMM, lat, lon, alt, hdg + optional tail).
+  # Coordinates are raw parseFloat after stripping whitespace.
+  # Decode level is computed per-message: 'full' if no trailing unknowns,
+  # 'partial' if any. Tail unknown args use default separator (no '/').
+  custom: label_h1_m_pos_parse
+formatted:
+  description: "M-Series Periodic Position Report"
+  custom: label_h1_m_pos_format

@@ -1,0 +1,17 @@
+spec_version: "1"
+plugin:
+  name: Label_1L_Slash
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["1L"]
+  preambles: ["+", "-"]
+parse:
+  # Pure escape hatch: 7-part slash split, first two parts become LAT/LON via
+  # whitespace-stripping (signed decimal), remainder parsed into a Map of
+  # key/value tokens, ETA/ALT/FOB/UTC pulled out and remaining keys re-joined
+  # as remaining.text.
+  custom: label_1l_slash_decode
+formatted:
+  description: "Position Report"
+  custom: label_1l_slash_format

@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_8E
+  type: text
+  decode_level: FULL
+qualifiers:
+  labels: ["8E"]
+parse:
+  # Regex match is best-effort: TS unconditionally marks decoded=true even if
+  # the regex doesn't match (no fields are formatted in that case). The
+  # `convertHHMMSSToTod` call is also fed a 4-digit HHMM string verbatim
+  # (no '00' append). Whole-plugin hatch preserves that exact behavior.
+  custom: label_8e_parse
+formatted:
+  description: "ETA Report"
+  custom: label_8e_format

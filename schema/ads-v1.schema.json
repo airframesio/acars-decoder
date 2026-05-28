@@ -105,7 +105,8 @@
           "minItems": 1,
           "items": {
             "type": "string",
-            "pattern": "^([A-Za-z0-9_]+|\\*)$"
+            "minLength": 1,
+            "description": "ACARS label string. Real labels include alphanumeric (10, 4A, H1) plus punctuation forms like ':;' (Label_ColonComma). '*' is the wildcard."
           },
           "description": "ACARS labels to match. '*' is wildcard."
         },

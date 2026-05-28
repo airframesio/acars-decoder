@@ -1,0 +1,23 @@
+spec_version: "1"
+plugin:
+  name: Label_H1_EZF
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  # TS qualifier returns labels=['H1','1M'] with preamble 'EZF'.
+  labels: ["H1", "1M"]
+  preambles: ["EZF"]
+parse:
+  # Multi-line load-sheet parser:
+  #   - split on '\n', trim, filter empties
+  #   - first line must equal 'EZF' (else failUnknown)
+  #   - second line is flight identifier "NO0246/10/EI-NEO" → flight + tail
+  #   - third line is config string (stored as unknown)
+  #   - subsequent '-KEY/VALUE' lines parsed into a loadsheet dict
+  #   - SCT key further split on '-' into IATA dep/arr airports
+  #   - 8 known loadsheet keys (STD, FLT STATUS, UOM, ZFW, PAX, TOW, DOW, FWT)
+  #     are formatted into custom 'loadsheet'-type items.
+  custom: label_h1_ezf_parse
+formatted:
+  description: "Load Sheet"
+  custom: label_h1_ezf_format

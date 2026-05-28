@@ -1,0 +1,17 @@
+spec_version: "1"
+plugin:
+  name: Label_22_OFF
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["22"]
+  preambles: ["OFF"]
+parse:
+  # Pure escape hatch: three variants dispatched on "OFF01" / "OFF02\r\n" /
+  # "OFF02" prefix, each with distinct field layouts (slash-split + fixed
+  # substring offsets in variant 1/2, comma-split in variant 3). Uses
+  # departureDay/arrivalDay/off formatters that aren't in the DSL.
+  custom: label_22_off_decode
+formatted:
+  description: "Takeoff Report"
+  custom: label_22_off_format

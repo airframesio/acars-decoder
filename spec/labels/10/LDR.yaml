@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_10_LDR
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["10"]
+  preambles: ["LDR"]
+parse:
+  # Pure escape hatch: comma-split with 17+ fields, runway substring slicing,
+  # alternate-runway concat filter, and non-DSL formatters (alternate airport,
+  # arrival runway, alternate runway) all live in hand-written per-language code.
+  custom: label_10_ldr_decode
+formatted:
+  description: "Position Report"
+  custom: label_10_ldr_format

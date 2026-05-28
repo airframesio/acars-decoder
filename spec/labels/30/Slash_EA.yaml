@@ -1,0 +1,15 @@
+spec_version: "1"
+plugin:
+  name: Label_30_Slash_EA
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["30"]
+  preambles: ["/EA"]
+parse:
+  # Splits on /\n|\//, slices off first element, then conditional emission
+  # to remaining.text based on results[1] prefix. Whole-plugin hatch.
+  custom: label_30_slash_ea_decode
+formatted:
+  description: "ETA Report"
+  custom: label_30_slash_ea_format

@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_13Through18_Slash
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["13", "14", "15", "16", "17", "18"]
+  preambles: ["/"]
+parse:
+  # Pure escape hatch: matches labels 13..18 with different field counts (4 vs 7),
+  # dispatches to out/off/on/in formatter based on numeric label, line-by-line
+  # LOC parsing with two DMS variants and signed decimal degrees variant.
+  custom: label_13_18_slash_decode
+formatted:
+  description: "OOOI Report"
+  custom: label_13_18_slash_format

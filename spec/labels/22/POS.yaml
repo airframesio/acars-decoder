@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_22_POS
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["22"]
+  preambles: ["N", "S"]
+parse:
+  # Pure escape hatch: 11-field comma split, position from fixed 16-char
+  # layout (NSEW signs at offsets 0 and 8, divisor 10000), HHMMSS timestamp,
+  # altitude, then unknownArr from non-contiguous indices [1, 4..10].
+  custom: label_22_pos_decode
+formatted:
+  description: "Position Report"
+  custom: label_22_pos_format

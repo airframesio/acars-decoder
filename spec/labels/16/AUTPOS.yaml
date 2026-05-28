@@ -1,0 +1,17 @@
+spec_version: "1"
+plugin:
+  name: Label_16_AUTPOS
+  type: text
+  decode_level: FULL
+qualifiers:
+  labels: ["16"]
+  preambles: [""]
+parse:
+  # Pure escape hatch: 19-group regex with optional wind / temp / TAS / mach
+  # fields each independently redactable, day/flight number split, DMS coords,
+  # date+time epoch conversion. Uses windData and several formatters not
+  # representable in current DSL.
+  custom: label_16_autpos_decode
+formatted:
+  description: "Position Report"
+  custom: label_16_autpos_format

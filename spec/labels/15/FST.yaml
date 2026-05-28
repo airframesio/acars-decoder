@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_15_FST
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["15"]
+  preambles: ["FST01"]
+parse:
+  # Pure escape hatch: fixed-offset substring extraction of header, custom
+  # NSEW direction check with divide-by-10000 coord parsing, altitude *100,
+  # space-separated trailing unknownArr.
+  custom: label_15_fst_decode
+formatted:
+  description: "Position Report"
+  custom: label_15_fst_format

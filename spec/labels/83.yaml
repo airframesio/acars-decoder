@@ -1,0 +1,17 @@
+spec_version: "1"
+plugin:
+  name: Label_83
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["83"]
+parse:
+  # Three discriminated variants:
+  #   - Prefix "4DH3 ETAT2" → split on whitespace, eta from fields[6]+"00"
+  #   - Prefix "001PR" → fixed-offset substrings: day, decimal-min coords (with '.' stripped), altitude, tail unknown
+  #   - Default → whitespace-stripped then split(',') with 9-part shape: airports + lat/lon as raw Number(), altitude/groundspeed/heading
+  # Mixed substring slicing + variant discrimination by message prefix.
+  custom: label_83_parse
+formatted:
+  description: "Airline Defined"
+  custom: label_83_format

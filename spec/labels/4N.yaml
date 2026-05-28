@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_4N
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["4N"]
+parse:
+  # Two completely different variants dispatched by raw text length (51) vs
+  # CSV field count (33). Variant 1 uses fixed-offset substrings with regex
+  # massage of coords. Variant 2 uses CSV with sub-splits, filter, and
+  # multi-field unknownArr aggregation. Whole-plugin hatch.
+  custom: label_4n_decode
+formatted:
+  description: "Airline Defined"
+  custom: label_4n_format

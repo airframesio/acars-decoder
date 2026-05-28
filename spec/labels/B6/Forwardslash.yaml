@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_B6_Forwardslash
+  type: text
+  decode_level: NONE
+qualifiers:
+  labels: ["B6"]
+  preambles: ["/"]
+parse:
+  # TS source is a placeholder: returns defaultResult with description only,
+  # no fields parsed, decoded stays false. The escape hatch matches that
+  # exactly (also preserves the debug log path).
+  custom: label_b6_forwardslash_parse
+formatted:
+  description: "CPDLC Message"
+  custom: label_b6_forwardslash_format

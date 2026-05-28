@@ -1,0 +1,21 @@
+spec_version: "1"
+plugin:
+  name: Label_H1_OFP
+  type: text
+  decode_level: FULL
+qualifiers:
+  # TS qualifier returns labels=['H1','1M'] (no preambles); guard is the
+  # '(FPL-' substring presence check inside decode().
+  labels: ["H1", "1M"]
+parse:
+  # Delegates to parseIcaoFpl (icao_fpl_utils.ts) — a multi-stage ICAO
+  # flight-plan parser with state-machine bracket matching and rich field
+  # extraction (callsign, aircraftType, departure, destination, alternates,
+  # route, REG, flightRules, cruiseSpeed, cruiseLevel, otherInfo dict).
+  # Result is mapped to a fixed item list with rules-code translation map
+  # (I/V/Y/Z → IFR/VFR/IFR_VFR/VFR_IFR). Far too complex to express
+  # declaratively — whole-plugin hatch.
+  custom: label_h1_ofp_parse
+formatted:
+  description: "Operational Flight Plan"
+  custom: label_h1_ofp_format

@@ -1,0 +1,15 @@
+spec_version: "1"
+plugin:
+  name: Label_4A_DIS
+  type: text
+  decode_level: FULL
+qualifiers:
+  labels: ["4A"]
+  preambles: ["DIS"]
+parse:
+  # Imperative: split on comma, slice 2-char timestamp prefix off fields[1],
+  # join fields.slice(3) without separator. Done as whole-plugin hatch.
+  custom: label_4a_dis_decode
+formatted:
+  description: "Latest New Format"
+  custom: label_4a_dis_format

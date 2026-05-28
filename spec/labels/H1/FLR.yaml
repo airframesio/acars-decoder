@@ -1,0 +1,18 @@
+spec_version: "1"
+plugin:
+  name: Label_H1_FLR
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["H1"]
+  preambles: ["FLR", "#CFBFLR"]
+parse:
+  # Split on '/FR', then header parts before and fault body after.
+  # Body[0..20] is metadata with YYMMDDHHMMSS at [0..12]; date is rebuilt
+  # as DDMMYY by slicing (4,6)+(2,4)+(0,2), then convertDateTimeToEpoch.
+  # Body[20..] is the free-text fault message stored as a custom 'fault'-type
+  # item with code 'FR'. Header loop pushes leading fields as unknown('/').
+  custom: label_h1_flr_parse
+formatted:
+  description: "Fault Log Report"
+  custom: label_h1_flr_format
