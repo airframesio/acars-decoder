@@ -33,8 +33,10 @@ export abstract class DecoderPlugin implements DecoderPluginInterface {
   /**
    * Creates a DecodeResult pre-populated with the plugin name, description, and message.
    * Replaces the common boilerplate at the start of every decode() method.
+   *
+   * Public so that escape-hatch functions invoked by generated plugins can call it.
    */
-  protected initResult(message: Message, description: string): DecodeResult {
+  public initResult(message: Message, description: string): DecodeResult {
     const result = this.defaultResult();
     result.decoder.name = this.name;
     result.formatted.description = description;
@@ -46,8 +48,10 @@ export abstract class DecoderPlugin implements DecoderPluginInterface {
    * Sets the decoded flag and decodeLevel on a result.
    * If decoded is true and no explicit level is given, infers 'full' or 'partial'
    * based on whether remaining.text is set.
+   *
+   * Public so that escape-hatch functions invoked by generated plugins can call it.
    */
-  protected setDecodeLevel(
+  public setDecodeLevel(
     result: DecodeResult,
     decoded: boolean,
     level?: 'full' | 'partial',
@@ -63,8 +67,10 @@ export abstract class DecoderPlugin implements DecoderPluginInterface {
 
   /**
    * Logs a debug message prefixed with the plugin name, only if options.debug is true.
+   *
+   * Public so that escape-hatch functions invoked by generated plugins can call it.
    */
-  protected debug(options: Options, ...args: unknown[]): void {
+  public debug(options: Options, ...args: unknown[]): void {
     if (options.debug) {
       console.log(`[${this.name}]`, ...args);
     }
@@ -73,8 +79,10 @@ export abstract class DecoderPlugin implements DecoderPluginInterface {
   /**
    * Marks a result as a failed decode with 'none' level, sets the remaining text
    * as unknown, and logs a debug message. Returns the result for convenient early return.
+   *
+   * Public so that escape-hatch functions invoked by generated plugins can call it.
    */
-  protected failUnknown(
+  public failUnknown(
     result: DecodeResult,
     text: string,
     options: Options = {},

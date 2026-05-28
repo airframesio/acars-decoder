@@ -23,6 +23,13 @@ export type {
 export { ResultFormatter } from "./utils/result_formatter";
 export { CoordinateUtils } from "./utils/coordinate_utils";
 export { DateTimeUtils } from "./DateTimeUtils";
+export { Arinc702Helper } from "./utils/arinc_702_helper";
+export { FlightPlanUtils } from "./utils/flight_plan_utils";
+export { RouteUtils } from "./utils/route_utils";
+export { parseIcaoFpl } from "./utils/icao_fpl_utils";
+export { MIAMCoreUtils } from "./utils/miam";
+export { base64ToUint8Array, inflateData } from "./utils/compression";
+export { ascii85Decode } from "./utils/ascii85";
 
 export type { Route } from "./types/route";
 export type { Waypoint } from "./types/waypoint";
