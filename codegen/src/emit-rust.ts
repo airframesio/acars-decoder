@@ -396,5 +396,20 @@ function formattedDescription(formatted: FormattedIR): string {
 }
 
 function pluginNameToSlug(name: string): string {
-  return name.replace(/_/g, "-").toLowerCase();
+  // Smart slug: insert hyphens at camelCase boundaries so generated names
+  // match the legacy TS names byte-for-byte (CBand → c-band, StarPOS →
+  // star-pos, 3Line → 3-line, but Label_4A stays label-4a).
+  let out = "";
+  for (let i = 0; i < name.length; i++) {
+    const c = name[i] as string;
+    const prev = i > 0 ? (name[i - 1] as string) : "";
+    const next = i + 1 < name.length ? (name[i + 1] as string) : "";
+    if (i > 0 && /[A-Z]/.test(c)) {
+      if (/[a-z]/.test(prev)) out += "-";
+      else if (/[0-9]/.test(prev) && /[a-z]/.test(next)) out += "-";
+      else if (/[A-Z]/.test(prev) && /[a-z]/.test(next)) out += "-";
+    }
+    out += c;
+  }
+  return out.replace(/_/g, "-").toLowerCase();
 }

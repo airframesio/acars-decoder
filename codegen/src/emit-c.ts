@@ -228,8 +228,11 @@ function emitField(
   const decodeExpr = field.decode ? renderDecodeCall(field.decode, valueExpr) : valueExpr;
   const skipAutoRaw = consumedByFormatter.has(field.name);
   if (field.when) {
+    // Hoist as NULL outside the if so downstream formatters see the
+    // pointer (NULL when the guard fails) instead of getting a scope error.
+    out.push(`${indent}ads_value_t *${field.name} = NULL;`);
     out.push(`${indent}if (${renderCondition(field.when)}) {`);
-    out.push(`${indent}    ads_value_t *${field.name} = ${decodeExpr};`);
+    out.push(`${indent}    ${field.name} = ${decodeExpr};`);
     if (!skipAutoRaw) {
       out.push(
         `${indent}    ads_result_raw_set(result, ${cString(field.name)}, ${field.name});`,
@@ -451,5 +454,18 @@ function pluginNameToSnake(name: string): string {
 }
 
 function pluginNameToSlug(name: string): string {
-  return name.replace(/_/g, "-").toLowerCase();
+  // Smart slug — see emit-typescript.ts for the boundary rules.
+  let out = "";
+  for (let i = 0; i < name.length; i++) {
+    const c = name[i] as string;
+    const prev = i > 0 ? (name[i - 1] as string) : "";
+    const next = i + 1 < name.length ? (name[i + 1] as string) : "";
+    if (i > 0 && /[A-Z]/.test(c)) {
+      if (/[a-z]/.test(prev)) out += "-";
+      else if (/[0-9]/.test(prev) && /[a-z]/.test(next)) out += "-";
+      else if (/[A-Z]/.test(prev) && /[a-z]/.test(next)) out += "-";
+    }
+    out += c;
+  }
+  return out.replace(/_/g, "-").toLowerCase();
 }
