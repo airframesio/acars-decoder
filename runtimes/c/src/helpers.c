@@ -1,4 +1,8 @@
-/* Decode-fn helpers (numerics, strings, identifiers, encodings, bitfields). */
+/* Decode-fn helpers (numerics, strings, identifiers, encodings, bitfields).
+ *
+ * Uniform signature: every helper accepts (value, args_json). Args-free
+ * helpers ignore the second arg. Matches the Rust runtime's pattern.
+ */
 
 #include "ads_helpers.h"
 #include <cjson/cJSON.h>
@@ -19,11 +23,7 @@ static char *substr_copy(const char *s, size_t start, size_t len) {
     return out;
 }
 
-ads_value_t *ads_decode_integer(const char *value) {
-    return ads_value_from_int(value ? atoll(value) : 0);
-}
-
-ads_value_t *ads_decode_integer_args(const char *value, const char *args_json) {
+ads_value_t *ads_decode_integer(const char *value, const char *args_json) {
     cJSON *args = args_json ? cJSON_Parse(args_json) : NULL;
     size_t start = 0;
     long len = -1;
@@ -37,6 +37,7 @@ ads_value_t *ads_decode_integer_args(const char *value, const char *args_json) {
         if (cJSON_IsNumber(m))  mult = m->valuedouble;
     }
     cJSON_Delete(args);
+    if (!value) return ads_value_from_double(0.0);
     char *s = len >= 0 ? substr_copy(value, start, (size_t)len)
                        : substr_copy(value, start, strlen(value));
     double n = atof(s) * mult;
@@ -44,10 +45,23 @@ ads_value_t *ads_decode_integer_args(const char *value, const char *args_json) {
     return ads_value_from_double(n);
 }
 
-ads_value_t *ads_decode_float(const char *value)      { return ads_value_from_double(value ? atof(value) : 0.0); }
-ads_value_t *ads_decode_string(const char *value)     { return ads_value_from_string(value ? value : ""); }
-ads_value_t *ads_decode_callsign(const char *value)   { return ads_decode_string(value); }
-ads_value_t *ads_decode_flight_number(const char *v)  { return ads_decode_string(v); }
+ads_value_t *ads_decode_float(const char *value, const char *args_json) {
+    (void)args_json;
+    return ads_value_from_double(value ? atof(value) : 0.0);
+}
+
+ads_value_t *ads_decode_string(const char *value, const char *args_json) {
+    (void)args_json;
+    return ads_value_from_string(value ? value : "");
+}
+
+ads_value_t *ads_decode_callsign(const char *value, const char *args_json) {
+    return ads_decode_string(value, args_json);
+}
+
+ads_value_t *ads_decode_flight_number(const char *value, const char *args_json) {
+    return ads_decode_string(value, args_json);
+}
 
 static char *trim_inplace(char *s) {
     char *start = s;
@@ -58,7 +72,8 @@ static char *trim_inplace(char *s) {
     return s;
 }
 
-ads_value_t *ads_decode_trim(const char *value) {
+ads_value_t *ads_decode_trim(const char *value, const char *args_json) {
+    (void)args_json;
     char *copy = strdup(value ? value : "");
     trim_inplace(copy);
     ads_value_t *v = ads_value_from_string(copy);
@@ -66,7 +81,8 @@ ads_value_t *ads_decode_trim(const char *value) {
     return v;
 }
 
-ads_value_t *ads_decode_uppercase(const char *value) {
+ads_value_t *ads_decode_uppercase(const char *value, const char *args_json) {
+    (void)args_json;
     char *copy = strdup(value ? value : "");
     for (char *p = copy; *p; p++) *p = (char)toupper((unsigned char)*p);
     ads_value_t *v = ads_value_from_string(copy);
@@ -74,7 +90,8 @@ ads_value_t *ads_decode_uppercase(const char *value) {
     return v;
 }
 
-ads_value_t *ads_decode_lowercase(const char *value) {
+ads_value_t *ads_decode_lowercase(const char *value, const char *args_json) {
+    (void)args_json;
     char *copy = strdup(value ? value : "");
     for (char *p = copy; *p; p++) *p = (char)tolower((unsigned char)*p);
     ads_value_t *v = ads_value_from_string(copy);
@@ -82,7 +99,8 @@ ads_value_t *ads_decode_lowercase(const char *value) {
     return v;
 }
 
-ads_value_t *ads_decode_airport(const char *value) {
+ads_value_t *ads_decode_airport(const char *value, const char *args_json) {
+    (void)args_json;
     char *copy = strdup(value ? value : "");
     trim_inplace(copy);
     for (char *p = copy; *p; p++) *p = (char)toupper((unsigned char)*p);
@@ -121,20 +139,16 @@ static int64_t hhmmss_to_tod(const char *s) {
     return (int64_t)h * 3600 + (int64_t)m * 60 + sec;
 }
 
-ads_value_t *ads_decode_timestamp_hhmmss(const char *value) {
-    return ads_value_from_int(hhmmss_to_tod(value));
-}
-
-ads_value_t *ads_decode_timestamp_hhmmss_args(const char *value, const char *args_json) {
+ads_value_t *ads_decode_timestamp_hhmmss(const char *value, const char *args_json) {
     cJSON *args = args_json ? cJSON_Parse(args_json) : NULL;
     const cJSON *app = args ? cJSON_GetObjectItemCaseSensitive(args, "append") : NULL;
     char *combined;
     if (app && cJSON_IsString(app)) {
-        size_t n = strlen(value) + strlen(app->valuestring) + 1;
+        size_t n = strlen(value ? value : "") + strlen(app->valuestring) + 1;
         combined = malloc(n);
-        snprintf(combined, n, "%s%s", value, app->valuestring);
+        snprintf(combined, n, "%s%s", value ? value : "", app->valuestring);
     } else {
-        combined = strdup(value);
+        combined = strdup(value ? value : "");
     }
     cJSON_Delete(args);
     int64_t tod = hhmmss_to_tod(combined);

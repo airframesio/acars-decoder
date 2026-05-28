@@ -30,22 +30,23 @@ void ads_regex_match_free(ads_regex_match_t *m);
 bool ads_regex_test(const char *pattern, const char *input);
 
 /* ─── Decode-fn helpers ──────────────────────────────────────────────────── */
+/* Uniform signature: every decode-fn helper accepts (value, args_json),
+ * where args_json is "{}" when the spec specifies no args. Simplifies the
+ * emitter and matches the Rust runtime's convergence pass. */
 
 ads_value_t *ads_decode_coordinate(const char *value, const char *args_json);
 ads_value_t *ads_decode_coordinate_decimal_minutes(const char *value, const char *args_json);
-ads_value_t *ads_decode_integer(const char *value);
-ads_value_t *ads_decode_integer_args(const char *value, const char *args_json);
-ads_value_t *ads_decode_float(const char *value);
-ads_value_t *ads_decode_string(const char *value);
-ads_value_t *ads_decode_trim(const char *value);
-ads_value_t *ads_decode_uppercase(const char *value);
-ads_value_t *ads_decode_lowercase(const char *value);
-ads_value_t *ads_decode_timestamp_hhmmss(const char *value);
-ads_value_t *ads_decode_timestamp_hhmmss_args(const char *value, const char *args_json);
-ads_value_t *ads_decode_callsign(const char *value);
+ads_value_t *ads_decode_integer(const char *value, const char *args_json);
+ads_value_t *ads_decode_float(const char *value, const char *args_json);
+ads_value_t *ads_decode_string(const char *value, const char *args_json);
+ads_value_t *ads_decode_trim(const char *value, const char *args_json);
+ads_value_t *ads_decode_uppercase(const char *value, const char *args_json);
+ads_value_t *ads_decode_lowercase(const char *value, const char *args_json);
+ads_value_t *ads_decode_timestamp_hhmmss(const char *value, const char *args_json);
+ads_value_t *ads_decode_callsign(const char *value, const char *args_json);
 ads_value_t *ads_decode_tail_number(const char *value, const char *args_json);
-ads_value_t *ads_decode_flight_number(const char *value);
-ads_value_t *ads_decode_airport(const char *value);
+ads_value_t *ads_decode_flight_number(const char *value, const char *args_json);
+ads_value_t *ads_decode_airport(const char *value, const char *args_json);
 
 /* ─── Binary / encoding ──────────────────────────────────────────────────── */
 
