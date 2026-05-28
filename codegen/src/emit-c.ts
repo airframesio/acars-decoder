@@ -151,10 +151,12 @@ function emitParseStep(step: ParseStep, out: string[], indent: string): void {
       );
       break;
     case "regex":
+      // ads_regex_match_t is opaque (forward-declared); use the heap-allocated
+      // pointer form instead of trying to declare a value.
       out.push(
-        `${indent}ads_regex_match_t ${step.into} = ads_regex_match(${cString(step.pattern)}, ${renderExpr({ kind: "var", ref: step.on })});`,
+        `${indent}ads_regex_match_t *${step.into} = ads_regex_match_new(${cString(step.pattern)}, ${renderExpr({ kind: "var", ref: step.on })});`,
       );
-      out.push(`${indent}if (!ads_regex_match_ok(&${step.into})) {`);
+      out.push(`${indent}if (!ads_regex_match_ok(${step.into})) {`);
       out.push(`${indent}    return ads_result_fail_unknown(result, msg->text);`);
       out.push(`${indent}}`);
       break;
@@ -397,17 +399,16 @@ function renderExpr(expr: ValueExpr): string {
 }
 
 function varRefToC(body: string): string {
-  // message.text                  → msg->text
-  // parts[1]                      → parts.items[1]
-  // m.unsplit_coords              → ads_regex_group(&m, "unsplit_coords")
+  // message.text     → msg->text
+  // parts[1]         → parts.items[1]
+  // m.unsplit_coords → ads_regex_group(m, "unsplit_coords")  (m is now a pointer)
   if (body.startsWith("message.")) {
     return body.replace(/^message\./, "msg->");
   }
   const m = body.match(/^([a-z_][a-z0-9_]*)\.([a-z_][a-z0-9_]*)$/i);
   if (m) {
-    return `ads_regex_group(&${m[1]}, ${cString(m[2]!)})`;
+    return `ads_regex_group(${m[1]}, ${cString(m[2]!)})`;
   }
-  // parts[N] → parts.items[N]
   return body.replace(/^([a-z_][a-z0-9_]*)\[(\d+)\]$/i, "$1.items[$2]");
 }
 
