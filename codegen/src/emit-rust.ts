@@ -195,10 +195,16 @@ function emitField(
   const decodeExpr = field.decode ? renderDecodeCall(field.decode, valueExpr) : valueExpr;
   const skipAutoRaw = consumedByFormatter.has(field.name);
   if (field.when) {
-    out.push(`${indent}if ${renderCondition(field.when)} {`);
-    out.push(`${indent}    let ${field.name} = ${decodeExpr};`);
-    if (!skipAutoRaw) out.push(`${indent}    result.raw.insert(${rustString(field.name)}, ${field.name}.into());`);
-    out.push(`${indent}}`);
+    // Hoist as Option so downstream formatters see the variable (None when
+    // the guard fails) instead of getting a scope error. Mirrors TS's
+    // `let X; if (cond) { X = ...; }` pattern.
+    out.push(`${indent}let ${field.name}: Option<serde_json::Value> = if ${renderCondition(field.when)} {`);
+    out.push(`${indent}    let v = ${decodeExpr};`);
+    if (!skipAutoRaw) out.push(`${indent}    result.raw.insert(${rustString(field.name)}, v.clone().into());`);
+    out.push(`${indent}    Some(v.into())`);
+    out.push(`${indent}} else {`);
+    out.push(`${indent}    None`);
+    out.push(`${indent}};`);
   } else {
     out.push(`${indent}let ${field.name} = ${decodeExpr};`);
     if (!skipAutoRaw) out.push(`${indent}result.raw.insert(${rustString(field.name)}, ${field.name}.clone().into());`);
