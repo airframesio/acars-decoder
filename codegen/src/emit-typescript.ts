@@ -306,7 +306,7 @@ function emitFormatterCall(item: FormatterCall, out: string[], indent: string): 
     tail_number: "tail",
     airport_origin: "departureAirport",
     airport_destination: "arrivalAirport",
-    fuel: "fuel",
+    fuel: "currentFuel",
     free_text: "unknownArr",
   };
   const method = methodMap[item.type];
