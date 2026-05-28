@@ -1,0 +1,34 @@
+{
+  "name": "@airframes/ads-runtime-ts",
+  "version": "0.1.0",
+  "description": "TypeScript runtime library for ADS-generated ACARS decoder plugins. Consumed by acars-decoder-typescript via path alias or path dependency from the airframes-decoder submodule.",
+  "type": "module",
+  "main": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./helpers": "./helpers.ts",
+    "./escape_hatches": "./escape_hatches/index.ts"
+  },
+  "files": [
+    "*.ts",
+    "utils/",
+    "types/",
+    "escape_hatches/",
+    "README.md"
+  ],
+  "scripts": {
+    "lint": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "pako": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/pako": "^2.0.4",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "keywords": ["acars", "decoder", "runtime"]
+}
