@@ -64,13 +64,12 @@ function runGenerate(opts: { target: string; spec: string; out: string; check?: 
 }
 
 function pluginToFileBase(spec: SpecIR, target: "ts" | "rust" | "c"): string {
-  // TS keeps PascalCase to match existing convention (Label_10_POS.ts).
-  // Rust + C use snake_case.
+  // TS keeps PascalCase (Label_10_POS.ts). Rust + C use snake_case.
+  // Plugin names are already snake-style with capitals — just lowercase.
+  // (The old camelCase-to-snake regex inserted an unwanted underscore when a
+  // digit was followed by a capital, e.g. Label_4A → label_4_a.)
   if (target === "ts") return spec.plugin.name;
-  return spec.plugin.name
-    .replace(/([a-z0-9])([A-Z])/g, "$1_$2")
-    .replace(/__+/g, "_")
-    .toLowerCase();
+  return spec.plugin.name.toLowerCase();
 }
 
 function loadAllSpecs(specRoot: string): SpecIR[] {
