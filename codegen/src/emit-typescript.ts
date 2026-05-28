@@ -398,8 +398,27 @@ function hasExplicitDecodeLevelSetting(_spec: SpecIR): boolean {
 }
 
 function pluginNameToSlug(name: string): string {
-  // Plugin names are already snake-cased with capitals (Label_10_POS, ARINC_702,
-  // Label_H1_OHMA). Just lowercase and swap _ for - so we match the existing
-  // TS convention ("label-10-pos", "arinc-702", "label-h1-ohma").
-  return name.replace(/_/g, "-").toLowerCase();
+  // Insert hyphens at camelCase boundaries so legacy slugs are preserved
+  // byte-for-byte. Three boundary rules:
+  //   - lowercase→Uppercase    (CBand → C-Band)
+  //   - digit→Uppercase if the next char is lowercase  (3Line → 3-Line, but 4A → 4A)
+  //   - Uppercase→Uppercase if the next char is lowercase (StarPOS → Star-POS)
+  // Then lowercase and swap _ for -.
+  let out = "";
+  for (let i = 0; i < name.length; i++) {
+    const c = name[i] as string;
+    const prev = i > 0 ? (name[i - 1] as string) : "";
+    const next = i + 1 < name.length ? (name[i + 1] as string) : "";
+    if (i > 0 && /[A-Z]/.test(c)) {
+      if (/[a-z]/.test(prev)) {
+        out += "-";
+      } else if (/[0-9]/.test(prev) && /[a-z]/.test(next)) {
+        out += "-";
+      } else if (/[A-Z]/.test(prev) && /[a-z]/.test(next)) {
+        out += "-";
+      }
+    }
+    out += c;
+  }
+  return out.replace(/_/g, "-").toLowerCase();
 }
