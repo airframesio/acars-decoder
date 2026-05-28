@@ -1,5 +1,7 @@
 node_modules/
 dist/
+target/
+build/
 *.log
 .DS_Store
 .vscode/
