@@ -372,13 +372,14 @@ function renderCArg(v: unknown): string {
 }
 
 function renderDecodeCall(call: DecodeCall, valueExpr: string): string {
+  // Always emit 2-arg form. Runtime helpers and hatches all accept
+  // (value, args_json) uniformly; args_json is "{}" when no args.
+  // Matches the Rust emitter's convergence-pass behavior.
+  const argsJson = cString(JSON.stringify(call.args));
   if (call.fn === "custom") {
-    return `ads_hatch_${call.name}(${valueExpr}, ${cString(JSON.stringify(call.args))})`;
+    return `ads_hatch_${call.name}(${valueExpr}, ${argsJson})`;
   }
-  if (Object.keys(call.args).length > 0) {
-    return `ads_decode_${call.fn}(${valueExpr}, ${cString(JSON.stringify(call.args))})`;
-  }
-  return `ads_decode_${call.fn}(${valueExpr})`;
+  return `ads_decode_${call.fn}(${valueExpr}, ${argsJson})`;
 }
 
 function renderExpr(expr: ValueExpr): string {
