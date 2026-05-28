@@ -314,7 +314,16 @@ function emitFormatterCall(item: FormatterCall, out: string[], indent: string): 
     }
   }
   if (item.type === "free_text" && Array.isArray(item.args["values"])) {
-    const vals = (item.args["values"] as unknown[]).map(renderRustArg).join(", ");
+    // ResultFormatter::unknown_arr expects Vec<String>; convert &str args
+    // via .to_string() at the call site rather than .clone() which yields &str.
+    const vals = (item.args["values"] as unknown[])
+      .map((v) => {
+        if (typeof v === "string" && v.startsWith("$")) {
+          return `${renderExpr({ kind: "var", ref: v })}.to_string()`;
+        }
+        return renderRustArg(v);
+      })
+      .join(", ");
     out.push(`${indent}ResultFormatter::unknown_arr(&mut result, vec![${vals}]);`);
     return;
   }
@@ -338,14 +347,13 @@ function renderRustArg(v: unknown): string {
 }
 
 function renderDecodeCall(call: DecodeCall, valueExpr: string): string {
+  // Always emit two arguments — runtime helpers all accept (value, args_json)
+  // even when args is empty ('{}'). Uniform signature simplifies the runtime.
+  const argsJson = rustString(JSON.stringify(call.args));
   if (call.fn === "custom") {
-    return `escape_hatches::${call.name}(${valueExpr}, ${rustString(JSON.stringify(call.args))})`;
+    return `escape_hatches::${call.name}(${valueExpr}, ${argsJson})`;
   }
-  const fn = call.fn;
-  if (Object.keys(call.args).length > 0) {
-    return `helpers::${fn}(${valueExpr}, ${rustString(JSON.stringify(call.args))})`;
-  }
-  return `helpers::${fn}(${valueExpr})`;
+  return `helpers::${call.fn}(${valueExpr}, ${argsJson})`;
 }
 
 function renderExpr(expr: ValueExpr): string {
@@ -362,14 +370,17 @@ function renderExpr(expr: ValueExpr): string {
 }
 
 function varRefToRust(ref: string): string {
-  // $message.text → message.text (struct field)
-  // $parts[1]     → parts[1]
-  // $m.unsplit_coords → &m["unsplit_coords"]   (regex captures use named-group access)
+  // $message.text     → message.text (struct field)
+  // $parts[1]         → parts[1]
+  // $m.unsplit_coords → &m["unsplit_coords"]  (regex::Captures Index<&str> → str)
+  //
+  // The earlier code appended .as_str() on the named-group access which is
+  // an unstable feature (str_as_str). Indexing a Captures by &str already
+  // returns a &str, so the extra .as_str() is unnecessary and unstable.
   let body = ref.slice(1);
-  // For named regex group access ($m.foo), rewrite as &m["foo"].as_str()
   body = body.replace(/^([a-z_][a-z0-9_]*)\.([a-z_][a-z0-9_]*)$/i, (_m, head, group) => {
     if (head === "message") return `${head}.${group}`;
-    return `&${head}[${rustString(group)}].as_str()`;
+    return `&${head}[${rustString(group)}]`;
   });
   return body;
 }

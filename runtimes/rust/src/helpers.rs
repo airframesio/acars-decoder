@@ -1,9 +1,11 @@
 //! Decode-fn helpers the codegen emits calls into.
 //!
 //! Mirrors `runtimes/typescript/helpers.ts`. Each function corresponds to a
-//! `decode.fn` value in spec YAML. Args arrive as JSON-encoded strings (the
-//! emitter uses `JSON.stringify(args)` for portability); v1.1 should switch
-//! to typed args.
+//! `decode.fn` value in spec YAML.
+//!
+//! Uniform signature: every helper accepts `(value: &str, args_json: &str)`,
+//! where `args_json` is `"{}"` when the spec specifies no args. This lets
+//! the emitter always emit a 2-arg call, simplifying both sides.
 
 use serde_json::Value as JsonValue;
 use crate::ascii85;
@@ -49,11 +51,7 @@ pub fn coordinate_decimal_minutes(value: &str, _args_json: &str) -> JsonValue {
 
 // ─── numerics ────────────────────────────────────────────────────────────────
 
-pub fn integer(value: &str) -> JsonValue {
-    integer_with_args(value, "{}")
-}
-
-pub fn integer_with_args(value: &str, args_json: &str) -> JsonValue {
+pub fn integer(value: &str, args_json: &str) -> JsonValue {
     let args = parse_args(args_json);
     let mut s = value;
     let owned: String;
@@ -70,23 +68,37 @@ pub fn integer_with_args(value: &str, args_json: &str) -> JsonValue {
     JsonValue::from(n * mult)
 }
 
-pub fn float(value: &str) -> JsonValue {
+pub fn float(value: &str, _args_json: &str) -> JsonValue {
     let n: f64 = value.parse().unwrap_or(0.0);
     JsonValue::from(n)
 }
 
 // ─── strings ─────────────────────────────────────────────────────────────────
 
-pub fn string(value: &str) -> JsonValue { JsonValue::String(value.to_string()) }
-pub fn trim(value: &str) -> JsonValue { JsonValue::String(value.trim().to_string()) }
-pub fn uppercase(value: &str) -> JsonValue { JsonValue::String(value.to_uppercase()) }
-pub fn lowercase(value: &str) -> JsonValue { JsonValue::String(value.to_lowercase()) }
+pub fn string(value: &str, _args_json: &str) -> JsonValue {
+    JsonValue::String(value.to_string())
+}
+pub fn trim(value: &str, _args_json: &str) -> JsonValue {
+    JsonValue::String(value.trim().to_string())
+}
+pub fn uppercase(value: &str, _args_json: &str) -> JsonValue {
+    JsonValue::String(value.to_uppercase())
+}
+pub fn lowercase(value: &str, _args_json: &str) -> JsonValue {
+    JsonValue::String(value.to_lowercase())
+}
 
 // ─── identifiers ─────────────────────────────────────────────────────────────
 
-pub fn callsign(value: &str) -> JsonValue { JsonValue::String(value.trim().to_string()) }
-pub fn flight_number(value: &str) -> JsonValue { JsonValue::String(value.trim().to_string()) }
-pub fn airport(value: &str) -> JsonValue { JsonValue::String(value.trim().to_uppercase()) }
+pub fn callsign(value: &str, _args_json: &str) -> JsonValue {
+    JsonValue::String(value.trim().to_string())
+}
+pub fn flight_number(value: &str, _args_json: &str) -> JsonValue {
+    JsonValue::String(value.trim().to_string())
+}
+pub fn airport(value: &str, _args_json: &str) -> JsonValue {
+    JsonValue::String(value.trim().to_uppercase())
+}
 
 pub fn tail_number(value: &str, args_json: &str) -> JsonValue {
     let args = parse_args(args_json);
@@ -101,11 +113,7 @@ pub fn tail_number(value: &str, args_json: &str) -> JsonValue {
 
 // ─── timestamps ──────────────────────────────────────────────────────────────
 
-pub fn timestamp_hhmmss(value: &str) -> JsonValue {
-    parse_hhmmss_to_tod(value)
-}
-
-pub fn timestamp_hhmmss_with_args(value: &str, args_json: &str) -> JsonValue {
+pub fn timestamp_hhmmss(value: &str, args_json: &str) -> JsonValue {
     let args = parse_args(args_json);
     let s = if let Some(app) = args.get("append").and_then(JsonValue::as_str) {
         format!("{}{}", value, app)
@@ -123,7 +131,7 @@ fn parse_hhmmss_to_tod(s: &str) -> JsonValue {
     JsonValue::from(h * 3600 + m * 60 + sec)
 }
 
-// ─── binary / encoding ───────────────────────────────────────────────────────
+// ─── binary / encoding (called via parse steps, not decode-fns) ──────────────
 
 pub fn base64_decode(value: &str) -> Vec<u8> {
     use base64::{engine::general_purpose::STANDARD, Engine};
@@ -143,8 +151,6 @@ pub fn inflate(bytes: &[u8], format: &str) -> Vec<u8> {
 }
 
 pub fn text_decode(bytes: &[u8], _encoding: &str) -> String {
-    // ASCII / Latin1 / UTF-8 all round-trip safely through from_utf8_lossy
-    // for ACARS message text; specialize when a real divergence appears.
     String::from_utf8_lossy(bytes).into_owned()
 }
 
@@ -161,7 +167,6 @@ pub fn hex_decode(value: &str) -> Vec<u8> {
 
 // ─── bitfield ────────────────────────────────────────────────────────────────
 
-/// Extract bits [start..end] (inclusive) from a byte with bit 0 = MSB.
 pub fn bitslice(byte: u8, start: u8, end: u8) -> u32 {
     let width = end - start + 1;
     let shift = 8 - end - 1;
