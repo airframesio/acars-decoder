@@ -1,0 +1,58 @@
+{
+  "spec": "labels/15/FST",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "15",
+    "text": "FST01EGKKKMCON373488W0756927380 156 495 M53C 4427422721045313002518521710"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-15-fst",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "37.349 N, 75.693 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "38000 feet"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "EGKK"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KMCO"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 37.3488,
+        "longitude": -75.6927
+      },
+      "altitude": 38000,
+      "departure_icao": "EGKK",
+      "arrival_icao": "KMCO"
+    },
+    "remaining": {
+      "text": "156 495 M53C 4427422721045313002518521710"
+    }
+  }
+}

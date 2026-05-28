@@ -1,0 +1,85 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 51",
+  "input": {
+    "label": "H1",
+    "text": "/.POS/TS100316,210324/PSS35333W058220,,100316,250,S37131W059150,101916,S39387W060377,M23,27282,241,780,MANUAL,0,813E711"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "35.555 S, 58.367 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "25000 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "@10:03:16 > (37.218 S, 59.250 W)@10:19:16 > (39.645 S, 60.628 W)"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-23 degrees"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xe711"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1711015396,
+      "position": {
+        "latitude": -35.555,
+        "longitude": -58.36666666666667
+      },
+      "altitude": 25000,
+      "route": {
+        "waypoints": [
+          {
+            "name": "",
+            "time": 36196
+          },
+          {
+            "name": "",
+            "latitude": -37.218333333333334,
+            "longitude": -59.25,
+            "time": 37156
+          },
+          {
+            "name": "",
+            "latitude": -39.645,
+            "longitude": -60.62833333333333
+          }
+        ]
+      },
+      "outside_air_temperature": -23,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 59153
+    },
+    "remaining": {
+      "text": "/.27282,241,780,MANUAL,0,813"
+    }
+  }
+}

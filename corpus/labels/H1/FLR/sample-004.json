@@ -1,0 +1,35 @@
+{
+  "spec": "labels/H1/FLR",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "H1",
+    "text": "FLR/FR24030410030038316206LIQD LVL XMTR (40MG)/IDTOILET "
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-flr",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Fault Log Report",
+      "items": [
+        {
+          "type": "fault",
+          "code": "FR",
+          "label": "Fault Report",
+          "value": "LIQD LVL XMTR (40MG)/IDTOILET "
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1709546580,
+      "fault_message": "LIQD LVL XMTR (40MG)/IDTOILET "
+    },
+    "remaining": {
+      "text": "38316206"
+    }
+  }
+}

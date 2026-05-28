@@ -1,0 +1,79 @@
+{
+  "spec": "labels/4A/01",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "4A",
+    "text": "01DCAP VIR41R/190203EGLLKSFO\r\n+ 1418158.0+ 24.8"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4a-01",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Latest New Format",
+      "items": [
+        {
+          "type": "state_change",
+          "code": "STATE_CHANGE",
+          "label": "State Change",
+          "value": "Descent -> Approach"
+        },
+        {
+          "type": "callsign",
+          "code": "CALLSIGN",
+          "label": "Callsign",
+          "value": "VIR41R"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "19:02:03"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "EGLL"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KSFO"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "1418 feet"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "24.8 degrees"
+        }
+      ]
+    },
+    "raw": {
+      "state_change": {
+        "from": "DC",
+        "to": "AP"
+      },
+      "callsign": "VIR41R",
+      "message_timestamp": 68523,
+      "departure_icao": "EGLL",
+      "arrival_icao": "KSFO",
+      "altitude": 1418,
+      "outside_air_temperature": 24.8
+    },
+    "remaining": {
+      "text": "158.0"
+    }
+  }
+}

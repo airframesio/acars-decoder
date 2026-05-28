@@ -1,0 +1,134 @@
+{
+  "spec": "labels/H2/02E",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "H2",
+    "text": "02E20EIDWKORDN44087W08505523383800M470251091G QN43210W08520623452813M442251113G QN42461W08539523522189M295256121G QN42380W08623723591780M227266100G Q"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h2-02e",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Weather Report",
+      "items": [
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "20"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "EIDW"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KORD"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N44087W085055(44.145 N, 85.092 W)@23:38:00 at FL380: 251° at 91kt, -47°C at FL380"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N43210W085206(43.350 N, 85.343 W)@23:45:00 at FL281: 251° at 113kt, -44.2°C at FL281"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N42461W085395(42.768 N, 85.658 W)@23:52:00 at FL218: 256° at 121kt, -29.5°C at FL218"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N42380W086237(42.633 N, 86.395 W)@23:59:00 at FL178: 266° at 100kt, -22.7°C at FL178"
+        }
+      ]
+    },
+    "raw": {
+      "day": 20,
+      "departure_icao": "EIDW",
+      "arrival_icao": "KORD",
+      "wind_data": [
+        {
+          "waypoint": {
+            "name": "N44087W085055",
+            "latitude": 44.145,
+            "longitude": -85.09166666666667,
+            "time": 85080
+          },
+          "flightLevel": 380,
+          "windDirection": 251,
+          "windSpeed": 91,
+          "temperature": {
+            "flightLevel": 380,
+            "degreesC": -47
+          }
+        },
+        {
+          "waypoint": {
+            "name": "N43210W085206",
+            "latitude": 43.35,
+            "longitude": -85.34333333333333,
+            "time": 85500
+          },
+          "flightLevel": 281,
+          "windDirection": 251,
+          "windSpeed": 113,
+          "temperature": {
+            "flightLevel": 281,
+            "degreesC": -44.2
+          }
+        },
+        {
+          "waypoint": {
+            "name": "N42461W085395",
+            "latitude": 42.76833333333333,
+            "longitude": -85.65833333333333,
+            "time": 85920
+          },
+          "flightLevel": 218,
+          "windDirection": 256,
+          "windSpeed": 121,
+          "temperature": {
+            "flightLevel": 218,
+            "degreesC": -29.5
+          }
+        },
+        {
+          "waypoint": {
+            "name": "N42380W086237",
+            "latitude": 42.63333333333333,
+            "longitude": -86.395,
+            "time": 86340
+          },
+          "flightLevel": 178,
+          "windDirection": 266,
+          "windSpeed": 100,
+          "temperature": {
+            "flightLevel": 178,
+            "degreesC": -22.7
+          }
+        }
+      ]
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

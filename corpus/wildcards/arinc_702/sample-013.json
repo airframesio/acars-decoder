@@ -1,0 +1,25 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 13",
+  "input": {
+    "label": "4A",
+    "text": "N22456E077014OSE35 ,192027370VEX36 ,192316,M46,275043309,85220111"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Unknown",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "N22/,N22456E077014OSE35 ,192027370VEX36 ,192316,M46,275043309,85220111"
+    }
+  }
+}

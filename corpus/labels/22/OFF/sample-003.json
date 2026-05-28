@@ -1,0 +1,48 @@
+{
+  "spec": "labels/22/OFF",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "22",
+    "text": "OFF02\r\nKBWI,KIND,1237,18.4"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-22-off",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Takeoff Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KBWI"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KIND"
+        },
+        {
+          "type": "time",
+          "code": "OFF",
+          "label": "Takeoff Time",
+          "value": "12:37:00"
+        }
+      ]
+    },
+    "raw": {
+      "departure_icao": "KBWI",
+      "arrival_icao": "KIND",
+      "off_time": 45420
+    },
+    "remaining": {
+      "text": "18.4"
+    }
+  }
+}

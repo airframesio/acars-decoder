@@ -1,0 +1,59 @@
+{
+  "spec": "labels/QQ",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "QQ",
+    "text": "KLGBKLAX0004\r\n001FE07000444N3349.8W11810.1---0200009"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-qq",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "OFF Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KLGB"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KLAX"
+        },
+        {
+          "type": "time",
+          "code": "OFF",
+          "label": "Takeoff Time",
+          "value": "00:04:44"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "33.830 N, 118.168 W"
+        }
+      ]
+    },
+    "raw": {
+      "departure_icao": "KLGB",
+      "arrival_icao": "KLAX",
+      "day": "07",
+      "off_time": 284,
+      "position": {
+        "latitude": 33.83,
+        "longitude": -118.16833333333334
+      }
+    },
+    "remaining": {
+      "text": "---,020,0009"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "spec": "labels/44/ETA",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "44",
+    "text": "00ETA03,N38241W081357,330,KBNA,KBWI,1107,0123,0208,008.1"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-44-eta",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "ETA Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.402 N, 81.595 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "33000 feet"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KBNA"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KBWI"
+        },
+        {
+          "type": "month",
+          "code": "MSG_MON",
+          "label": "Month of Year",
+          "value": "11"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "7"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "01:23:00"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "02:08:00"
+        },
+        {
+          "type": "fuel_remaining",
+          "code": " FUEL_REM",
+          "label": "Fuel Remaining",
+          "value": "8.1"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 38.401666666666664,
+        "longitude": -81.595
+      },
+      "altitude": 33000,
+      "departure_icao": "KBNA",
+      "arrival_icao": "KBWI",
+      "month": 11,
+      "day": 7,
+      "message_timestamp": 4980,
+      "eta_time": 7680,
+      "fuel_remaining": 8.1
+    },
+    "remaining": {}
+  }
+}

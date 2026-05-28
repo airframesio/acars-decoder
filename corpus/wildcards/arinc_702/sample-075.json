@@ -1,0 +1,111 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 75",
+  "input": {
+    "label": "H1",
+    "text": "FPN/TS140017,021724/RP:DA:EHAM:AA:KMSP..N55064W000477..N55163W001141..ERAKA..N60000W020000..N61000W030000:WS:N61000W030000,370..N61000W040000..N60000W050000..URTAK:WS:URTAK,380..LAKES:WS:LAKES,400..N57000W070000..N54300W080000..N49000W090000..DLH..COLDD:A:BAINY3:AP:ILS30L(30L)/PR4356,344,360,1060,,,13,,,30,,,P50,M40,36090,,3296,292/DTKMSP,30L,172,215117156D"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Flight Plan",
+      "items": [
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Planned"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "EHAM"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KMSP..N55064W000477..N55163W001141..ERAKA..N60000W020000..N61000W030000"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Arrival Procedure",
+          "value": "BAINY3"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Approach Procedure",
+          "value": "ILS30L(30L)"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "36000 feet"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "30L"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "172"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "21:51:17"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x156d"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1708178417,
+      "route_status": "RP",
+      "departure_icao": "EHAM",
+      "arrival_icao": "KMSP..N55064W000477..N55163W001141..ERAKA..N60000W020000..N61000W030000",
+      "procedures": [
+        {
+          "type": "arrival",
+          "route": {
+            "name": "BAINY3"
+          }
+        },
+        {
+          "type": "approach",
+          "route": {
+            "name": "ILS30L(30L)"
+          }
+        }
+      ],
+      "altitude": 36000,
+      "arrival_runway": "30L",
+      "fuel_on_board": 172,
+      "eta_time": 78677,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 5485
+    },
+    "remaining": {
+      "text": ":WS:N61000W030000,370..N61000W040000..N60000W050000..URTAK:WS:URTAK,380..LAKES:WS:LAKES,400..N57000W070000..N54300W080000..N49000W090000..DLH..COLDD/PR4356,344,1060,,,13,,,30,,,P50,M40,36090,,3296,292"
+    }
+  }
+}

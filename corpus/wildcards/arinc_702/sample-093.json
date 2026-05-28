@@ -1,0 +1,35 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 93",
+  "input": {
+    "label": "H1",
+    "text": "REQPOS037B"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Request for Position Report",
+      "items": [
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x037b"
+        }
+      ]
+    },
+    "raw": {
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 891
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

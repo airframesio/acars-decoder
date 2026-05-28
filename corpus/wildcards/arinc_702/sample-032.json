@@ -1,0 +1,72 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 32",
+  "input": {
+    "label": "H1",
+    "text": "#M1BPRG/DTEKCH,22L,69,141204,042/FNSAS87W/TS132645,2402246784"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Progress Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "EKCH"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "22L"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "69"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "14:12:04"
+        },
+        {
+          "type": "fuel_remaining",
+          "code": " FUEL_REM",
+          "label": "Fuel Remaining",
+          "value": "42"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x6784"
+        }
+      ]
+    },
+    "raw": {
+      "arrival_icao": "EKCH",
+      "arrival_runway": "22L",
+      "fuel_on_board": 69,
+      "eta_time": 51124,
+      "fuel_remaining": 42,
+      "flight_number": "SAS87W",
+      "message_timestamp": 1708781205,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 26500
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

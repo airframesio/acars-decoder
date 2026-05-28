@@ -1,0 +1,25 @@
+{
+  "spec": "labels/20/POS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "20",
+    "text": "POSUNKNOWN"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-20-pos",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": []
+    },
+    "raw": {
+      "preamble": "POS"
+    },
+    "remaining": {}
+  }
+}

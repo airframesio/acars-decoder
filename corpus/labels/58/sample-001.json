@@ -1,0 +1,65 @@
+{
+  "spec": "labels/58",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "58",
+    "text": "OG0704/06/230942/N39.214/W76.106/22683/N/"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-58",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "OG0704"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "6"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "23:09:42"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.214 N, 76.106 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "22683 feet"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "OG0704",
+      "day": 6,
+      "message_timestamp": 83382,
+      "position": {
+        "latitude": 39.214,
+        "longitude": -76.106
+      },
+      "altitude": 22683
+    },
+    "remaining": {
+      "text": "N/"
+    }
+  }
+}

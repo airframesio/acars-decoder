@@ -1,0 +1,48 @@
+{
+  "spec": "labels/MA",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "MA",
+    "text": "T22!<<2>/k&_k6:\"c1!'s.16q0U2odKk@|D,eVtdm+WF(#Ll8Dja==EY8V4KISInKk%((%5&@p?Z\\NSZ9tj[Xr0rXqe`+A(J,f[fotFmHmS"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-ma",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Unknown",
+      "items": [
+        {
+          "type": "label",
+          "code": "LABEL",
+          "label": "Message Label",
+          "value": "H1"
+        },
+        {
+          "type": "sublabel",
+          "code": "SUBLABEL",
+          "label": "Message Sublabel",
+          "value": "DF"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "ET-BAY"
+        }
+      ]
+    },
+    "raw": {
+      "label": "H1",
+      "sublabel": "DF",
+      "tail": "ET-BAY"
+    },
+    "remaining": {
+      "text": "A350,000243,1,1,"
+    }
+  }
+}

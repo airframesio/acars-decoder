@@ -1,0 +1,79 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 91",
+  "input": {
+    "label": "H1",
+    "text": "INR/ID91511S,,/DC04032026,143534/MR19,/NR,,,,,,,,950,0/ET041505/FB983/VR32BF4C"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "In-Range Report",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "91511S"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 19
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "4"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "15:05:00"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "983"
+        },
+        {
+          "type": "version",
+          "code": "VERSION",
+          "label": "Message Version",
+          "value": "v3.2"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xbf4c"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "91511S",
+      "mission_number": "",
+      "message_timestamp": 1772634934,
+      "sequence_number": 19,
+      "day": 4,
+      "eta_time": 54300,
+      "fuel_on_board": 983,
+      "version": 3.2,
+      "checksum_algorithm": "GENIBUS",
+      "checksum": 48972
+    },
+    "remaining": {
+      "text": "NR,,,,,,,,950,0"
+    }
+  }
+}

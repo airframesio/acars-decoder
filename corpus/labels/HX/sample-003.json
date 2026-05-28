@@ -1,0 +1,23 @@
+{
+  "spec": "labels/HX",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "HX",
+    "text": "HX Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-hx",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Undelivered Uplink Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {}
+  }
+}

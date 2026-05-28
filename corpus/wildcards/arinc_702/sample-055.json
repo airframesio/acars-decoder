@@ -1,0 +1,81 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 55",
+  "input": {
+    "label": "H1",
+    "text": "POSN43312W123174,EASON,215754,370,EBINY,220601,ELENN,M48,02216,185/TS215754,0921227A40"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "43.520 N, 123.290 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "37000 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "EASON@21:57:54 > EBINY@22:06:01 > ELENN"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-48 degrees"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x7a40"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 43.52,
+        "longitude": -123.29
+      },
+      "altitude": 37000,
+      "route": {
+        "waypoints": [
+          {
+            "name": "EASON",
+            "time": 79074
+          },
+          {
+            "name": "EBINY",
+            "time": 79561
+          },
+          {
+            "name": "ELENN"
+          }
+        ]
+      },
+      "outside_air_temperature": -48,
+      "message_timestamp": 1663797474,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 31296
+    },
+    "remaining": {
+      "text": "02216,185"
+    }
+  }
+}

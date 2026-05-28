@@ -1,0 +1,77 @@
+{
+  "spec": "labels/44/ON",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "44",
+    "text": "ON02,N38333W121178,KRNO,KMHR,0806,2350,005.2"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-44-on",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "On Runway Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.555 N, 121.297 W"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KRNO"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KMHR"
+        },
+        {
+          "type": "month",
+          "code": "MSG_MON",
+          "label": "Month of Year",
+          "value": "8"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "6"
+        },
+        {
+          "type": "time",
+          "code": "ON",
+          "label": "Landing Time",
+          "value": "23:50:00"
+        },
+        {
+          "type": "fuel_remaining",
+          "code": " FUEL_REM",
+          "label": "Fuel Remaining",
+          "value": "5.2"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 38.555,
+        "longitude": -121.29666666666667
+      },
+      "departure_icao": "KRNO",
+      "arrival_icao": "KMHR",
+      "month": 8,
+      "day": 6,
+      "on_time": 85800,
+      "fuel_remaining": 5.2
+    },
+    "remaining": {}
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "spec": "labels/H1/Paren",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "H1",
+    "text": "Invalid"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-h1-paren",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Unknown",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {}
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 30",
+  "input": {
+    "label": "H1",
+    "text": "PRG/FNEXS67TP/DTEGPF,23O,67,214405,298262"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Progress Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "EGPF"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "23O"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "67"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "21:44:05"
+        },
+        {
+          "type": "fuel_remaining",
+          "code": " FUEL_REM",
+          "label": "Fuel Remaining",
+          "value": "29"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x8262"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "EXS67TP",
+      "arrival_icao": "EGPF",
+      "arrival_runway": "23O",
+      "fuel_on_board": 67,
+      "eta_time": 78245,
+      "fuel_remaining": 29,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 33378
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

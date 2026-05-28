@@ -1,0 +1,56 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 24",
+  "input": {
+    "label": "H1",
+    "text": "LDI/RW16L,,,,,,1552,,P4,D7,164008,1,1,0,,P60,155159161:,,800,800,800/CG2356485"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Load Distribution Information",
+      "items": [
+        {
+          "type": "runway",
+          "code": "DEPRWY",
+          "label": "Departure Runway",
+          "value": "16L"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": ""
+        },
+        {
+          "type": "center_of_gravity",
+          "code": "CG",
+          "label": "Center of Gravity",
+          "value": "23.5 %"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x6485"
+        }
+      ]
+    },
+    "raw": {
+      "departure_runway": "16L",
+      "departure_icao": "",
+      "center_of_gravity": 23.5,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 25733
+    },
+    "remaining": {
+      "text": ",,,,,1552,,P4,D7,164008,1,1,0,,P60,155159161.,,800,800,800"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "spec": "labels/4T/ETA",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "4T",
+    "text": "ETA AC7221/13/14 YYZ 0902Z"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4t-eta",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "ETA Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "AC7221"
+        },
+        {
+          "type": "day",
+          "code": "DEP_DAY",
+          "label": "Departure Day",
+          "value": "13"
+        },
+        {
+          "type": "day",
+          "code": "ARR_DAY",
+          "label": "Arrival Day",
+          "value": "14"
+        },
+        {
+          "type": "iata",
+          "code": "DST",
+          "label": "Destination",
+          "value": "YYZ"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "09:02:00"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "AC7221",
+      "departure_day": 13,
+      "arrival_day": 14,
+      "arrival_iata": "YYZ",
+      "eta_time": 32520
+    },
+    "remaining": {}
+  }
+}

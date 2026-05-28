@@ -1,0 +1,143 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 78",
+  "input": {
+    "label": "H1",
+    "text": "FPN/RP:DA:KSEA:AA:KPHX:D:SUMMA2.SUMMA:F:SUMMA,N46371W121593..LTJ,N45428W121061..IMB,N44389W119427.Q35..CORKR,N36050W112240..TENTS,N35295W112271:A:BRUSR1.TENTS/FNFFT17245D16"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Flight Plan",
+      "items": [
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Planned"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KSEA"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KPHX"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Departure Procedure",
+          "value": "SUMMA2 starting at SUMMA"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "SUMMA(46.618 N, 121.988 W) >> LTJ(45.713 N, 121.102 W) >> IMB(44.648 N, 119.712 W) > Q35 >> CORKR(36.083 N, 112.400 W) >> TENTS(35.492 N, 112.452 W)"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Arrival Procedure",
+          "value": "BRUSR1 starting at TENTS"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x5d16"
+        }
+      ]
+    },
+    "raw": {
+      "route_status": "RP",
+      "departure_icao": "KSEA",
+      "arrival_icao": "KPHX",
+      "procedures": [
+        {
+          "type": "departure",
+          "route": {
+            "name": "SUMMA2",
+            "waypoints": [
+              {
+                "name": "SUMMA"
+              }
+            ]
+          }
+        },
+        {
+          "type": "arrival",
+          "route": {
+            "name": "BRUSR1",
+            "waypoints": [
+              {
+                "name": "TENTS"
+              }
+            ]
+          }
+        }
+      ],
+      "route": {
+        "waypoints": [
+          {
+            "name": "SUMMA",
+            "latitude": 46.61833333333333,
+            "longitude": -121.98833333333333
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "LTJ",
+            "latitude": 45.71333333333333,
+            "longitude": -121.10166666666667
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "IMB",
+            "latitude": 44.64833333333333,
+            "longitude": -119.71166666666667
+          },
+          {
+            "name": "Q35"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "CORKR",
+            "latitude": 36.083333333333336,
+            "longitude": -112.4
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "TENTS",
+            "latitude": 35.49166666666667,
+            "longitude": -112.45166666666667
+          }
+        ]
+      },
+      "flight_number": "FFT1724",
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 23830
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

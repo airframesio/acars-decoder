@@ -1,0 +1,42 @@
+{
+  "spec": "labels/4A/DOOR",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "4A",
+    "text": "DOOR/FWDENTRY CLSD 1440"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4a-door",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Latest New Format",
+      "items": [
+        {
+          "type": "door_event",
+          "code": "DOOR",
+          "label": "Door Event",
+          "value": "FWDENTRY CLSD"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "14:40:00"
+        }
+      ]
+    },
+    "raw": {
+      "door_event": {
+        "door": "FWDENTRY",
+        "state": "CLSD"
+      },
+      "message_timestamp": 52800
+    },
+    "remaining": {}
+  }
+}

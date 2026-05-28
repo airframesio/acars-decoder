@@ -1,0 +1,32 @@
+{
+  "spec": "labels/H1/OHMA",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "H1",
+    "text": "/RTNBOCR.OHMAeJyrVipLLSrOzM9TslIy0jNQ0lHKTS0uTkxPBfJL81JS0zLzUlOUagH7TQzW"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-ohma",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "OHMA Message",
+      "items": [
+        {
+          "type": "ohma",
+          "code": "OHMA",
+          "label": "OHMA Downlink",
+          "value": "undefined"
+        }
+      ]
+    },
+    "raw": {
+      "ohma": "{\"version\":\"2.0\",\"message\":\"undefined\"}"
+    },
+    "remaining": {}
+  }
+}

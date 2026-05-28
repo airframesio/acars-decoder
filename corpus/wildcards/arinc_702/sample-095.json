@@ -1,0 +1,56 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 95",
+  "input": {
+    "label": "H1",
+    "text": "REQFPN/RN10001/RS:FP:Z5585     9736"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Request for Flight Plan",
+      "items": [
+        {
+          "type": "route_number",
+          "code": "RTE_NUM",
+          "label": "Route Number",
+          "value": "10001"
+        },
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Saved"
+        },
+        {
+          "type": "flight_plan",
+          "code": "FPN",
+          "label": "Flight Plan",
+          "value": "Z5585"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x9736"
+        }
+      ]
+    },
+    "raw": {
+      "route_number": "10001",
+      "route_status": "RS",
+      "flight_plan": "Z5585",
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 38710
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

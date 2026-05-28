@@ -1,0 +1,53 @@
+{
+  "spec": "labels/16/Honeywell",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "16",
+    "text": "(2AAABN37197W 78404-SLOJOGRONK/O(Z"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-16-honeywell",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "37.328 N, 78.673 W"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "SLOJO > GRONK"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 37.32833333333333,
+        "longitude": -78.67333333333333
+      },
+      "route": {
+        "waypoints": [
+          {
+            "name": "SLOJO"
+          },
+          {
+            "name": "GRONK"
+          }
+        ]
+      }
+    },
+    "remaining": {
+      "text": "AAAB/O"
+    }
+  }
+}

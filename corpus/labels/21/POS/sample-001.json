@@ -1,0 +1,73 @@
+{
+  "spec": "labels/21/POS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "21",
+    "text": "POSN 39.841W 75.790, 220,184218,17222,22051,  34,- 4,204748,KTPA"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-21-pos",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.840 N, 75.790 W"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "18:42:18"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "17222 feet"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-4 degrees"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "20:47:48"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KTPA"
+        }
+      ]
+    },
+    "raw": {
+      "preamble": "POS",
+      "position": {
+        "latitude": 39.84,
+        "longitude": -75.79
+      },
+      "message_timestamp": 67338,
+      "altitude": 17222,
+      "outside_air_temperature": -4,
+      "eta_time": 74868,
+      "arrival_icao": "KTPA"
+    },
+    "remaining": {
+      "text": " 220,22051,  34"
+    }
+  }
+}

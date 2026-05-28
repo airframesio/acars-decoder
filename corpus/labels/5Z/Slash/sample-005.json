@@ -1,0 +1,70 @@
+{
+  "spec": "labels/5Z/Slash",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 5",
+  "input": {
+    "label": "5Z",
+    "text": "/ET EXP TIME       / KEWR KBNA 20 122559/EON 1336 AUTO"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-5z-slash",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Designated Downlink",
+      "items": [
+        {
+          "type": "airline",
+          "code": "AIRLINE",
+          "label": "Airline",
+          "value": "United Airlines"
+        },
+        {
+          "type": "message_type",
+          "code": "MSG_TYPE",
+          "label": "Message Type",
+          "value": "Expected Time (ET)"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KEWR"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KBNA"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "12:25:59"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "13:36:00"
+        }
+      ]
+    },
+    "raw": {
+      "airline": "United Airlines",
+      "message_type": "ET",
+      "departure_icao": "KEWR",
+      "arrival_icao": "KBNA",
+      "day": 20,
+      "message_timestamp": 44759,
+      "eta_time": 48960
+    },
+    "remaining": {
+      "text": "AUTO"
+    }
+  }
+}

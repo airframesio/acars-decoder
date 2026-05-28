@@ -1,0 +1,35 @@
+{
+  "spec": "labels/H1/FLR",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 5",
+  "input": {
+    "label": "H1",
+    "text": "#CFBFLR/FR24030412400034723406ATC1(1SH1)/TCAS(1000SG) /IDTCAS "
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-flr",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Fault Log Report",
+      "items": [
+        {
+          "type": "fault",
+          "code": "FR",
+          "label": "Fault Report",
+          "value": "ATC1(1SH1)/TCAS(1000SG) /IDTCAS "
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1709556000,
+      "fault_message": "ATC1(1SH1)/TCAS(1000SG) /IDTCAS "
+    },
+    "remaining": {
+      "text": "34723406"
+    }
+  }
+}

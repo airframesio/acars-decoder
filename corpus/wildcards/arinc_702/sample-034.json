@@ -1,0 +1,73 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 34",
+  "input": {
+    "label": "H1",
+    "text": "PRG/DT,KMDW,31R,62,031854,524,N38584W077333,171,732B3C"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Progress Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KMDW"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "31R"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "62"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "03:18:54"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.584 N, 77.333 W"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x2b3c"
+        }
+      ]
+    },
+    "raw": {
+      "arrival_icao": "KMDW",
+      "arrival_runway": "31R",
+      "fuel_on_board": 62,
+      "eta_time": 11934,
+      "position": {
+        "latitude": 38.584,
+        "longitude": -77.333
+      },
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 11068
+    },
+    "remaining": {
+      "text": "524,171,73"
+    }
+  }
+}

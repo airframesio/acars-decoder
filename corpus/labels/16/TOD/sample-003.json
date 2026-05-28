@@ -1,0 +1,41 @@
+{
+  "spec": "labels/16/TOD",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "16",
+    "text": "110122,,1206, 92,N . MMMM.MMM"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-16-tod",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "11:01:22"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "12:06:00"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 39682,
+      "eta_time": 43560
+    },
+    "remaining": {
+      "text": " 92"
+    }
+  }
+}

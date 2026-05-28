@@ -1,0 +1,142 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "2A",
+    "text": "SUM/ID53147T,RCH140,/DC03032026,213916/MR7,/SM031612,420,032139,031623,416,031631,413,032130,212,032139,209/VR329519"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Summary Report",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "53147T"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "RCH140"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 7
+        },
+        {
+          "type": "time",
+          "code": "ENG_START",
+          "label": "Engine Start Time",
+          "value": "YYYY-MM-04T16:12:00"
+        },
+        {
+          "type": "lbs",
+          "code": "FUEL_START",
+          "label": "Start Fuel",
+          "value": "42000 lbs"
+        },
+        {
+          "type": "time",
+          "code": "ENG_STOP",
+          "label": "Engine Stop Time",
+          "value": "YYYY-MM-04T21:39:00"
+        },
+        {
+          "type": "time",
+          "code": "OUT",
+          "label": "Out of Gate Time",
+          "value": "YYYY-MM-04T16:23:00"
+        },
+        {
+          "type": "lbs",
+          "code": "FUEL_OUT",
+          "label": "Out of Gate Fuel",
+          "value": "41600 lbs"
+        },
+        {
+          "type": "time",
+          "code": "OFF",
+          "label": "Takeoff Time",
+          "value": "YYYY-MM-04T16:31:00"
+        },
+        {
+          "type": "lbs",
+          "code": "FUEL_OFF",
+          "label": "Takeoff Fuel",
+          "value": "41300 lbs"
+        },
+        {
+          "type": "time",
+          "code": "ON",
+          "label": "Landing Time",
+          "value": "YYYY-MM-04T21:30:00"
+        },
+        {
+          "type": "lbs",
+          "code": "FUEL_ON",
+          "label": "Landing Fuel",
+          "value": "21200 lbs"
+        },
+        {
+          "type": "time",
+          "code": "IN",
+          "label": "In Gate Time",
+          "value": "YYYY-MM-04T21:39:00"
+        },
+        {
+          "type": "lbs",
+          "code": "FUEL_IN",
+          "label": "In Gate Fuel",
+          "value": "20900 lbs"
+        },
+        {
+          "type": "version",
+          "code": "VERSION",
+          "label": "Message Version",
+          "value": "v3.2"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x9519"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "53147T",
+      "flight_number": "RCH140",
+      "mission_number": "",
+      "message_timestamp": 1772573956,
+      "sequence_number": 7,
+      "engine_start_time": 317520,
+      "start_fuel": 42000,
+      "engine_stop_time": 337140,
+      "out_time": 318180,
+      "out_fuel": 41600,
+      "off_time": 318660,
+      "off_fuel": 41300,
+      "on_time": 336600,
+      "on_fuel": 21200,
+      "in_time": 337140,
+      "in_fuel": 20900,
+      "version": 3.2,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 38169
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

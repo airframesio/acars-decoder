@@ -1,0 +1,25 @@
+{
+  "spec": "labels/44/Slash",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "44",
+    "text": "00OFF01 Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-44-slash",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Flight Briefing",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "00OFF01 Bogus message"
+    }
+  }
+}

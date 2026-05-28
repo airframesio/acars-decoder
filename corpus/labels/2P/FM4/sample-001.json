@@ -1,0 +1,86 @@
+{
+  "spec": "labels/2P/FM4",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "2P",
+    "text": "FM4KIAD,OMAA,140256,1448, 39.43,- 75.62,23228,328,  43.5, 72500"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-2p-fm4",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Flight Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KIAD"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "OMAA"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "14"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "02:56:00"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "14:48:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.430 N, 75.620 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "23228 feet"
+        },
+        {
+          "type": "heading",
+          "code": "HDG",
+          "label": "Heading",
+          "value": "328"
+        }
+      ]
+    },
+    "raw": {
+      "departure_icao": "KIAD",
+      "arrival_icao": "OMAA",
+      "day": 14,
+      "message_timestamp": 10560,
+      "eta_time": 53280,
+      "position": {
+        "latitude": 39.43,
+        "longitude": -75.62
+      },
+      "altitude": 23228,
+      "heading": 328
+    },
+    "remaining": {
+      "text": "  43.5, 72500"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "spec": "labels/4T/AGFSR",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "4T",
+    "text": "AGFSR AC0096/07/08/YULGRU/0354Z/833/4417.8N07232.6W/254/CLIMB /0565/0033/-33/275049/0289/144/453/0319/0339/****/****"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4t-agfsr",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "AC0096"
+        },
+        {
+          "type": "day",
+          "code": "DEP_DAY",
+          "label": "Departure Day",
+          "value": "7"
+        },
+        {
+          "type": "day",
+          "code": "ARR_DAY",
+          "label": "Arrival Day",
+          "value": "8"
+        },
+        {
+          "type": "iata",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "YUL"
+        },
+        {
+          "type": "iata",
+          "code": "DST",
+          "label": "Destination",
+          "value": "GRU"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "03:54:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "44.297 N, 71.457 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "25400 feet"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "AC0096",
+      "departure_day": 7,
+      "arrival_day": 8,
+      "departure_iata": "YUL",
+      "arrival_iata": "GRU",
+      "message_timestamp": 14040,
+      "position": {
+        "latitude": 44.29666666666667,
+        "longitude": -71.45666666666666
+      },
+      "altitude": 25400
+    },
+    "remaining": {
+      "text": "833/CLIMB /0565/0033/-33/275049/0289/144/453/0319/0339/****/****"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "spec": "labels/H1/WRN",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 5",
+  "input": {
+    "label": "H1",
+    "text": "#CFBWRN/WN24030312040034580006NAV GPS1 FAULT "
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-wrn",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Warning Message",
+      "items": [
+        {
+          "type": "warning",
+          "code": "WRN",
+          "label": "Warning Message",
+          "value": "NAV GPS1 FAULT "
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1709467440,
+      "warning_message": "NAV GPS1 FAULT "
+    },
+    "remaining": {
+      "text": "34580006"
+    }
+  }
+}

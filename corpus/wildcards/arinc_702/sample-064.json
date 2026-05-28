@@ -1,0 +1,165 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 64",
+  "input": {
+    "label": "H1",
+    "text": "POS/TS080616,210324/DTMMGL,29O,64,103316/PR1754,231,350,189,,0,0,,M45,185,,,P16,P0,36000,,1565,250/RP:DA:MMTJ:AA:MMGL:R:27O:D:TUMA2B..SANFE.UT4..LMM:A:LONV1D:AP:ILSZ29.PLADE(29O)9D1C"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "MMGL"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "29O"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "64"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "10:33:16"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "35000 feet"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-45 degrees"
+        },
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Planned"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "MMTJ"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "MMGL"
+        },
+        {
+          "type": "runway",
+          "code": "DEPRWY",
+          "label": "Departure Runway",
+          "value": "27O"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Departure Procedure",
+          "value": "TUMA2B: >> SANFE > UT4 >> LMM"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Arrival Procedure",
+          "value": "LONV1D"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Approach Procedure",
+          "value": "ILSZ29 starting at PLADE(29O)"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x9d1c"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1711008376,
+      "arrival_icao": "MMGL",
+      "arrival_runway": "29O",
+      "fuel_on_board": 64,
+      "eta_time": 37996,
+      "altitude": 35000,
+      "outside_air_temperature": -45,
+      "route_status": "RP",
+      "departure_icao": "MMTJ",
+      "departure_runway": "27O",
+      "procedures": [
+        {
+          "type": "departure",
+          "route": {
+            "name": "TUMA2B",
+            "waypoints": [
+              {
+                "name": ""
+              },
+              {
+                "name": "SANFE"
+              },
+              {
+                "name": "UT4"
+              },
+              {
+                "name": ""
+              },
+              {
+                "name": "LMM"
+              }
+            ]
+          }
+        },
+        {
+          "type": "arrival",
+          "route": {
+            "name": "LONV1D"
+          }
+        },
+        {
+          "type": "approach",
+          "route": {
+            "name": "ILSZ29",
+            "waypoints": [
+              {
+                "name": "PLADE(29O)"
+              }
+            ]
+          }
+        }
+      ],
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 40220
+    },
+    "remaining": {
+      "text": "1754,231,189,,0,0,,185,,,P16,P0,36000,,1565,250"
+    }
+  }
+}

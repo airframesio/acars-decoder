@@ -1,0 +1,25 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 29",
+  "input": {
+    "label": "H1",
+    "text": "INI Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Unknown",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "INI/,INI Bogus message"
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 63",
+  "input": {
+    "label": "H1",
+    "text": "F37AMCLL93#M1BPOS/ID746026,,/DC03032024,173207/MR1,/ET031846/PSN42579W108090,173207,320,WAIDE,031759,WEDAK,M49,267070,T468/CG264,110,360/FB742/VR324E17"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "746026"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 1
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "3"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "18:46:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "42.965 N, 108.150 W"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "WAIDE@17:32:07 > WEDAK@03:17:59 > ?"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "32000 feet"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-49 degrees"
+        },
+        {
+          "type": "center_of_gravity",
+          "code": "CG",
+          "label": "Center of Gravity",
+          "value": "26.4 %"
+        },
+        {
+          "type": "cg_lower_limit",
+          "code": "CG_LOWER",
+          "label": "Center of Gravity Lower Limit",
+          "value": "11 %"
+        },
+        {
+          "type": "cg_upper_limit",
+          "code": "CG_UPPER",
+          "label": "Center of Gravity Upper Limit",
+          "value": "36 %"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "742"
+        },
+        {
+          "type": "version",
+          "code": "VERSION",
+          "label": "Message Version",
+          "value": "v3.2"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x4e17"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "MCLL93"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "746026",
+      "mission_number": "",
+      "message_timestamp": 1709487127,
+      "sequence_number": 1,
+      "day": 3,
+      "eta_time": 67560,
+      "position": {
+        "latitude": 42.965,
+        "longitude": -108.15
+      },
+      "route": {
+        "waypoints": [
+          {
+            "name": "WAIDE",
+            "time": 63127
+          },
+          {
+            "name": "WEDAK",
+            "time": 11879
+          },
+          {
+            "name": "?"
+          }
+        ]
+      },
+      "altitude": 32000,
+      "outside_air_temperature": -49,
+      "center_of_gravity": 26.4,
+      "cg_lower_limit": 11,
+      "cg_upper_limit": 36,
+      "fuel_on_board": 742,
+      "version": 3.2,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 19991,
+      "flight_number": "MCLL93"
+    },
+    "remaining": {
+      "text": "F37A#M1B/267070,T468"
+    }
+  }
+}

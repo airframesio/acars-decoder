@@ -1,0 +1,70 @@
+{
+  "spec": "labels/H1/EZF",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "H1",
+    "text": "EZF\nAB1234/05/D-ABCD\n-SCT/JFK-LAX\n-PAX/180\n-ZFW/55000"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-ezf",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Load Sheet",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "AB1234"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "D-ABCD"
+        },
+        {
+          "type": "iata",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "JFK"
+        },
+        {
+          "type": "iata",
+          "code": "DST",
+          "label": "Destination",
+          "value": "LAX"
+        },
+        {
+          "type": "loadsheet",
+          "code": "ZFW",
+          "label": "Zero Fuel Weight",
+          "value": "55000"
+        },
+        {
+          "type": "loadsheet",
+          "code": "PAX",
+          "label": "Passengers",
+          "value": "180"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "AB1234",
+      "tail": "D-ABCD",
+      "departure_iata": "JFK",
+      "arrival_iata": "LAX",
+      "loadsheet": {
+        "SCT": "JFK-LAX",
+        "PAX": "180",
+        "ZFW": "55000"
+      }
+    },
+    "remaining": {}
+  }
+}

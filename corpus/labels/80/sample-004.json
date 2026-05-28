@@ -1,0 +1,65 @@
+{
+  "spec": "labels/80",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "80",
+    "text": "3C01 POS N39328W077307  ,,143700,               ,      ,               ,P47,124,0069"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-80",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.328 N, 77.307 W"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "14:37:00"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "47 degrees"
+        },
+        {
+          "type": "airspeed",
+          "code": "ASPD",
+          "label": "True Airspeed",
+          "value": "124 knots"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "69"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 39.328,
+        "longitude": -77.307
+      },
+      "message_timestamp": 52620,
+      "outside_air_temperature": 47,
+      "airspeed": 124,
+      "fuel_on_board": 69
+    },
+    "remaining": {
+      "text": "3C01 POS,,      ,               "
+    }
+  }
+}

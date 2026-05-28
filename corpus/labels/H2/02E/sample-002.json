@@ -1,0 +1,155 @@
+{
+  "spec": "labels/H2/02E",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "H2",
+    "text": "02E20EGKKLBSFN45081E01757116493501M577327021G    QN44401E01903016563499M575352028G    QN44115E02008017033468M550319029G    QN43420E02112317103296M525299036G    QN43125E02214517172023M277271022G    Q"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h2-02e",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Weather Report",
+      "items": [
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "20"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "EGKK"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "LBSF"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N45081E017571(45.135 N, 17.952 E)@16:49:00 at FL350: 327° at 21kt, -57.7°C at FL350"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N44401E019030(44.668 N, 19.050 E)@16:56:00 at FL349: 352° at 28kt, -57.5°C at FL349"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N44115E020080(44.192 N, 20.133 E)@17:03:00 at FL346: 319° at 29kt, -55°C at FL346"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N43420E021123(43.700 N, 21.205 E)@17:10:00 at FL329: 299° at 36kt, -52.5°C at FL329"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N43125E022145(43.208 N, 22.242 E)@17:17:00 at FL202: 271° at 22kt, -27.7°C at FL202"
+        }
+      ]
+    },
+    "raw": {
+      "day": 20,
+      "departure_icao": "EGKK",
+      "arrival_icao": "LBSF",
+      "wind_data": [
+        {
+          "waypoint": {
+            "name": "N45081E017571",
+            "latitude": 45.135,
+            "longitude": 17.951666666666668,
+            "time": 60540
+          },
+          "flightLevel": 350,
+          "windDirection": 327,
+          "windSpeed": 21,
+          "temperature": {
+            "flightLevel": 350,
+            "degreesC": -57.7
+          }
+        },
+        {
+          "waypoint": {
+            "name": "N44401E019030",
+            "latitude": 44.66833333333334,
+            "longitude": 19.05,
+            "time": 60960
+          },
+          "flightLevel": 349,
+          "windDirection": 352,
+          "windSpeed": 28,
+          "temperature": {
+            "flightLevel": 349,
+            "degreesC": -57.5
+          }
+        },
+        {
+          "waypoint": {
+            "name": "N44115E020080",
+            "latitude": 44.19166666666667,
+            "longitude": 20.133333333333333,
+            "time": 61380
+          },
+          "flightLevel": 346,
+          "windDirection": 319,
+          "windSpeed": 29,
+          "temperature": {
+            "flightLevel": 346,
+            "degreesC": -55
+          }
+        },
+        {
+          "waypoint": {
+            "name": "N43420E021123",
+            "latitude": 43.7,
+            "longitude": 21.205,
+            "time": 61800
+          },
+          "flightLevel": 329,
+          "windDirection": 299,
+          "windSpeed": 36,
+          "temperature": {
+            "flightLevel": 329,
+            "degreesC": -52.5
+          }
+        },
+        {
+          "waypoint": {
+            "name": "N43125E022145",
+            "latitude": 43.208333333333336,
+            "longitude": 22.241666666666667,
+            "time": 62220
+          },
+          "flightLevel": 202,
+          "windDirection": 271,
+          "windSpeed": 22,
+          "temperature": {
+            "flightLevel": 202,
+            "degreesC": -27.7
+          }
+        }
+      ]
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "spec": "labels/H1/FLR",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "H1",
+    "text": "FLR/PNRC12860AA07/FR24030411040023723406CDSU(9RA)/DU SD(4WT2) /IDEIS 1 "
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-flr",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Fault Log Report",
+      "items": [
+        {
+          "type": "fault",
+          "code": "FR",
+          "label": "Fault Report",
+          "value": "CDSU(9RA)/DU SD(4WT2) /IDEIS 1 "
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1709550240,
+      "fault_message": "CDSU(9RA)/DU SD(4WT2) /IDEIS 1 "
+    },
+    "remaining": {
+      "text": "PNRC12860AA07/23723406"
+    }
+  }
+}

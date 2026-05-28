@@ -1,0 +1,107 @@
+{
+  "spec": "labels/80",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "80",
+    "text": "/FB 0105/AD KCHS/N3950.1,W07548.3,3P01 POSRPT  0267/20 KBOS/KCHS .N3275J\n/UTC 143605/POS N3950.1 W07548.3/ALT 38007\n/SPD 334/FOB 0105/ETA 1622"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-80",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined Position Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "0267"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "20"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KBOS"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KCHS"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "N3275J"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "14:36:05"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.501 N, 75.483 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "38007 feet"
+        },
+        {
+          "type": "aircraft_groundspeed",
+          "code": "GSPD",
+          "label": "Aircraft Groundspeed",
+          "value": "334 knots"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "105"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "16:22:00"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "0267",
+      "day": 20,
+      "departure_icao": "KBOS",
+      "arrival_icao": "KCHS",
+      "tail": "N3275J",
+      "message_timestamp": 52565,
+      "position": {
+        "latitude": 39.501,
+        "longitude": -75.483
+      },
+      "altitude": 38007,
+      "groundspeed": 334,
+      "fuel_on_board": 105,
+      "eta_time": 58920
+    },
+    "remaining": {
+      "text": "N3950.1/W07548.3 3P01 POSRPT//"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "spec": "labels/5Z/Slash",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 6",
+  "input": {
+    "label": "5Z",
+    "text": "/C3 IADDFW"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-5z-slash",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Airline Designated Downlink",
+      "items": [
+        {
+          "type": "airline",
+          "code": "AIRLINE",
+          "label": "Airline",
+          "value": "United Airlines"
+        },
+        {
+          "type": "message_type",
+          "code": "MSG_TYPE",
+          "label": "Message Type",
+          "value": "Off Message (C3)"
+        },
+        {
+          "type": "iata",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "IAD"
+        },
+        {
+          "type": "iata",
+          "code": "DST",
+          "label": "Destination",
+          "value": "DFW"
+        }
+      ]
+    },
+    "raw": {
+      "airline": "United Airlines",
+      "message_type": "C3",
+      "departure_iata": "IAD",
+      "arrival_iata": "DFW"
+    },
+    "remaining": {}
+  }
+}

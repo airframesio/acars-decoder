@@ -1,0 +1,34 @@
+{
+  "spec": "labels/HX",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "HX",
+    "text": "RA FMT 43 GSP B02"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-hx",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Undelivered Uplink Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "GSP"
+        }
+      ]
+    },
+    "raw": {
+      "departure_icao": "GSP"
+    },
+    "remaining": {
+      "text": "B02"
+    }
+  }
+}

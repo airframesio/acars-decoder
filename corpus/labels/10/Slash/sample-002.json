@@ -1,0 +1,93 @@
+{
+  "spec": "labels/10/Slash",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "10",
+    "text": "/N39.019/W078.468/10/0.83/246/400/KCVG/0155/0073/00018/COLNS/STEVY/0120/FAIIR/0126/KTEB/"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-10-slash",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.019 N, 78.468 W"
+        },
+        {
+          "type": "heading",
+          "code": "HDG",
+          "label": "Heading",
+          "value": "246"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "40000 feet"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KCVG"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "01:55:00"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "COLNS > STEVY@01:20:00 > FAIIR@01:26:00"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KTEB"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 39.019,
+        "longitude": -78.468
+      },
+      "heading": 246,
+      "altitude": 40000,
+      "arrival_icao": "KCVG",
+      "eta_time": 6900,
+      "route": {
+        "waypoints": [
+          {
+            "name": "COLNS"
+          },
+          {
+            "name": "STEVY",
+            "time": 4800
+          },
+          {
+            "name": "FAIIR",
+            "time": 5160
+          }
+        ]
+      },
+      "departure_icao": "KTEB"
+    },
+    "remaining": {
+      "text": "10/0.83/0073/00018/"
+    }
+  }
+}

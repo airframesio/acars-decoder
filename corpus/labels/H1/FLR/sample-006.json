@@ -1,0 +1,25 @@
+{
+  "spec": "labels/H1/FLR",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 6",
+  "input": {
+    "label": "H1",
+    "text": "FLR <Invalid text>"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-h1-flr",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Fault Log Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "FLR <Invalid text>"
+    }
+  }
+}

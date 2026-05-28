@@ -1,0 +1,77 @@
+{
+  "spec": "labels/44/IN",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "44",
+    "text": "IN02,N38338W121179,KMHR,KPDX,0806,2355,005.1"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-44-in",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "In Gate Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.563 N, 121.298 W"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KMHR"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KPDX"
+        },
+        {
+          "type": "month",
+          "code": "MSG_MON",
+          "label": "Month of Year",
+          "value": "8"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "6"
+        },
+        {
+          "type": "time",
+          "code": "IN",
+          "label": "In Gate Time",
+          "value": "23:55:00"
+        },
+        {
+          "type": "fuel_remaining",
+          "code": " FUEL_REM",
+          "label": "Fuel Remaining",
+          "value": "5.1"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 38.56333333333333,
+        "longitude": -121.29833333333333
+      },
+      "departure_icao": "KMHR",
+      "arrival_icao": "KPDX",
+      "month": 8,
+      "day": 6,
+      "in_time": 86100,
+      "fuel_remaining": 5.1
+    },
+    "remaining": {}
+  }
+}

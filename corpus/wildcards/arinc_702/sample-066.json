@@ -1,0 +1,81 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 66",
+  "input": {
+    "label": "H1",
+    "text": "POSN39164W077259,FORKL,231828,51,THRET,231917,TOOPR,P16,1726,167,/TS231828,2807244841"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.273 N, 77.432 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "5100 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "FORKL@23:18:28 > THRET@23:19:17 > TOOPR"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "16 degrees"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x4841"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 39.27333333333333,
+        "longitude": -77.43166666666667
+      },
+      "altitude": 5100,
+      "route": {
+        "waypoints": [
+          {
+            "name": "FORKL",
+            "time": 83908
+          },
+          {
+            "name": "THRET",
+            "time": 83957
+          },
+          {
+            "name": "TOOPR"
+          }
+        ]
+      },
+      "outside_air_temperature": 16,
+      "message_timestamp": 1722208708,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 18497
+    },
+    "remaining": {
+      "text": "1726,167"
+    }
+  }
+}

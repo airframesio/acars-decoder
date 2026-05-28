@@ -1,0 +1,229 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 85",
+  "input": {
+    "label": "H1",
+    "text": "PWI/WD390,COLZI,258070.AWYAT,252071.IPTAY,250065.CHOPZ,244069.MGMRY,234065.CATLN,230060/WD340,COLZI,256073,340M41.AWYAT,252070,340M41.IPTAY,244059,340M41.CHOPZ,240059,340M41.MGMRY,232056,340M41.CATLN,218053,340M40/WD300,COLZI,256065.AWYAT,254062.IPTAY,250051.CHOPZ,248050.MGMRY,232044.CATLN,222047/WD240,COLZI,260045.AWYAT,258048.IPTAY,254043.CHOPZ,256041.MGMRY,238035.CATLN,226034/DD300214059.240214040.180236024.100250018:,,,,/CB300246040.240246017.180226015.1002100080338"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Pilot Weather Information",
+      "items": [
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "COLZI at FL390: 258° at 70kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "AWYAT at FL390: 252° at 71kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "IPTAY at FL390: 250° at 65kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "CHOPZ at FL390: 244° at 69kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "MGMRY at FL390: 234° at 65kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "CATLN at FL390: 230° at 60kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "COLZI at FL340: 256° at 73kt, -41°C at FL340"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "AWYAT at FL340: 252° at 70kt, -41°C at FL340"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "IPTAY at FL340: 244° at 59kt, -41°C at FL340"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "CHOPZ at FL340: 240° at 59kt, -41°C at FL340"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "MGMRY at FL340: 232° at 56kt, -41°C at FL340"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "CATLN at FL340: 218° at 53kt, -40°C at FL340"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "COLZI at FL300: 256° at 65kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "AWYAT at FL300: 254° at 62kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "IPTAY at FL300: 250° at 51kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "CHOPZ at FL300: 248° at 50kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "MGMRY at FL300: 232° at 44kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "CATLN at FL300: 222° at 47kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "COLZI at FL240: 260° at 45kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "AWYAT at FL240: 258° at 48kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "IPTAY at FL240: 254° at 43kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "CHOPZ at FL240: 256° at 41kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "MGMRY at FL240: 238° at 35kt"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "CATLN at FL240: 226° at 34kt"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x0338"
+        }
+      ]
+    },
+    "raw": {
+      "wind_data": [
+        {
+          "waypoint": {
+            "name": "COLZI"
+          },
+          "flightLevel": 240,
+          "windDirection": 260,
+          "windSpeed": 45
+        },
+        {
+          "waypoint": {
+            "name": "AWYAT"
+          },
+          "flightLevel": 240,
+          "windDirection": 258,
+          "windSpeed": 48
+        },
+        {
+          "waypoint": {
+            "name": "IPTAY"
+          },
+          "flightLevel": 240,
+          "windDirection": 254,
+          "windSpeed": 43
+        },
+        {
+          "waypoint": {
+            "name": "CHOPZ"
+          },
+          "flightLevel": 240,
+          "windDirection": 256,
+          "windSpeed": 41
+        },
+        {
+          "waypoint": {
+            "name": "MGMRY"
+          },
+          "flightLevel": 240,
+          "windDirection": 238,
+          "windSpeed": 35
+        },
+        {
+          "waypoint": {
+            "name": "CATLN"
+          },
+          "flightLevel": 240,
+          "windDirection": 226,
+          "windSpeed": 34
+        }
+      ],
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 824
+    },
+    "remaining": {
+      "text": "DD300214059.240214040.180236024.100250018:,,,,/CB300246040.240246017.180226015.100210008"
+    }
+  }
+}

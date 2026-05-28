@@ -1,0 +1,65 @@
+{
+  "spec": "labels/16/TOD",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "16",
+    "text": "110112,36000,1206, 51,N 45.140 E 16.341/SXS7SL"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-16-tod",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "11:01:12"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "36000 feet"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "12:06:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "45.140 N, 16.341 E"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "SXS7SL"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 39672,
+      "altitude": 36000,
+      "eta_time": 43560,
+      "position": {
+        "latitude": 45.14,
+        "longitude": 16.341
+      },
+      "flight_number": "SXS7SL"
+    },
+    "remaining": {
+      "text": " 51"
+    }
+  }
+}

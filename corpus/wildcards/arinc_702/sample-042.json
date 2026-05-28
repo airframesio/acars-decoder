@@ -1,0 +1,49 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 42",
+  "input": {
+    "label": "H1",
+    "text": "PER/PR1337,262,320,222,,60,24,275103,M53,180,P52,P02917"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Performance Report",
+      "items": [
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "32000 feet"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-53 degrees"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x2917"
+        }
+      ]
+    },
+    "raw": {
+      "altitude": 32000,
+      "outside_air_temperature": -53,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 10519
+    },
+    "remaining": {
+      "text": "1337,262,222,,60,24,275103,180,P52,P0"
+    }
+  }
+}

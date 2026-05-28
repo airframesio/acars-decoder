@@ -1,0 +1,121 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 33",
+  "input": {
+    "label": "H1",
+    "text": "PRG/DTGCRR,03O,62,163055/PR1544,286,350,239,,0,66,,,50,,,P19,P0,27440,,1305,303/RP:DA:EDDB:AA:GCRR..N50059E004552..N49588E004338..N49241E002528..N49122E002199..PON.UN872..ERIGA..FUJTI:WS:FUJTI,360..BAKUP..BATAX..TAKAV..VEDOD:A:TERT1P:AP:ILSZ03.BAPAL(03O)226D"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Progress Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "GCRR"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "03O"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "62"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "16:30:55"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "35000 feet"
+        },
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Planned"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "EDDB"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "GCRR..N50059E004552..N49588E004338..N49241E002528..N49122E002199..PON.UN872..ERIGA..FUJTI"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Arrival Procedure",
+          "value": "TERT1P"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Approach Procedure",
+          "value": "ILSZ03 starting at BAPAL(03O)"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x226d"
+        }
+      ]
+    },
+    "raw": {
+      "arrival_icao": "GCRR..N50059E004552..N49588E004338..N49241E002528..N49122E002199..PON.UN872..ERIGA..FUJTI",
+      "arrival_runway": "03O",
+      "fuel_on_board": 62,
+      "eta_time": 59455,
+      "altitude": 35000,
+      "route_status": "RP",
+      "departure_icao": "EDDB",
+      "procedures": [
+        {
+          "type": "arrival",
+          "route": {
+            "name": "TERT1P"
+          }
+        },
+        {
+          "type": "approach",
+          "route": {
+            "name": "ILSZ03",
+            "waypoints": [
+              {
+                "name": "BAPAL(03O)"
+              }
+            ]
+          }
+        }
+      ],
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 8813
+    },
+    "remaining": {
+      "text": ":WS:FUJTI,360..BAKUP..BATAX..TAKAV..VEDOD"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "spec": "labels/H1/M_POS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "H1",
+    "text": "M85AQF0073YSSY,KSFO,101621,- 4.9985,-169.9820,35003,290,  35.1, 44100,S05W169,S02W167,1645"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-m-pos",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "M-Series Periodic Position Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "QF0073"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "YSSY"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KSFO"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "10"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "16:21:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "4.998 S, 169.982 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "35003 feet"
+        },
+        {
+          "type": "heading",
+          "code": "HDG",
+          "label": "Heading",
+          "value": "290"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "QF0073",
+      "departure_icao": "YSSY",
+      "arrival_icao": "KSFO",
+      "day": 10,
+      "message_timestamp": 58860,
+      "position": {
+        "latitude": -4.9985,
+        "longitude": -169.982
+      },
+      "altitude": 35003,
+      "heading": 290
+    },
+    "remaining": {
+      "text": "  35.1, 44100,S05W169,S02W167,1645"
+    }
+  }
+}

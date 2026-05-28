@@ -1,15 +1,15 @@
 {
-  "spec": "labels/10/POS",
+  "spec": "labels/15/Paren2",
   "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
-  "description": "Auto-extracted sample 1",
+  "description": "Auto-extracted sample 3",
   "input": {
-    "label": "10",
-    "text": "POS082150, N 3885,W 7841,---,308,26922,  51,22290, 529,  19,-225,6"
+    "label": "15",
+    "text": "(2N39269W 77374--- 42---- 5(Z"
   },
   "expected": {
     "decoded": true,
     "decoder": {
-      "name": "label-10-pos",
+      "name": "label-15",
       "type": "pattern-match",
       "decodeLevel": "partial"
     },
@@ -20,25 +20,25 @@
           "type": "aircraft_position",
           "code": "POS",
           "label": "Aircraft Position",
-          "value": "38.850 N, 78.410 W"
+          "value": "39.448 N, 77.623 W"
         },
         {
-          "type": "altitude",
-          "code": "ALT",
-          "label": "Altitude",
-          "value": "22290 feet"
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-5 degrees"
         }
       ]
     },
     "raw": {
       "position": {
-        "latitude": 38.85,
-        "longitude": -78.41
+        "latitude": 39.44833333333333,
+        "longitude": -77.62333333333333
       },
-      "altitude": 22290
+      "outside_air_temperature": -5
     },
     "remaining": {
-      "text": "POS082150,---,308,26922,  51, 529,  19,-225,6"
+      "text": "--- 42"
     }
   }
 }

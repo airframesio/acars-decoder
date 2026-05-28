@@ -1,7 +1,7 @@
 {
   "spec": "labels/10/POS",
-  "source": "acars-decoder-typescript/lib/plugins/Label_10_POS.test.ts",
-  "description": "Label 10 invalid input — fails decode with 'none' level",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
   "input": {
     "label": "10",
     "text": "POS Bogus Message"
@@ -14,7 +14,12 @@
       "decodeLevel": "none"
     },
     "formatted": {
-      "description": "Position Report"
+      "description": "Position Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "POS Bogus Message"
     }
   }
 }

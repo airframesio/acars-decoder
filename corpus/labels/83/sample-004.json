@@ -1,0 +1,56 @@
+{
+  "spec": "labels/83",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "83",
+    "text": "4DH3 ETAT2  0907/22 ENGM/KEWR .LN-RKO\r\n/ETA 1641"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-83",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "ENGM"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KEWR"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "LN-RKO"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "16:41:00"
+        }
+      ]
+    },
+    "raw": {
+      "day": "22",
+      "departure_icao": "ENGM",
+      "arrival_icao": "KEWR",
+      "tail": "LN-RKO",
+      "eta_time": 60060
+    },
+    "remaining": {
+      "text": "0907"
+    }
+  }
+}

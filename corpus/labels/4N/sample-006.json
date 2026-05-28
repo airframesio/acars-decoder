@@ -1,0 +1,63 @@
+{
+  "spec": "labels/4N",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 6",
+  "input": {
+    "label": "4N",
+    "text": "285,C,,09/24,,,,,EWR,PHL,PHL,09R/,/,0,0,,,,,,1,0,0,0,1,0,,0,0,198.5,014.5,213.0,9BCD"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4n",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "EWR"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "PHL"
+        },
+        {
+          "type": "icao",
+          "code": "ALT_DST",
+          "label": "Alternate Destination",
+          "value": "PHL"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "09R"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x9bcd"
+        }
+      ]
+    },
+    "raw": {
+      "date": "09/24",
+      "departure_icao": "EWR",
+      "arrival_icao": "PHL",
+      "alternate_icao": "PHL",
+      "arrival_runway": "09R",
+      "checksum": 39885
+    },
+    "remaining": {
+      "text": "C,0,0,1,0,0,0,1,0,0,0,198.5,014.5,213.0"
+    }
+  }
+}

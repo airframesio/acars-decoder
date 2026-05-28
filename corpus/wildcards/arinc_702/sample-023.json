@@ -1,0 +1,57 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 23",
+  "input": {
+    "label": "H1",
+    "text": "LDI/RW27R,,,,,M160,1676,,,,202003,2,,,,P8,137147150,0,,M160,,146149150,P48,2,2.27L,,,,,M160,1676,,,,202003,2,,,,P8,137147150,0,,M160,,147150151,P52,2,2.35O,,,,,M160,1676,,,,202003,2,,,,P8,127133138,0,,,,,,3:KPHL,H1007,1036,1036,1036/CG225/SN69EAE8"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Load Distribution Information",
+      "items": [
+        {
+          "type": "runway",
+          "code": "DEPRWY",
+          "label": "Departure Runway",
+          "value": "27R"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KPHL"
+        },
+        {
+          "type": "center_of_gravity",
+          "code": "CG",
+          "label": "Center of Gravity",
+          "value": "22.5 %"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xeae8"
+        }
+      ]
+    },
+    "raw": {
+      "departure_runway": "27R",
+      "departure_icao": "KPHL",
+      "center_of_gravity": 22.5,
+      "serial_number": "69",
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 60136
+    },
+    "remaining": {
+      "text": ",,,,M160,1676,,,,202003,2,,,,P8,137147150,0,,M160,,146149150,P48,2,2.27L,,,,,M160,1676,,,,202003,2,,,,P8,137147150,0,,M160,,147150151,P52,2,2.35O,,,,,M160,1676,,,,202003,2,,,,P8,127133138,0,,,,,,3,H1007,1036,1036,1036"
+    }
+  }
+}

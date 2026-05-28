@@ -1,0 +1,25 @@
+{
+  "spec": "labels/10/LDR",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "10",
+    "text": "LDR Bogus Message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-10-ldr",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "LDR Bogus Message"
+    }
+  }
+}

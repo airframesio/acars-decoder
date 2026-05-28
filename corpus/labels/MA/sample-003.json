@@ -1,0 +1,75 @@
+{
+  "spec": "labels/MA",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "MA",
+    "text": "T20!<<,B/k&,Z:/=Hs!'iLt0/1h8|*KJNa__;Kes\"hV'&4]J&&&;\"X/O6%0d7TMg5=d7'gcZ:j\"2EiA7k`-`$]f/<L\\63L-&,<Pi[2<O9p^t+Khl*&\\e^,*%4:H<-9Lm>r>q-b^jGP>WX4Dk3IrQ:U4%?]H$4HCd0Z(^Yq+lXXR!=niT!#;:5UAQ`JU@Bfn/*)TSu?G=LuOlLaFSmkGi]eE[!o&j@iX^g0r)T9!Ye)k6aOmSf`8G)8,hS5Fq_trW*!!"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-ma",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Unknown",
+      "items": [
+        {
+          "type": "label",
+          "code": "LABEL",
+          "label": "Message Label",
+          "value": "80"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "EC-NOI"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "2501"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "2"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "LEMD"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "MMUN"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "EC-NOI"
+        }
+      ]
+    },
+    "raw": {
+      "label": "80",
+      "tail": "EC-NOI",
+      "flight_number": "2501",
+      "day": 2,
+      "departure_icao": "LEMD",
+      "arrival_icao": "MMUN"
+    },
+    "remaining": {
+      "text": "3D01 RMPSRV//LAV Y/CAB Y/MEDA N/SEC N/WAS N/WAT N/FUEL N/WCHRR 01/WCHRS --/WCHRC --/UMNR --/MAAS N/BUENAS NOCHES, ETA 0055Z Y NOS HAN PEDIDO UNA WCHR QUE AL PARECER NO TENIAMOS CONSTANCIA DE ELLA, POR SI PODEIS PEDIRLO A OPS CUN. MUCHAS GRACIAS"
+    }
+  }
+}

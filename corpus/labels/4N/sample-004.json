@@ -1,0 +1,59 @@
+{
+  "spec": "labels/4N",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "4N",
+    "text": "22024N  MCI  JFK1\r\n0013  0072 N040586 W074421   230"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4n",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "MCI"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "JFK"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "40.977 N, 74.702 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "23000 feet"
+        }
+      ]
+    },
+    "raw": {
+      "day": "22",
+      "departure_icao": "MCI",
+      "arrival_icao": "JFK",
+      "position": {
+        "latitude": 40.97666666666667,
+        "longitude": -74.70166666666667
+      },
+      "altitude": 23000
+    },
+    "remaining": {
+      "text": "02 0013  0072"
+    }
+  }
+}

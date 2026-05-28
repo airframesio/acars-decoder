@@ -1,0 +1,25 @@
+{
+  "spec": "labels/4A/Slash_01",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "4A",
+    "text": "/01-C"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4a-slash-01",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Latest New Format",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "C"
+    }
+  }
+}

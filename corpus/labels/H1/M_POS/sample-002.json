@@ -1,0 +1,86 @@
+{
+  "spec": "labels/H1/M_POS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "H1",
+    "text": "M87AQF0073YSSY,KSFO,101702,  0.7144,-166.0643,36000,282,  34.1, 40200,S00W166,N03W162,1739"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-m-pos",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "M-Series Periodic Position Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "QF0073"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "YSSY"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KSFO"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "10"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "17:02:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "0.714 N, 166.064 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "36000 feet"
+        },
+        {
+          "type": "heading",
+          "code": "HDG",
+          "label": "Heading",
+          "value": "282"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "QF0073",
+      "departure_icao": "YSSY",
+      "arrival_icao": "KSFO",
+      "day": 10,
+      "message_timestamp": 61320,
+      "position": {
+        "latitude": 0.7144,
+        "longitude": -166.0643
+      },
+      "altitude": 36000,
+      "heading": 282
+    },
+    "remaining": {
+      "text": "  34.1, 40200,S00W166,N03W162,1739"
+    }
+  }
+}

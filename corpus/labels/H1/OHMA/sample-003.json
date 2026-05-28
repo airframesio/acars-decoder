@@ -1,0 +1,32 @@
+{
+  "spec": "labels/H1/OHMA",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "H1",
+    "text": "OHMAeJy1lF+PmkAUxb9Kw/MyGRj+v1HEYhaQ4OxqrI2Z6tSSIBpAk2bjd+8Aau3szCZ9qD4NnN899x7v+Kacad0Uh0rxFB1A5UnZ06YhO8rObytlUxa0aifbleKtlGmU+CvlaXWTjEhL+xc61A0Vuiq0MHQ90/UMBJBjL3vxlrSEqVgxUtTHklS0Ycev7NySokxP+++07qvMMj"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-ohma",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "OHMA Message",
+      "items": [
+        {
+          "type": "ohma",
+          "code": "OHMA",
+          "label": "OHMA Downlink",
+          "value": "{\"version\":\"2.0\",\"message\":\"{\\\"clientId\\\":\\\"OHMA\\\",\\\"messageDate\\\":\\\"2024-09-06T09:59:43.387Z\\\",\\\"data\\\":{\\\"airplanes\\\":[{\\\"tailNumber\\\":\\\"SP"
+        }
+      ]
+    },
+    "raw": {
+      "ohma": "{\"version\":\"2.0\",\"message\":\"{\\\"clientId\\\":\\\"OHMA\\\",\\\"messageDate\\\":\\\"2024-09-06T09:59:43.387Z\\\",\\\"data\\\":{\\\"airplanes\\\":[{\\\"tailNumber\\\":\\\"SP"
+    },
+    "remaining": {}
+  }
+}

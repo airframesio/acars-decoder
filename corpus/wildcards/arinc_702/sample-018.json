@@ -1,0 +1,64 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 18",
+  "input": {
+    "label": "H1",
+    "text": "- #MDFTX/ID80052A,RCH648,PAM362201029/MR1,/FXHID0B1"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Free Text",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "80052A"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "RCH648"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 1
+        },
+        {
+          "type": "text",
+          "code": "TEXT",
+          "label": "Text Message",
+          "value": "HI"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xd0b1"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "80052A",
+      "flight_number": "RCH648",
+      "mission_number": "PAM362201029",
+      "sequence_number": 1,
+      "text": "HI",
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 53425
+    },
+    "remaining": {
+      "text": "- #MD/"
+    }
+  }
+}

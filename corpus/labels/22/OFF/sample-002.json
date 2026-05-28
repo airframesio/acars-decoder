@@ -1,0 +1,86 @@
+{
+  "spec": "labels/22/OFF",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "22",
+    "text": "OFF02XA0000/N38568 W077261251152KIADEPRZ1152****1958"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-22-off",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Takeoff Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "XA0000"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.947 N, 77.435 W"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "25"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "11:52:00"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KIAD"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "EPRZ"
+        },
+        {
+          "type": "time",
+          "code": "OFF",
+          "label": "Takeoff Time",
+          "value": "11:52:00"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "19:58:00"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "XA0000",
+      "position": {
+        "latitude": 38.946666666666665,
+        "longitude": -77.435
+      },
+      "day": 25,
+      "message_timestamp": 42720,
+      "departure_icao": "KIAD",
+      "arrival_icao": "EPRZ",
+      "off_time": 42720,
+      "eta_time": 71880
+    },
+    "remaining": {
+      "text": "****"
+    }
+  }
+}

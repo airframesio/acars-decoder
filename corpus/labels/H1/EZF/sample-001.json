@@ -1,0 +1,120 @@
+{
+  "spec": "labels/H1/EZF",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "H1",
+    "text": "EZF\nNO0246/10/EI-NEO\n/C28Y331/3/9\n-SCT/MXP-ZNZ\n-STD/2200\n-FLT STATUS/CLOSED\n-UOM/KG\n-ZFW/162075\n-PAX/305\n-PXT/122/160/19/02\n-PXW/22601\n-CGO/3573\n-BAG/4783\n-OTH/4336\n-TTL/35293\n-FWT/51063\n-TOW/213138\n-DOW/126782"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-ezf",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Load Sheet",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "NO0246"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "EI-NEO"
+        },
+        {
+          "type": "iata",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "MXP"
+        },
+        {
+          "type": "iata",
+          "code": "DST",
+          "label": "Destination",
+          "value": "ZNZ"
+        },
+        {
+          "type": "loadsheet",
+          "code": "STD",
+          "label": "Scheduled Time of Departure",
+          "value": "2200"
+        },
+        {
+          "type": "loadsheet",
+          "code": "FLIGHT_STATUS",
+          "label": "Flight Status",
+          "value": "CLOSED"
+        },
+        {
+          "type": "loadsheet",
+          "code": "UOM",
+          "label": "Unit of Measure",
+          "value": "KG"
+        },
+        {
+          "type": "loadsheet",
+          "code": "ZFW",
+          "label": "Zero Fuel Weight",
+          "value": "162075"
+        },
+        {
+          "type": "loadsheet",
+          "code": "PAX",
+          "label": "Passengers",
+          "value": "305"
+        },
+        {
+          "type": "loadsheet",
+          "code": "TOW",
+          "label": "Takeoff Weight",
+          "value": "213138"
+        },
+        {
+          "type": "loadsheet",
+          "code": "DOW",
+          "label": "Dry Operating Weight",
+          "value": "126782"
+        },
+        {
+          "type": "loadsheet",
+          "code": "FUEL_WEIGHT",
+          "label": "Fuel Weight",
+          "value": "51063"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "NO0246",
+      "tail": "EI-NEO",
+      "departure_iata": "MXP",
+      "arrival_iata": "ZNZ",
+      "loadsheet": {
+        "SCT": "MXP-ZNZ",
+        "STD": "2200",
+        "FLT STATUS": "CLOSED",
+        "UOM": "KG",
+        "ZFW": "162075",
+        "PAX": "305",
+        "PXT": "122/160/19/02",
+        "PXW": "22601",
+        "CGO": "3573",
+        "BAG": "4783",
+        "OTH": "4336",
+        "TTL": "35293",
+        "FWT": "51063",
+        "TOW": "213138",
+        "DOW": "126782"
+      }
+    },
+    "remaining": {
+      "text": "/C28Y331/3/9"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "spec": "labels/2P/FM3",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "2P",
+    "text": "FM4 Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-2p-fm3",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Flight Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "FM4 Bogus message"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "spec": "labels/4N",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "4N",
+    "text": "285,C,,10/12,,,,,NRT,ANC,ANC,07R/,33/,0,0,,,,,,0,0,0,0,1,0,,0,0,709.8,048.7,758.5,75F3"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4n",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "NRT"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "ANC"
+        },
+        {
+          "type": "icao",
+          "code": "ALT_DST",
+          "label": "Alternate Destination",
+          "value": "ANC"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "07R"
+        },
+        {
+          "type": "runway",
+          "code": "ALT_ARWY",
+          "label": "Alternate Runway",
+          "value": "33"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x75f3"
+        }
+      ]
+    },
+    "raw": {
+      "date": "10/12",
+      "departure_icao": "NRT",
+      "arrival_icao": "ANC",
+      "alternate_icao": "ANC",
+      "arrival_runway": "07R",
+      "alternate_runway": "33",
+      "checksum": 30195
+    },
+    "remaining": {
+      "text": "C,0,0,0,0,0,0,1,0,0,0,709.8,048.7,758.5"
+    }
+  }
+}

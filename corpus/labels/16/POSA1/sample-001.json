@@ -1,0 +1,62 @@
+{
+  "spec": "labels/16/POSA1",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "16",
+    "text": "POSA1N37358W 77279,GEARS  ,221626,370,BBOBO  ,222053,,-61,139,1174,829"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-16-posa1",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "37.358 N, 77.279 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "37000 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "GEARS@22:16:26 > BBOBO@22:20:53"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 37.358,
+        "longitude": -77.279
+      },
+      "altitude": 37000,
+      "route": {
+        "waypoints": [
+          {
+            "name": "GEARS",
+            "time": 80186
+          },
+          {
+            "name": "BBOBO",
+            "time": 80453
+          }
+        ]
+      }
+    },
+    "remaining": {
+      "text": ",-61,139,1174,829"
+    }
+  }
+}

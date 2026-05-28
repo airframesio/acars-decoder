@@ -1,0 +1,59 @@
+{
+  "spec": "labels/24/Slash",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "24",
+    "text": "/241710/1021/04WM/34962/N53.13/E001.33/3374/1056/"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-24-slash",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "04WM"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "34962 feet"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "53.130 N, 1.330 E"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "10:56:00"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1729160460,
+      "flight_number": "04WM",
+      "altitude": 34962,
+      "position": {
+        "latitude": 53.13,
+        "longitude": 1.33
+      },
+      "eta_time": 39360
+    },
+    "remaining": {
+      "text": "3374"
+    }
+  }
+}

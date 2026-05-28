@@ -1,0 +1,143 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 82",
+  "input": {
+    "label": "H1",
+    "text": "FPN/ID88194A,RCH857,PMZM107QP021/MR2,/RM:AA:FJDG:F:DOH.N300..NOLSU.P307..SETSI.P307..PARAR..N20000E063000..RIGLO.L516..ELKEL.L516..BUMMR/WP,,,,E3E9"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Flight Plan",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "88194A"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "RCH857"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 2
+        },
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Mapped"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "FJDG"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "DOH > N300 >> NOLSU > P307 >> SETSI > P307 >> PARAR >> (20.000 N, 63.000 E) >> RIGLO > L516 >> ELKEL > L516 >> BUMMR"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xe3e9"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "88194A",
+      "flight_number": "RCH857",
+      "mission_number": "PMZM107QP021",
+      "sequence_number": 2,
+      "route_status": "RM",
+      "arrival_icao": "FJDG",
+      "route": {
+        "waypoints": [
+          {
+            "name": "DOH"
+          },
+          {
+            "name": "N300"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "NOLSU"
+          },
+          {
+            "name": "P307"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "SETSI"
+          },
+          {
+            "name": "P307"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "PARAR"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "",
+            "latitude": 20,
+            "longitude": 63
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "RIGLO"
+          },
+          {
+            "name": "L516"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "ELKEL"
+          },
+          {
+            "name": "L516"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "BUMMR"
+          }
+        ]
+      },
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 58345
+    },
+    "remaining": {
+      "text": "WP,,,,"
+    }
+  }
+}

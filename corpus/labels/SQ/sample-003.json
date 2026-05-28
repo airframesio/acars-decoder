@@ -1,0 +1,40 @@
+{
+  "spec": "labels/SQ",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "SQ",
+    "text": "V1AAWHATEVER"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-sq",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Ground Station Squitter",
+      "items": [
+        {
+          "type": "network",
+          "code": "NETT",
+          "label": "Network",
+          "value": "ARINC"
+        },
+        {
+          "type": "version",
+          "code": "VER",
+          "label": "Version",
+          "value": "1"
+        }
+      ]
+    },
+    "raw": {
+      "preamble": "V1AA",
+      "version": 1,
+      "network": "A"
+    },
+    "remaining": {}
+  }
+}

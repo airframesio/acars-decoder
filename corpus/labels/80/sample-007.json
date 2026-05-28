@@ -1,0 +1,23 @@
+{
+  "spec": "labels/80",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 7",
+  "input": {
+    "label": "80",
+    "text": "INR/ID91511S,,/DC04032026,143534/MR19,/NR,,,,,,,,950,0/ET041505/FB983/VR32BF4C"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-80",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Airline Defined Position Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {}
+  }
+}

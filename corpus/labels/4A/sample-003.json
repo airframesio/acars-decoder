@@ -1,0 +1,55 @@
+{
+  "spec": "labels/4A",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "4A",
+    "text": "101606,1910,.N317FR,,KMDW,----,1,1016,RT0,LT1,"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4a",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Latest New Format",
+      "items": [
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "10:16:06"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "N317FR"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KMDW"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "----"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 36966,
+      "tail": "N317FR",
+      "departure_icao": "KMDW",
+      "arrival_icao": "----"
+    },
+    "remaining": {
+      "text": "RT0,LT1,"
+    }
+  }
+}

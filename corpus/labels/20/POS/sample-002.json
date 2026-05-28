@@ -1,0 +1,36 @@
+{
+  "spec": "labels/20/POS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "20",
+    "text": "POSN38160W077075,,211733,360,OTT"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-20-pos",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.160 N, 77.075 W"
+        }
+      ]
+    },
+    "raw": {
+      "preamble": "POS",
+      "position": {
+        "latitude": 38.16,
+        "longitude": -77.075
+      }
+    },
+    "remaining": {}
+  }
+}

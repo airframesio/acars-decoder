@@ -1,0 +1,25 @@
+{
+  "spec": "labels/58",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "58",
+    "text": "Bogus/message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-58",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "Bogus/message"
+    }
+  }
+}

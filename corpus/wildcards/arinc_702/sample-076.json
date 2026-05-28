@@ -1,0 +1,67 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 76",
+  "input": {
+    "label": "H1",
+    "text": "FPN/SN2125/FNQFA780/RI:DA:YPPH:CR:PERMEL001:AA:YMML..MEMUP,S33451E\r\n120525.Y53.WENDY0560"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Flight Plan",
+      "items": [
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Inactive"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "YPPH"
+        },
+        {
+          "type": "company_route",
+          "code": "CR",
+          "label": "Company Route",
+          "value": "PERMEL001"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "YMML..MEMUP,S33451E120525.Y53.WENDY"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x0560"
+        }
+      ]
+    },
+    "raw": {
+      "serial_number": "2125",
+      "flight_number": "QFA780",
+      "route_status": "RI",
+      "departure_icao": "YPPH",
+      "company_route": {
+        "name": "PERMEL001"
+      },
+      "arrival_icao": "YMML..MEMUP,S33451E120525.Y53.WENDY",
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 1376
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

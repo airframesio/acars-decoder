@@ -1,0 +1,311 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 84",
+  "input": {
+    "label": "H1",
+    "text": "FPN/ID80094S,RCH411,8JZ41NG3S048/MR3,5/RP:DA:KMCF:AA:LBSF:F:PIE..BRUTS.Q109.CAMJO.Q109.YURCK.Q97.PAACK.Q97.BLENO.Q97.FRIAR..TOPPS..FROSS..RIKAL..N53000W050000..N55000W040000..N56000W030000..N56000W020000..PIKIL..SOVED..MIMKU..MAC..BELOX.L603.DOLAS..NAVPI..MAVAS..SOGPO..TIVUN..ESAMA..OSBIT..KOMIB..SULUS.Z650.VEMUT..PEPIK..BERVA..ERGOM..TEGRI..OSTOV..GOL:V:CAMJO,301,AT3100,,:V:PAACK,282,AT3300,,:V:BLENO,258,AT3700,,:V:N53000W050000,256,AT3700,,:V:N55000W040000,260,AT3700,,:V:SOVED,303,AT2700,,:V:MIMKU,302,AT2700,,:V:DOLAS,290,AT2900,,:V:PEPIK,242,AT3700,,:V:BERVA,260,AT3700,,7147/WD,,,,C850"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Flight Plan",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "80094S"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "RCH411"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 3
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ_RESP",
+          "label": "Sequence Response",
+          "value": 5
+        },
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Planned"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KMCF"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "LBSF"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "PIE >> BRUTS > Q109 > CAMJO > Q109 > YURCK > Q97 > PAACK > Q97 > BLENO > Q97 > FRIAR >> TOPPS >> FROSS >> RIKAL >> (53.000 N, 50.000 W) >> (55.000 N, 40.000 W) >> (56.000 N, 30.000 W) >> (56.000 N, 20.000 W) >> PIKIL >> SOVED >> MIMKU >> MAC >> BELOX > L603 > DOLAS >> NAVPI >> MAVAS >> SOGPO >> TIVUN >> ESAMA >> OSBIT >> KOMIB >> SULUS > Z650 > VEMUT >> PEPIK >> BERVA >> ERGOM >> TEGRI >> OSTOV >> GOL"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xc850"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "80094S",
+      "flight_number": "RCH411",
+      "mission_number": "8JZ41NG3S048",
+      "sequence_number": 3,
+      "sequence_response": 5,
+      "route_status": "RP",
+      "departure_icao": "KMCF",
+      "arrival_icao": "LBSF",
+      "route": {
+        "waypoints": [
+          {
+            "name": "PIE"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "BRUTS"
+          },
+          {
+            "name": "Q109"
+          },
+          {
+            "name": "CAMJO"
+          },
+          {
+            "name": "Q109"
+          },
+          {
+            "name": "YURCK"
+          },
+          {
+            "name": "Q97"
+          },
+          {
+            "name": "PAACK"
+          },
+          {
+            "name": "Q97"
+          },
+          {
+            "name": "BLENO"
+          },
+          {
+            "name": "Q97"
+          },
+          {
+            "name": "FRIAR"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "TOPPS"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "FROSS"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "RIKAL"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "",
+            "latitude": 53,
+            "longitude": -50
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "",
+            "latitude": 55,
+            "longitude": -40
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "",
+            "latitude": 56,
+            "longitude": -30
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "",
+            "latitude": 56,
+            "longitude": -20
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "PIKIL"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "SOVED"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "MIMKU"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "MAC"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "BELOX"
+          },
+          {
+            "name": "L603"
+          },
+          {
+            "name": "DOLAS"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "NAVPI"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "MAVAS"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "SOGPO"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "TIVUN"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "ESAMA"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "OSBIT"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "KOMIB"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "SULUS"
+          },
+          {
+            "name": "Z650"
+          },
+          {
+            "name": "VEMUT"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "PEPIK"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "BERVA"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "ERGOM"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "TEGRI"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "OSTOV"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "GOL"
+          }
+        ]
+      },
+      "wind_data": [],
+      "checksum_algorithm": "GENIBUS",
+      "checksum": 51280
+    },
+    "remaining": {
+      "text": ":V:CAMJO,301,AT3100,,:V:PAACK,282,AT3300,,:V:BLENO,258,AT3700,,:V:N53000W050000,256,AT3700,,:V:N55000W040000,260,AT3700,,:V:SOVED,303,AT2700,,:V:MIMKU,302,AT2700,,:V:DOLAS,290,AT2900,,:V:PEPIK,242,AT3700,,:V:BERVA,260,AT3700,,7147"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "spec": "labels/83",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "83",
+    "text": "KIAH,RJAA,110012, 39.12,-175.10,39001,265,-107.6, 64900"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-83",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KIAH"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "RJAA"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.120 N, 175.100 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "39001 feet"
+        },
+        {
+          "type": "aircraft_groundspeed",
+          "code": "GSPD",
+          "label": "Aircraft Groundspeed",
+          "value": "265 knots"
+        },
+        {
+          "type": "heading",
+          "code": "HDG",
+          "label": "Heading",
+          "value": "-107.6"
+        }
+      ]
+    },
+    "raw": {
+      "departure_icao": "KIAH",
+      "arrival_icao": "RJAA",
+      "day": "11",
+      "time": "0012",
+      "position": {
+        "latitude": 39.12,
+        "longitude": -175.1
+      },
+      "altitude": 39001,
+      "groundspeed": 265,
+      "heading": -107.6
+    },
+    "remaining": {
+      "text": "64900"
+    }
+  }
+}

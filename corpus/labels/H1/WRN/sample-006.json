@@ -1,0 +1,25 @@
+{
+  "spec": "labels/H1/WRN",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 6",
+  "input": {
+    "label": "H1",
+    "text": "WRN <Invalid text>"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-h1-wrn",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Warning Message",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "WRN <Invalid text>"
+    }
+  }
+}

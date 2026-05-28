@@ -1,0 +1,25 @@
+{
+  "spec": "labels/H1/EZF",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 5",
+  "input": {
+    "label": "H1",
+    "text": "EZF"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-h1-ezf",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Load Sheet",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "EZF"
+    }
+  }
+}

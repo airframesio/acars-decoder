@@ -1,0 +1,63 @@
+{
+  "spec": "labels/H1/EZF",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "1M",
+    "text": "EZF\nXY5678/12/G-TEST\n-SCT/LHR-CDG\n-PAX/90"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-ezf",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Load Sheet",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "XY5678"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "G-TEST"
+        },
+        {
+          "type": "iata",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "LHR"
+        },
+        {
+          "type": "iata",
+          "code": "DST",
+          "label": "Destination",
+          "value": "CDG"
+        },
+        {
+          "type": "loadsheet",
+          "code": "PAX",
+          "label": "Passengers",
+          "value": "90"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "XY5678",
+      "tail": "G-TEST",
+      "departure_iata": "LHR",
+      "arrival_iata": "CDG",
+      "loadsheet": {
+        "SCT": "LHR-CDG",
+        "PAX": "90"
+      }
+    },
+    "remaining": {}
+  }
+}

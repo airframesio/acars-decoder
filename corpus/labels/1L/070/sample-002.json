@@ -1,0 +1,25 @@
+{
+  "spec": "labels/1L/070",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "1L",
+    "text": "POS Bogus Message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-1l-070",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "POS Bogus Message"
+    }
+  }
+}

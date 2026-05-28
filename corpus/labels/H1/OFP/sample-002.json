@@ -1,0 +1,164 @@
+{
+  "spec": "labels/H1/OFP",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "H1",
+    "text": "(FPL-CCA769-IS\n-B77W/H-SDE3FGHIJ1J2J3J4J5M1P2RWXYZ/LB1D1\n-VESPA2354\n-N0482F350 DCT ENI DCT OAK DCT BURGL IRNMN2\n-KLAX0117 KSFO\n-PBN/A1B1C1D1L1O2S2T1 NAV/ABAS RNP2 DAT/1FANSE SUR/RSP180\n DOF/260310 REG/B2036\n EET/KZLA0051\n SEL/BRCE CODE/780970\n RMK/ACAS II)"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-ofp",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Operational Flight Plan",
+      "items": [
+        {
+          "type": "callsign",
+          "code": "CALLSIGN",
+          "label": "Callsign",
+          "value": "CCA769"
+        },
+        {
+          "type": "aircraft_type",
+          "code": "ACFT",
+          "label": "Aircraft Type",
+          "value": "B77W"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "VESPA"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KLAX"
+        },
+        {
+          "type": "icao",
+          "code": "ALT_DST",
+          "label": "Alternate Destination",
+          "value": "KSFO"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "DCT > ENI > DCT > OAK > DCT > BURGL > IRNMN2"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "B2036"
+        },
+        {
+          "type": "flight_rules",
+          "code": "RULES",
+          "label": "Flight Rules",
+          "value": "IFR"
+        },
+        {
+          "type": "cruise",
+          "code": "CRUISE",
+          "label": "Cruise Speed/Level",
+          "value": "N0482 F350"
+        }
+      ]
+    },
+    "raw": {
+      "callsign": "CCA769",
+      "departure_icao": "VESPA",
+      "arrival_icao": "KLAX",
+      "alternate_icao": "KSFO",
+      "route": {
+        "waypoints": [
+          {
+            "name": "DCT"
+          },
+          {
+            "name": "ENI"
+          },
+          {
+            "name": "DCT"
+          },
+          {
+            "name": "OAK"
+          },
+          {
+            "name": "DCT"
+          },
+          {
+            "name": "BURGL"
+          },
+          {
+            "name": "IRNMN2"
+          }
+        ]
+      },
+      "tail": "B2036",
+      "icao_fpl": {
+        "callsign": "CCA769",
+        "flightRules": "I",
+        "flightType": "S",
+        "aircraftType": "B77W",
+        "wakeTurbulence": "H",
+        "equipment": "SDE3FGHIJ1J2J3J4J5M1P2RWXYZ",
+        "surveillance": "LB1D1",
+        "departure": "VESPA",
+        "departureTime": "2354",
+        "cruiseSpeed": "N0482",
+        "cruiseLevel": "F350",
+        "route": {
+          "waypoints": [
+            {
+              "name": "DCT"
+            },
+            {
+              "name": "ENI"
+            },
+            {
+              "name": "DCT"
+            },
+            {
+              "name": "OAK"
+            },
+            {
+              "name": "DCT"
+            },
+            {
+              "name": "BURGL"
+            },
+            {
+              "name": "IRNMN2"
+            }
+          ]
+        },
+        "destination": "KLAX",
+        "eet": "0117",
+        "alternates": [
+          "KSFO"
+        ],
+        "otherInfo": {
+          "PBN": "A1B1C1D1L1O2S2T1",
+          "NAV": "ABAS RNP2",
+          "DAT": "1FANSE",
+          "SUR": "RSP180",
+          "DOF": "260310",
+          "REG": "B2036",
+          "EET": "KZLA0051",
+          "SEL": "BRCE",
+          "CODE": "780970",
+          "RMK": "ACAS II"
+        }
+      }
+    },
+    "remaining": {}
+  }
+}

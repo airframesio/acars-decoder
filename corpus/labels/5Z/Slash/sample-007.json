@@ -1,0 +1,63 @@
+{
+  "spec": "labels/5Z/Slash",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 7",
+  "input": {
+    "label": "5Z",
+    "text": "/C3 GATE REQ       / KBNA KEWR 22 115400 0554 ---- ---- ---- ----"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-5z-slash",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Designated Downlink",
+      "items": [
+        {
+          "type": "airline",
+          "code": "AIRLINE",
+          "label": "Airline",
+          "value": "United Airlines"
+        },
+        {
+          "type": "message_type",
+          "code": "MSG_TYPE",
+          "label": "Message Type",
+          "value": "Off Message (C3)"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KBNA"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KEWR"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "11:54:00"
+        }
+      ]
+    },
+    "raw": {
+      "airline": "United Airlines",
+      "message_type": "C3",
+      "departure_icao": "KBNA",
+      "arrival_icao": "KEWR",
+      "day": 22,
+      "message_timestamp": 42840
+    },
+    "remaining": {
+      "text": "0554 ---- ---- ---- ----"
+    }
+  }
+}

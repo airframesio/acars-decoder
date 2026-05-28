@@ -1,0 +1,145 @@
+{
+  "spec": "labels/H1/OFP",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "H1",
+    "text": "(FPL-UAL123-IS-B789/H-SDE2E3FGHIJ1J5M1RWXYZ/LB1D1-KSFO0100-N0487F370 DCT PORTE J584 ENI DCT-KLAX0055 KONT-PBN/A1B1C1D1L1 DOF/260311 REG/N22992)"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-ofp",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Operational Flight Plan",
+      "items": [
+        {
+          "type": "callsign",
+          "code": "CALLSIGN",
+          "label": "Callsign",
+          "value": "UAL123"
+        },
+        {
+          "type": "aircraft_type",
+          "code": "ACFT",
+          "label": "Aircraft Type",
+          "value": "B789"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KSFO"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KLAX"
+        },
+        {
+          "type": "icao",
+          "code": "ALT_DST",
+          "label": "Alternate Destination",
+          "value": "KONT"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "DCT > PORTE > J584 > ENI > DCT"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "N22992"
+        },
+        {
+          "type": "flight_rules",
+          "code": "RULES",
+          "label": "Flight Rules",
+          "value": "IFR"
+        },
+        {
+          "type": "cruise",
+          "code": "CRUISE",
+          "label": "Cruise Speed/Level",
+          "value": "N0487 F370"
+        }
+      ]
+    },
+    "raw": {
+      "callsign": "UAL123",
+      "departure_icao": "KSFO",
+      "arrival_icao": "KLAX",
+      "alternate_icao": "KONT",
+      "route": {
+        "waypoints": [
+          {
+            "name": "DCT"
+          },
+          {
+            "name": "PORTE"
+          },
+          {
+            "name": "J584"
+          },
+          {
+            "name": "ENI"
+          },
+          {
+            "name": "DCT"
+          }
+        ]
+      },
+      "tail": "N22992",
+      "icao_fpl": {
+        "callsign": "UAL123",
+        "flightRules": "I",
+        "flightType": "S",
+        "aircraftType": "B789",
+        "wakeTurbulence": "H",
+        "equipment": "SDE2E3FGHIJ1J5M1RWXYZ",
+        "surveillance": "LB1D1",
+        "departure": "KSFO",
+        "departureTime": "0100",
+        "cruiseSpeed": "N0487",
+        "cruiseLevel": "F370",
+        "route": {
+          "waypoints": [
+            {
+              "name": "DCT"
+            },
+            {
+              "name": "PORTE"
+            },
+            {
+              "name": "J584"
+            },
+            {
+              "name": "ENI"
+            },
+            {
+              "name": "DCT"
+            }
+          ]
+        },
+        "destination": "KLAX",
+        "eet": "0055",
+        "alternates": [
+          "KONT"
+        ],
+        "otherInfo": {
+          "PBN": "A1B1C1D1L1",
+          "DOF": "260311",
+          "REG": "N22992"
+        }
+      }
+    },
+    "remaining": {}
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "spec": "labels/80",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 8",
+  "input": {
+    "label": "80",
+    "text": "3N01 POSRPT Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-80",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Airline Defined Position Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "3N01 POSRPT Bogus message"
+    }
+  }
+}

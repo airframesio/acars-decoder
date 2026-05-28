@@ -1,0 +1,76 @@
+{
+  "spec": "labels/22/OFF",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "22",
+    "text": "OFF01YX3661/25251712KIADKPWM171207  92"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-22-off",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Takeoff Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "YX3661"
+        },
+        {
+          "type": "day",
+          "code": "DEP_DAY",
+          "label": "Departure Day",
+          "value": "25"
+        },
+        {
+          "type": "day",
+          "code": "ARR_DAY",
+          "label": "Arrival Day",
+          "value": "25"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "17:12:00"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KIAD"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KPWM"
+        },
+        {
+          "type": "time",
+          "code": "OFF",
+          "label": "Takeoff Time",
+          "value": "17:12:07"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "YX3661",
+      "departure_day": 25,
+      "arrival_day": 25,
+      "message_timestamp": 61920,
+      "departure_icao": "KIAD",
+      "arrival_icao": "KPWM",
+      "off_time": 61927
+    },
+    "remaining": {
+      "text": "  92"
+    }
+  }
+}

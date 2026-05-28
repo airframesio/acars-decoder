@@ -1,0 +1,36 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 38",
+  "input": {
+    "label": "H1",
+    "text": "REJPOS,100719,130,219,RF005,N36089W076173/TS100719,090226E850"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Reject for Position Report",
+      "items": [
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xe850"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1770631639,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 59472
+    },
+    "remaining": {
+      "text": "100719,130,219,RF005,N36089W076173"
+    }
+  }
+}

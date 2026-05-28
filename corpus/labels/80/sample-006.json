@@ -1,0 +1,69 @@
+{
+  "spec": "labels/80",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 6",
+  "input": {
+    "label": "80",
+    "text": "3701 INRANG 3451/20 KSBD/KBWI .N613AZ\n/ETA 1254/ERT      "
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-80",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined Position Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "3451"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "20"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KSBD"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KBWI"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "N613AZ"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "12:54:00"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "3451",
+      "day": 20,
+      "departure_icao": "KSBD",
+      "arrival_icao": "KBWI",
+      "tail": "N613AZ",
+      "eta_time": 46440
+    },
+    "remaining": {
+      "text": "3701 INRANG//ERT"
+    }
+  }
+}

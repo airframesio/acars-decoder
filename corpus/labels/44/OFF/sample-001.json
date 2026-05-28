@@ -1,0 +1,84 @@
+{
+  "spec": "labels/44/OFF",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "44",
+    "text": "OFF02,N39247W077226,KFDK,KSNA,1106,2124,0248,011.1"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-44-off",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Off Runway Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.412 N, 77.377 W"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KFDK"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KSNA"
+        },
+        {
+          "type": "month",
+          "code": "MSG_MON",
+          "label": "Month of Year",
+          "value": "11"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "6"
+        },
+        {
+          "type": "time",
+          "code": "OFF",
+          "label": "Takeoff Time",
+          "value": "21:24:00"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "02:48:00"
+        },
+        {
+          "type": "fuel_remaining",
+          "code": " FUEL_REM",
+          "label": "Fuel Remaining",
+          "value": "11.1"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 39.41166666666667,
+        "longitude": -77.37666666666667
+      },
+      "departure_icao": "KFDK",
+      "arrival_icao": "KSNA",
+      "month": 11,
+      "day": 6,
+      "off_time": 77040,
+      "eta_time": 10080,
+      "fuel_remaining": 11.1
+    },
+    "remaining": {}
+  }
+}

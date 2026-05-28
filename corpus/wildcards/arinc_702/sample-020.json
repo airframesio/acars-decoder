@@ -1,0 +1,64 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 20",
+  "input": {
+    "label": "1J",
+    "text": "FTX/ID50007B,RCH4086,ABB02R70E037/MR6,/FX4 QTR PHILLY UP 37-6307A"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Free Text",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "50007B"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "RCH4086"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 6
+        },
+        {
+          "type": "text",
+          "code": "TEXT",
+          "label": "Text Message",
+          "value": "4 QTR PHILLY UP 37-6"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x307a"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "50007B",
+      "flight_number": "RCH4086",
+      "mission_number": "ABB02R70E037",
+      "sequence_number": 6,
+      "text": "4 QTR PHILLY UP 37-6",
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 12410
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

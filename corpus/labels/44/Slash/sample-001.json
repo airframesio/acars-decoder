@@ -1,0 +1,58 @@
+{
+  "spec": "labels/44/Slash",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "44",
+    "text": " /FB 0160/AD KORH/N 38.655,W 75.325,JBU2834,INA03,KORH,2043"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-44-slash",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Flight Briefing",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.655 N, 75.325 W"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "JBU2834"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KORH"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "20:43:00"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 38.655,
+        "longitude": -75.325
+      },
+      "flight_number": "JBU2834",
+      "arrival_icao": "KORH",
+      "eta_time": 74580
+    },
+    "remaining": {
+      "text": " /FB 0160,INA03"
+    }
+  }
+}
