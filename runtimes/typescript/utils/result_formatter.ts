@@ -198,7 +198,12 @@ export class ResultFormatter {
     });
   }
 
-  static currentFuel(decodeResult: DecodeResult, value: number) {
+  static currentFuel(decodeResult: DecodeResult, value: number | undefined) {
+    // Tolerate undefined/NaN (e.g. when a spec's when-gated fuel field's
+    // guard failed and the value never got assigned). Matches the
+    // original hand-written plugins' pattern of only calling the
+    // formatter when they had a real value.
+    if (value === undefined || value === null || Number.isNaN(value)) return;
     decodeResult.raw.fuel_on_board = value;
     decodeResult.formatted.items.push({
       type: 'fuel_on_board',
