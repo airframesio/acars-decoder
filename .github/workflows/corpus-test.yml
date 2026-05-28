@@ -1,0 +1,100 @@
+# Reusable workflow: language repos call this to run the shared ADS corpus
+# through their decoder and fail on any divergence vs the expected output
+# in each corpus sample file.
+#
+# Caller example:
+#
+#   jobs:
+#     corpus:
+#       uses: airframesio/acars-decoder/.github/workflows/corpus-test.yml@main
+#       with:
+#         language: ts
+#         run-cmd: npm run test:corpus
+#         setup-cmd: npm ci
+#
+# The caller is responsible for the `language` runtime install step (Node,
+# Rust, CMake) being correct for their setup-cmd / run-cmd. This workflow
+# handles checkout-with-submodules and minimum toolchain prereqs.
+
+name: corpus-test
+
+on:
+  workflow_call:
+    inputs:
+      language:
+        type: string
+        required: true
+        description: "ts | rust | c — drives which language toolchain is installed."
+      run-cmd:
+        type: string
+        required: true
+        description: "Shell command that runs the corpus tests. Must exit non-zero on failure."
+      setup-cmd:
+        type: string
+        default: ""
+        description: "Optional setup command (e.g. 'npm ci', 'cargo build'). Runs before run-cmd."
+      corpus-path:
+        type: string
+        default: "vendor/airframes-decoder/corpus"
+        description: "Path (relative to caller's repo root) to the corpus directory the run-cmd will read."
+
+jobs:
+  corpus:
+    runs-on: ubuntu-latest
+    env:
+      LANGUAGE: ${{ inputs.language }}
+      RUN_CMD: ${{ inputs.run-cmd }}
+      SETUP_CMD: ${{ inputs.setup-cmd }}
+      CORPUS_PATH: ${{ inputs.corpus-path }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Validate inputs
+        run: |
+          case "$LANGUAGE" in
+            ts|rust|c) ;;
+            *) echo "::error::language must be one of: ts, rust, c (got '$LANGUAGE')"; exit 1 ;;
+          esac
+          # Reject shell metacharacters in commands' obvious-injection forms.
+          for var in RUN_CMD SETUP_CMD CORPUS_PATH; do
+            val="${!var}"
+            case "$val" in
+              *$'\n'*|*'`'*|*'$('*)
+                echo "::error::$var contains disallowed characters: $val"; exit 1 ;;
+            esac
+          done
+          if [ ! -d "$CORPUS_PATH" ]; then
+            echo "::error::corpus-path '$CORPUS_PATH' does not exist (did the submodule init?)"; exit 1
+          fi
+          echo "corpus has $(find "$CORPUS_PATH" -name '*.json' | wc -l) sample(s)"
+
+      - name: Set up Node
+        if: inputs.language == 'ts' || inputs.language == 'rust' || inputs.language == 'c'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up Rust
+        if: inputs.language == 'rust'
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Set up CMake
+        if: inputs.language == 'c'
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: "3.27.x"
+
+      - name: Install C deps (cjson + zlib)
+        if: inputs.language == 'c'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcjson-dev zlib1g-dev
+
+      - name: Setup
+        if: inputs.setup-cmd != ''
+        run: bash -c "$SETUP_CMD"
+
+      - name: Run corpus tests
+        run: bash -c "$RUN_CMD"
