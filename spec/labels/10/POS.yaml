@@ -1,0 +1,44 @@
+spec_version: "1"
+plugin:
+  name: Label_10_POS
+  type: text
+  docs: https://github.com/airframesio/acars-message-documentation/blob/main/research/10/POS.md
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["10"]
+  preambles: ["POS"]
+parse:
+  - { split: ",", into: parts }
+  - { require_length: { var: parts, equals: 12 }, else: fail }
+fields:
+  - name: latitude
+    from: $parts[1]
+    decode:
+      fn: coordinate
+      args:
+        style: single_axis
+        axis: latitude
+        prefix_chars: [N, S]
+        digits: 5
+        divisor: 100
+  - name: longitude
+    from: $parts[2]
+    decode:
+      fn: coordinate
+      args:
+        style: single_axis
+        axis: longitude
+        prefix_chars: [E, W]
+        digits: 5
+        divisor: 100
+  - name: altitude
+    from: $parts[7]
+    decode: { fn: integer }
+formatted:
+  description: "Position Report"
+  items:
+    - { type: position, latitude: $latitude, longitude: $longitude }
+    - { type: altitude, value: $altitude }
+    - type: free_text
+      label: unknown
+      values: ["$parts[0]", "$parts[3]", "$parts[4]", "$parts[5]", "$parts[6]", "$parts[8]", "$parts[9]", "$parts[10]", "$parts[11]"]

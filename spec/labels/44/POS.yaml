@@ -1,0 +1,68 @@
+spec_version: "1"
+plugin:
+  name: Label_44_POS
+  type: text
+  docs: https://github.com/airframesio/acars-message-documentation/blob/main/research/44/POS.md
+  decode_level: FULL
+qualifiers:
+  labels: ["44"]
+  preambles: ["00POS01", "00POS02", "00POS03", "POS01", "POS02", "POS03"]
+parse:
+  - regex: "^.*,(?<unsplit_coords>.*),(?<flight_level_or_ground>.*),(?<departure_icao>.*),(?<arrival_icao>.*),(?<current_date>.*),(?<current_time>.*),(?<eta_time>.*),(?<fuel_in_tons>.*)$"
+    on: $message.text
+    into: m
+fields:
+  - name: position
+    from: $m.unsplit_coords
+    decode:
+      fn: coordinate_decimal_minutes
+      args: { style: combined, format: "NSDDMM_M_EWDDMM_M" }
+
+  - name: flight_level_raw
+    from: $m.flight_level_or_ground
+    decode:
+      fn: custom
+      custom: parse_flight_level_or_ground
+  - name: altitude
+    from: $flight_level_raw
+    decode:
+      fn: custom
+      custom: flight_level_to_altitude_feet
+
+  - name: month
+    from: $m.current_date
+    decode: { fn: integer, args: { substring_start: 0, substring_length: 2 } }
+  - name: day
+    from: $m.current_date
+    decode: { fn: integer, args: { substring_start: 2, substring_length: 2 } }
+
+  - name: timestamp
+    from: $m.current_time
+    decode: { fn: timestamp_hhmmss, args: { append: "00" } }
+  - name: eta
+    from: $m.eta_time
+    decode: { fn: timestamp_hhmmss, args: { append: "00" } }
+
+  - name: fuel_in_tons
+    from: $m.fuel_in_tons
+    when: { not: { in: [$m.fuel_in_tons, ["***", "****"]] } }
+    decode: { fn: float }
+
+  - name: departure_icao
+    from: $m.departure_icao
+    decode: { fn: airport }
+  - name: arrival_icao
+    from: $m.arrival_icao
+    decode: { fn: airport }
+formatted:
+  description: "Position Report"
+  items:
+    - { type: position, value: $position }
+    - { type: timestamp, kind: month, value: $month }
+    - { type: timestamp, kind: day, value: $day }
+    - { type: timestamp, kind: current, value: $timestamp }
+    - { type: timestamp, kind: eta, value: $eta }
+    - { type: fuel, units: tons, value: $fuel_in_tons, when_present: true }
+    - { type: airport_origin, value: $departure_icao }
+    - { type: airport_destination, value: $arrival_icao }
+    - { type: altitude, value: $altitude }

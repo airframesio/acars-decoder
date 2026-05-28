@@ -1,0 +1,68 @@
+spec_version: "1"
+plugin:
+  name: Label_4A
+  type: text
+  docs: https://github.com/airframesio/acars-message-documentation/blob/main/research/4A/README.md
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["4A"]
+parse:
+  - { split: ",", into: fields }
+variants:
+  # Variant 1: 11 fields → timestamp + tail + callsign + airports
+  - name: latest_new_format_11
+    when: { equals: [{ length: $fields }, 11] }
+    fields:
+      - name: timestamp
+        from: $fields[0]
+        decode: { fn: timestamp_hhmmss }
+      - name: tail
+        from: $fields[2]
+        decode: { fn: tail_number, args: { strip_chars: "." } }
+      - name: callsign
+        from: $fields[3]
+        when: { not_equal: ["$fields[3]", ""] }
+        decode: { fn: callsign }
+      - name: departure_icao
+        from: $fields[4]
+        decode: { fn: airport }
+      - name: arrival_icao
+        from: $fields[5]
+        decode: { fn: airport }
+
+  # Variant 2: 6 fields, first one starts with N or S — coords + waypoints.
+  # Complex enough that it gets an escape hatch.
+  - name: latest_new_format_6_position
+    when:
+      all:
+        - { equals: [{ length: $fields }, 6] }
+        - { matches: ["$fields[0]", "^[NS]"] }
+    fields:
+      - name: variant_2_result
+        from: $fields
+        decode:
+          fn: custom
+          custom: label_4a_variant_2_decode
+
+  # Variant 3: 6 fields, not starting with N or S — timestamp + ETA + position
+  - name: latest_new_format_6_status
+    when: { equals: [{ length: $fields }, 6] }
+    fields:
+      - name: timestamp
+        from: $fields[0]
+        decode: { fn: timestamp_hhmmss }
+      - name: eta
+        from: $fields[1]
+        decode: { fn: timestamp_hhmmss }
+      - name: altitude
+        from: $fields[3]
+        decode: { fn: integer }
+      - name: position
+        from: $fields
+        decode:
+          fn: custom
+          custom: label_4a_variant_3_position
+  - default: fail
+formatted:
+  description: "Latest New Format"
+  custom: label_4a_format
