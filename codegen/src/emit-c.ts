@@ -122,15 +122,18 @@ function emitDecode(spec: SpecIR, snake: string, _slug: string, out: string[]): 
     return;
   }
 
+  // Suppress raw auto-emit for fields consumed by a formatter (see TS emitter).
+  const consumedByFormatter = collectFormatterRefs(spec.formatted);
+
   for (const step of spec.parse.steps) {
     emitParseStep(step, out, "    ");
   }
 
   if (spec.variants) {
-    emitVariants(spec.variants, out, "    ");
+    emitVariants(spec.variants, out, "    ", consumedByFormatter);
   } else if (spec.fields) {
     for (const field of spec.fields) {
-      emitField(field, out, "    ");
+      emitField(field, out, "    ", consumedByFormatter);
     }
   }
 
@@ -215,23 +218,38 @@ function emitParseStep(step: ParseStep, out: string[], indent: string): void {
   }
 }
 
-function emitField(field: FieldIR, out: string[], indent: string): void {
+function emitField(
+  field: FieldIR,
+  out: string[],
+  indent: string,
+  consumedByFormatter: Set<string>,
+): void {
   const valueExpr = renderExpr(field.from);
   const decodeExpr = field.decode ? renderDecodeCall(field.decode, valueExpr) : valueExpr;
+  const skipAutoRaw = consumedByFormatter.has(field.name);
   if (field.when) {
     out.push(`${indent}if (${renderCondition(field.when)}) {`);
-    out.push(`${indent}    ads_value_t ${field.name} = ${decodeExpr};`);
-    out.push(
-      `${indent}    ads_result_raw_set(result, ${cString(field.name)}, ${field.name});`,
-    );
+    out.push(`${indent}    ads_value_t *${field.name} = ${decodeExpr};`);
+    if (!skipAutoRaw) {
+      out.push(
+        `${indent}    ads_result_raw_set(result, ${cString(field.name)}, ${field.name});`,
+      );
+    }
     out.push(`${indent}}`);
   } else {
-    out.push(`${indent}ads_value_t ${field.name} = ${decodeExpr};`);
-    out.push(`${indent}ads_result_raw_set(result, ${cString(field.name)}, ${field.name});`);
+    out.push(`${indent}ads_value_t *${field.name} = ${decodeExpr};`);
+    if (!skipAutoRaw) {
+      out.push(`${indent}ads_result_raw_set(result, ${cString(field.name)}, ${field.name});`);
+    }
   }
 }
 
-function emitVariants(variants: VariantIR[], out: string[], indent: string): void {
+function emitVariants(
+  variants: VariantIR[],
+  out: string[],
+  indent: string,
+  consumedByFormatter: Set<string>,
+): void {
   let first = true;
   for (const v of variants) {
     if (v.isDefault) {
@@ -244,11 +262,37 @@ function emitVariants(variants: VariantIR[], out: string[], indent: string): voi
     out.push(`${indent}${first ? "if" : "else if"} (${cond}) {`);
     if (v.fields) {
       for (const f of v.fields) {
-        emitField(f, out, indent + "    ");
+        emitField(f, out, indent + "    ", consumedByFormatter);
       }
     }
     out.push(`${indent}}`);
     first = false;
+  }
+}
+
+function collectFormatterRefs(formatted: FormattedIR): Set<string> {
+  const refs = new Set<string>();
+  if (formatted.kind !== "structured") return refs;
+  for (const item of formatted.items) {
+    walkArgsForRefs(item.args, refs);
+  }
+  return refs;
+}
+
+function walkArgsForRefs(node: unknown, refs: Set<string>): void {
+  if (typeof node === "string") {
+    if (node.startsWith("$")) {
+      const m = node.match(/^\$([A-Za-z_][A-Za-z0-9_]*)/);
+      if (m && m[1]) refs.add(m[1]);
+    }
+    return;
+  }
+  if (Array.isArray(node)) {
+    for (const v of node) walkArgsForRefs(v, refs);
+    return;
+  }
+  if (node && typeof node === "object") {
+    for (const v of Object.values(node)) walkArgsForRefs(v, refs);
   }
 }
 
