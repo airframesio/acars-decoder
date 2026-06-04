@@ -1,0 +1,70 @@
+{
+  "spec": "labels/16/AUTPOS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "16",
+    "text": "283806/AUTPOS/LLD N400547 W0774954\r\n/ALT 12932/SAT ****\r\n/WND ******/TAT ****/TAS ****/CRZ ***\r\n/FOB 065120\r\n/DAT 260228/TIM 150742"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-16-autpos",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "28"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "3806"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "40.096 N, 77.832 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "12932 feet"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "65120"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "2026-02-28T15:07:42Z"
+        }
+      ]
+    },
+    "raw": {
+      "day": 28,
+      "flight_number": "3806",
+      "position": {
+        "latitude": 40.09638888888889,
+        "longitude": -77.83166666666666
+      },
+      "altitude": 12932,
+      "fuel_on_board": 65120,
+      "message_timestamp": 1772291262
+    },
+    "remaining": {}
+  }
+}

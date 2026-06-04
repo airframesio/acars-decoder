@@ -1,0 +1,62 @@
+{
+  "spec": "labels/4A",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "4A",
+    "text": "063200,1910,.N343FR,FFT2028,KSLC,KORD,1,0632,RT0,LT0,"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4a",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Latest New Format",
+      "items": [
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "06:32:00"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "N343FR"
+        },
+        {
+          "type": "callsign",
+          "code": "CALLSIGN",
+          "label": "Callsign",
+          "value": "FFT2028"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KSLC"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KORD"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 23520,
+      "tail": "N343FR",
+      "callsign": "FFT2028",
+      "departure_icao": "KSLC",
+      "arrival_icao": "KORD"
+    },
+    "remaining": {
+      "text": "RT0,LT0,"
+    }
+  }
+}

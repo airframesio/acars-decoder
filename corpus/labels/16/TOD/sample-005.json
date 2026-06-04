@@ -1,0 +1,25 @@
+{
+  "spec": "labels/16/TOD",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 5",
+  "input": {
+    "label": "16",
+    "text": "N Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-16-tod",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "N Bogus message"
+    }
+  }
+}

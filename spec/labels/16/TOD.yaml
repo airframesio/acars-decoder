@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_16_TOD
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["16"]
+parse:
+  # Pure escape hatch: 5-field comma split, HHMMSS time validation, optional
+  # altitude, ETA, then position parsed from final field with 3 different
+  # sub-variants (2-token decimal-minutes, 4-token decimal-degrees, redacted),
+  # followed by optional flight number after a '/' marker.
+  custom: label_16_tod_decode
+formatted:
+  description: "Position Report"
+  custom: label_16_tod_format

@@ -1,0 +1,53 @@
+{
+  "spec": "labels/H1/ATIS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "H1",
+    "text": "L01AMC5477/OERK.TI2/024OERKC8781"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-atis",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "ATIS Subscription",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "MC5477"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "OERK"
+        },
+        {
+          "type": "atis",
+          "code": "ATIS_CODE",
+          "label": "ATIS Code",
+          "value": "024"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x8781"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "MC5477",
+      "arrival_icao": "OERK",
+      "atis_code": "024",
+      "checksum": 821121
+    },
+    "remaining": {}
+  }
+}

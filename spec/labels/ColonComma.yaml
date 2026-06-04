@@ -1,0 +1,13 @@
+spec_version: "1"
+plugin:
+  name: Label_ColonComma
+  type: text
+  docs: https://github.com/airframesio/acars-message-documentation/blob/main/research/colon_comma/README.md
+  decode_level: FULL
+qualifiers:
+  labels: [":;"]
+parse:
+  custom: label_colon_comma_parse
+formatted:
+  description: "Aircraft Transceiver Frequency Change"
+  custom: label_colon_comma_format

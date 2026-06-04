@@ -1,0 +1,17 @@
+spec_version: "1"
+plugin:
+  name: Label_58
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["58"]
+parse:
+  # split('/') with strict 8-part length gate; coordinate parsing uses
+  # CoordinateUtils.getDirection(first-char) * Number(rest) for both axes,
+  # which doesn't fit the existing `coordinate` decode args (no divisor here).
+  # Also uses `day` formatter (not in formatter type enum) and trailing
+  # unknown('/') tails for parts[6]/[7]. Whole-plugin hatch for parity.
+  custom: label_58_parse
+formatted:
+  description: "Position Report"
+  custom: label_58_format

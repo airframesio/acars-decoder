@@ -1,0 +1,51 @@
+{
+  "spec": "labels/16/Honeywell",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "16",
+    "text": "(2AAABN39211W 77144KTEBMMTO-/A(Z"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-16-honeywell",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.352 N, 77.240 W"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KTEB"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "MMTO"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 39.35166666666667,
+        "longitude": -77.24
+      },
+      "departure_icao": "KTEB",
+      "arrival_icao": "MMTO"
+    },
+    "remaining": {
+      "text": "AAAB/A"
+    }
+  }
+}

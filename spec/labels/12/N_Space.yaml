@@ -1,0 +1,15 @@
+spec_version: "1"
+plugin:
+  name: Label_12_N_Space
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["12"]
+  preambles: ["N ", "S "]
+parse:
+  # Pure escape hatch: regex with NSEW directional capture, GRD/*** altitude
+  # sentinel handling, and free_text trailing fields.
+  custom: label_12_n_space_decode
+formatted:
+  description: "Position Report"
+  custom: label_12_n_space_format

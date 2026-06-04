@@ -1,0 +1,44 @@
+{
+  "spec": "labels/12/N_Space",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "12",
+    "text": "N 42.150,W121.187,39000,161859, 109,.C-GWSO,1742"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-12-n-space",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "42.150 N, 121.187 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "39000 feet"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 42.15,
+        "longitude": -121.187
+      },
+      "altitude": 39000
+    },
+    "remaining": {
+      "text": "161859,109,1742"
+    }
+  }
+}

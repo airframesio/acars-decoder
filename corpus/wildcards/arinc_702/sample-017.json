@@ -1,0 +1,64 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 17",
+  "input": {
+    "label": "H1",
+    "text": "FTX/ID23544S,HIFI21,7VZ007B1S276/MR2,/FXFYI .. TAF KSUX 021720Z 0218 0318 20017G28KT P6SM SKC FM022200 22012G18KT P6SM SKC .. PUTS YOUR CXWIND AT 26KT ON RWY 13 .. REDUCES TO 18KT AT 22Z4FEF"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Free Text",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "23544S"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "HIFI21"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 2
+        },
+        {
+          "type": "text",
+          "code": "TEXT",
+          "label": "Text Message",
+          "value": "FYI .. TAF KSUX 021720Z 0218 0318 20017G28KT P6SM SKC FM022200 22012G18KT P6SM SKC .. PUTS YOUR CXWIND AT 26KT ON RWY 13 .. REDUCES TO 18KT AT 22Z"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x4fef"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "23544S",
+      "flight_number": "HIFI21",
+      "mission_number": "7VZ007B1S276",
+      "sequence_number": 2,
+      "text": "FYI .. TAF KSUX 021720Z 0218 0318 20017G28KT P6SM SKC FM022200 22012G18KT P6SM SKC .. PUTS YOUR CXWIND AT 26KT ON RWY 13 .. REDUCES TO 18KT AT 22Z",
+      "checksum_algorithm": "GENIBUS",
+      "checksum": 20463
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

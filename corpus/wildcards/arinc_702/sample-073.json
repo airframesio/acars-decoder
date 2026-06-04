@@ -1,0 +1,195 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 73",
+  "input": {
+    "label": "H1",
+    "text": "FPN/FNAAL1956/RP:DA:KPHL:AA:KPHX:CR:PHLPHX61:R:27L(26O):D:PHL3:A:EAGUL6.ZUN:AP:ILS26..AIR,N40010W080490.J110.BOWRR..VLA,N39056W089097..STL,N38516W090289..GIBSN,N38430W092244..TYGER,N38410W094050..GCK,N37551W100435..DIXAN,N36169W105573..ZUN,N34579W109093293B"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Flight Plan",
+      "items": [
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Planned"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KPHL"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KPHX"
+        },
+        {
+          "type": "company_route",
+          "code": "CR",
+          "label": "Company Route",
+          "value": "PHLPHX61"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "26O"
+        },
+        {
+          "type": "runway",
+          "code": "DEPRWY",
+          "label": "Departure Runway",
+          "value": "27L"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Departure Procedure",
+          "value": "PHL3"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Arrival Procedure",
+          "value": "EAGUL6 starting at ZUN"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Approach Procedure",
+          "value": "ILS26: >> AIR(40.017 N, 80.817 W) > J110 > BOWRR >> VLA(39.093 N, 89.162 W) >> STL(38.860 N, 90.482 W) >> GIBSN(38.717 N, 92.407 W) >> TYGER(38.683 N, 94.083 W) >> GCK(37.918 N, 100.725 W) >> DIXAN(36.282 N, 105.955 W) >> ZUN(34.965 N, 109.155 W)"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x293b"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "AAL1956",
+      "route_status": "RP",
+      "departure_icao": "KPHL",
+      "arrival_icao": "KPHX",
+      "company_route": {
+        "name": "PHLPHX61"
+      },
+      "arrival_runway": "26O",
+      "departure_runway": "27L",
+      "procedures": [
+        {
+          "type": "departure",
+          "route": {
+            "name": "PHL3"
+          }
+        },
+        {
+          "type": "arrival",
+          "route": {
+            "name": "EAGUL6",
+            "waypoints": [
+              {
+                "name": "ZUN"
+              }
+            ]
+          }
+        },
+        {
+          "type": "approach",
+          "route": {
+            "name": "ILS26",
+            "waypoints": [
+              {
+                "name": ""
+              },
+              {
+                "name": "AIR",
+                "latitude": 40.016666666666666,
+                "longitude": -80.81666666666666
+              },
+              {
+                "name": "J110"
+              },
+              {
+                "name": "BOWRR"
+              },
+              {
+                "name": ""
+              },
+              {
+                "name": "VLA",
+                "latitude": 39.093333333333334,
+                "longitude": -89.16166666666666
+              },
+              {
+                "name": ""
+              },
+              {
+                "name": "STL",
+                "latitude": 38.86,
+                "longitude": -90.48166666666667
+              },
+              {
+                "name": ""
+              },
+              {
+                "name": "GIBSN",
+                "latitude": 38.71666666666667,
+                "longitude": -92.40666666666667
+              },
+              {
+                "name": ""
+              },
+              {
+                "name": "TYGER",
+                "latitude": 38.68333333333333,
+                "longitude": -94.08333333333333
+              },
+              {
+                "name": ""
+              },
+              {
+                "name": "GCK",
+                "latitude": 37.91833333333334,
+                "longitude": -100.725
+              },
+              {
+                "name": ""
+              },
+              {
+                "name": "DIXAN",
+                "latitude": 36.281666666666666,
+                "longitude": -105.955
+              },
+              {
+                "name": ""
+              },
+              {
+                "name": "ZUN",
+                "latitude": 34.965,
+                "longitude": -109.155
+              }
+            ]
+          }
+        }
+      ],
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 10555
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

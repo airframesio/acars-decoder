@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_24_Slash
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["24"]
+  preambles: ["/"]
+parse:
+  # Splits on '/', requires len==10 with first+last empty (begin/end with '/'),
+  # rearranges date substrings DDMMYY -> YYDDMM and computes epoch via
+  # convertDateTimeToEpoch, char-prefix sign decoding for coords. Whole-plugin hatch.
+  custom: label_24_slash_decode
+formatted:
+  description: "Position Report"
+  custom: label_24_slash_format

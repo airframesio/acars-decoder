@@ -1,0 +1,66 @@
+{
+  "spec": "labels/QQ",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "QQ",
+    "text": "KSDLKLAS0025\r\n001FE09002543N3336.6W11155.90281750042"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-qq",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "OFF Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KSDL"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KLAS"
+        },
+        {
+          "type": "time",
+          "code": "OFF",
+          "label": "Takeoff Time",
+          "value": "00:25:43"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "33.610 N, 111.932 W"
+        },
+        {
+          "type": "aircraft_groundspeed",
+          "code": "GSPD",
+          "label": "Aircraft Groundspeed",
+          "value": "175 knots"
+        }
+      ]
+    },
+    "raw": {
+      "departure_icao": "KSDL",
+      "arrival_icao": "KLAS",
+      "day": "09",
+      "off_time": 1543,
+      "position": {
+        "latitude": 33.61,
+        "longitude": -111.93166666666667
+      },
+      "groundspeed": 175
+    },
+    "remaining": {
+      "text": "028,0042"
+    }
+  }
+}

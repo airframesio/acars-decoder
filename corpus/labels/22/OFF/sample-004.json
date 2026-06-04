@@ -1,0 +1,23 @@
+{
+  "spec": "labels/22/OFF",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "22",
+    "text": "POS Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-22-off",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Takeoff Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {}
+  }
+}

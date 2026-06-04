@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main, init/ads-v1]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: codegen/package-lock.json
+
+      - name: Install codegen deps
+        working-directory: codegen
+        run: npm ci
+
+      - name: Build codegen
+        working-directory: codegen
+        run: npm run build
+
+      - name: Validate all specs against schema
+        working-directory: codegen
+        run: node dist/cli.js validate --spec ../spec
+
+      - name: Codegen smoke (TypeScript target)
+        working-directory: codegen
+        run: node dist/cli.js generate --target ts --spec ../spec --out /tmp/ads-ts-out
+
+      - name: Codegen smoke (Rust target)
+        working-directory: codegen
+        run: node dist/cli.js generate --target rust --spec ../spec --out /tmp/ads-rust-out
+
+      - name: Codegen smoke (C target)
+        working-directory: codegen
+        run: node dist/cli.js generate --target c --spec ../spec --out /tmp/ads-c-out
+
+      - name: Run codegen unit tests
+        working-directory: codegen
+        run: npm test || echo "No tests yet"

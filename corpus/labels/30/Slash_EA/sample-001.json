@@ -1,0 +1,41 @@
+{
+  "spec": "labels/30/Slash_EA",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "30",
+    "text": "/EA1719/DSKSFO/SK23"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-30-slash-ea",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "ETA Report",
+      "items": [
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "17:19:00"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KSFO"
+        }
+      ]
+    },
+    "raw": {
+      "eta_time": 62340,
+      "arrival_icao": "KSFO"
+    },
+    "remaining": {
+      "text": "/SK23"
+    }
+  }
+}

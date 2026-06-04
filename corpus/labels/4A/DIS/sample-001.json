@@ -1,0 +1,46 @@
+{
+  "spec": "labels/4A/DIS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "4A",
+    "text": "DIS01,190009,WEN3140,@HOLD CNX"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4a-dis",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Latest New Format",
+      "items": [
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "00:09:00"
+        },
+        {
+          "type": "callsign",
+          "code": "CALLSIGN",
+          "label": "Callsign",
+          "value": "WEN3140"
+        },
+        {
+          "type": "text",
+          "code": "TEXT",
+          "label": "Text Message",
+          "value": "@HOLD CNX"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 540,
+      "callsign": "WEN3140",
+      "text": "@HOLD CNX"
+    },
+    "remaining": {}
+  }
+}

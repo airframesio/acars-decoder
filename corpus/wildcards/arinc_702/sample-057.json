@@ -1,0 +1,81 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 57",
+  "input": {
+    "label": "H1",
+    "text": "POSN43030W122406,IBALL,220516,380,AARON,220816,MOXEE,M47,0047,86/TS220516,092122BF64"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "43.050 N, 122.677 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "38000 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "IBALL@22:05:16 > AARON@22:08:16 > MOXEE"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-47 degrees"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xbf64"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 43.05,
+        "longitude": -122.67666666666666
+      },
+      "altitude": 38000,
+      "route": {
+        "waypoints": [
+          {
+            "name": "IBALL",
+            "time": 79516
+          },
+          {
+            "name": "AARON",
+            "time": 79696
+          },
+          {
+            "name": "MOXEE"
+          }
+        ]
+      },
+      "outside_air_temperature": -47,
+      "message_timestamp": 1663797916,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 48996
+    },
+    "remaining": {
+      "text": "0047,86"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "spec": "labels/83",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 6",
+  "input": {
+    "label": "83",
+    "text": "83 Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-83",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Airline Defined",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "83 Bogus message"
+    }
+  }
+}

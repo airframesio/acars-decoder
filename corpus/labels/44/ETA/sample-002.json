@@ -1,0 +1,25 @@
+{
+  "spec": "labels/44/ETA",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "44",
+    "text": "00OFF01 Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-44-eta",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "ETA Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "00OFF01 Bogus message"
+    }
+  }
+}

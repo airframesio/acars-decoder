@@ -1,0 +1,25 @@
+{
+  "spec": "labels/4T/AGFSR",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "4T",
+    "text": "POS/ Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-4t-agfsr",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "POS/ Bogus message"
+    }
+  }
+}

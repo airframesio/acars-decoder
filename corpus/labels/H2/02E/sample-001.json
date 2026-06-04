@@ -1,0 +1,176 @@
+{
+  "spec": "labels/H2/02E",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "H2",
+    "text": "02E20HEGNLKPRN40359E02208116253601M627259020G    QN41179E02134316323599M617247037G    QN41591E02100516393603M610266040G    QN42393E02026716463602M600276033G    QN43197E01954316533598M592299037G    QN44023E01929517003596M587313033G    Q"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h2-02e",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Weather Report",
+      "items": [
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "20"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "HEGN"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "LKPR"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N40359E022081(40.598 N, 22.135 E)@16:25:00 at FL360: 259° at 20kt, -62.7°C at FL360"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N41179E021343(41.298 N, 21.572 E)@16:32:00 at FL359: 247° at 37kt, -61.7°C at FL359"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N41591E021005(41.985 N, 21.008 E)@16:39:00 at FL360: 266° at 40kt, -61°C at FL360"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N42393E020267(42.655 N, 20.445 E)@16:46:00 at FL360: 276° at 33kt, -60°C at FL360"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N43197E019543(43.328 N, 19.905 E)@16:53:00 at FL359: 299° at 37kt, -59.2°C at FL359"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "N44023E019295(44.038 N, 19.492 E)@17:00:00 at FL359: 313° at 33kt, -58.7°C at FL359"
+        }
+      ]
+    },
+    "raw": {
+      "day": 20,
+      "departure_icao": "HEGN",
+      "arrival_icao": "LKPR",
+      "wind_data": [
+        {
+          "waypoint": {
+            "name": "N40359E022081",
+            "latitude": 40.598333333333336,
+            "longitude": 22.135,
+            "time": 59100
+          },
+          "flightLevel": 360,
+          "windDirection": 259,
+          "windSpeed": 20,
+          "temperature": {
+            "flightLevel": 360,
+            "degreesC": -62.7
+          }
+        },
+        {
+          "waypoint": {
+            "name": "N41179E021343",
+            "latitude": 41.29833333333333,
+            "longitude": 21.571666666666665,
+            "time": 59520
+          },
+          "flightLevel": 359,
+          "windDirection": 247,
+          "windSpeed": 37,
+          "temperature": {
+            "flightLevel": 359,
+            "degreesC": -61.7
+          }
+        },
+        {
+          "waypoint": {
+            "name": "N41591E021005",
+            "latitude": 41.985,
+            "longitude": 21.008333333333333,
+            "time": 59940
+          },
+          "flightLevel": 360,
+          "windDirection": 266,
+          "windSpeed": 40,
+          "temperature": {
+            "flightLevel": 360,
+            "degreesC": -61
+          }
+        },
+        {
+          "waypoint": {
+            "name": "N42393E020267",
+            "latitude": 42.655,
+            "longitude": 20.445,
+            "time": 60360
+          },
+          "flightLevel": 360,
+          "windDirection": 276,
+          "windSpeed": 33,
+          "temperature": {
+            "flightLevel": 360,
+            "degreesC": -60
+          }
+        },
+        {
+          "waypoint": {
+            "name": "N43197E019543",
+            "latitude": 43.32833333333333,
+            "longitude": 19.905,
+            "time": 60780
+          },
+          "flightLevel": 359,
+          "windDirection": 299,
+          "windSpeed": 37,
+          "temperature": {
+            "flightLevel": 359,
+            "degreesC": -59.2
+          }
+        },
+        {
+          "waypoint": {
+            "name": "N44023E019295",
+            "latitude": 44.038333333333334,
+            "longitude": 19.491666666666667,
+            "time": 61200
+          },
+          "flightLevel": 359,
+          "windDirection": 313,
+          "windSpeed": 33,
+          "temperature": {
+            "flightLevel": 359,
+            "degreesC": -58.7
+          }
+        }
+      ]
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

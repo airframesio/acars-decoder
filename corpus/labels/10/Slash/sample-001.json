@@ -1,0 +1,86 @@
+{
+  "spec": "labels/10/Slash",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "10",
+    "text": "/N39.182/W077.217/10/0.42/180/055/KIAD/0004/0028/00015/MOWAT/HUSEL/2349/YACKK/2352/"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-10-slash",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.182 N, 77.217 W"
+        },
+        {
+          "type": "heading",
+          "code": "HDG",
+          "label": "Heading",
+          "value": "180"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "5500 feet"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KIAD"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "00:04:00"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "MOWAT > HUSEL@23:49:00 > YACKK@23:52:00"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 39.182,
+        "longitude": -77.217
+      },
+      "heading": 180,
+      "altitude": 5500,
+      "arrival_icao": "KIAD",
+      "eta_time": 240,
+      "route": {
+        "waypoints": [
+          {
+            "name": "MOWAT"
+          },
+          {
+            "name": "HUSEL",
+            "time": 85740
+          },
+          {
+            "name": "YACKK",
+            "time": 85920
+          }
+        ]
+      }
+    },
+    "remaining": {
+      "text": "10/0.42/0028/00015"
+    }
+  }
+}

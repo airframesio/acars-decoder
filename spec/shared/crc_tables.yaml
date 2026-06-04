@@ -1,0 +1,50 @@
+# CRC polynomial lookup tables for ACARS checksum validation.
+# Codegen emits these as immutable arrays into each language runtime:
+#   runtimes/typescript/crc_tables.ts
+#   runtimes/rust/src/crc_tables.rs
+#   runtimes/c/src/crc_tables.c + crc_tables.h
+#
+# Source values are extracted from acars-decoder-typescript/lib/utils/arinc_702_helper.ts.
+
+version: 1
+
+# CRC-16 (IBM SDLC, reversed). Used by ARINC 702 H1 message checksums.
+crc16_ibm_sdlc_rev:
+  polynomial: 0x8408
+  init: 0xFFFF
+  refin: true
+  refout: true
+  xorout: 0xFFFF
+  width: 16
+  # Table values populated during runtime helper migration (task #19).
+  table: []
+
+# CRC-16 (GENIBUS). Used as fallback for ARINC 702 H1 checksum mismatch.
+crc16_genibus:
+  polynomial: 0x1021
+  init: 0xFFFF
+  refin: false
+  refout: false
+  xorout: 0xFFFF
+  width: 16
+  table: []
+
+# CRC-32 used by MIAM PDU v1 (ARINC 665).
+arinc_665_crc32:
+  polynomial: 0x04C11DB7
+  init: 0xFFFFFFFF
+  refin: false
+  refout: false
+  xorout: 0xFFFFFFFF
+  width: 32
+  table: []
+
+# CRC-16 used by MIAM PDU v2 (ARINC 6).
+arinc_6_crc16:
+  polynomial: 0x8005
+  init: 0x0000
+  refin: false
+  refout: false
+  xorout: 0x0000
+  width: 16
+  table: []

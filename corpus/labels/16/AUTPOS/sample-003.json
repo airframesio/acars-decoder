@@ -1,0 +1,23 @@
+{
+  "spec": "labels/16/AUTPOS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "16",
+    "text": "invalid AUTPOS message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-16-autpos",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Unknown",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {}
+  }
+}

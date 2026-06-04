@@ -1,0 +1,65 @@
+{
+  "spec": "labels/1L/070",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "1L",
+    "text": "000000070LOWW,KEWR,0932,1744,N 49.223,E 12.038,0659"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-1l-070",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "LOWW"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KEWR"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "09:32:00"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "17:44:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "49.223 N, 12.038 E"
+        }
+      ]
+    },
+    "raw": {
+      "departure_icao": "LOWW",
+      "arrival_icao": "KEWR",
+      "message_timestamp": 34320,
+      "eta_time": 63840,
+      "position": {
+        "latitude": 49.223,
+        "longitude": 12.038
+      }
+    },
+    "remaining": {
+      "text": "0659"
+    }
+  }
+}

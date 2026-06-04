@@ -1,0 +1,93 @@
+{
+  "spec": "labels/2P/FM4",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "2P",
+    "text": "M58AEY0801FM4RJAA,OMAA,141234,2105, 38.92, 115.44,34099,296,-105.5, 52800"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-2p-fm4",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Flight Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "EY0801"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "RJAA"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "OMAA"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "14"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "12:34:00"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "21:05:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.920 N, 115.440 E"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "34099 feet"
+        },
+        {
+          "type": "heading",
+          "code": "HDG",
+          "label": "Heading",
+          "value": "296"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "EY0801",
+      "departure_icao": "RJAA",
+      "arrival_icao": "OMAA",
+      "day": 14,
+      "message_timestamp": 45240,
+      "eta_time": 75900,
+      "position": {
+        "latitude": 38.92,
+        "longitude": 115.44
+      },
+      "altitude": 34099,
+      "heading": 296
+    },
+    "remaining": {
+      "text": "M58A,-105.5, 52800"
+    }
+  }
+}

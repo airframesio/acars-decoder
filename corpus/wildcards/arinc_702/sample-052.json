@@ -1,0 +1,88 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 52",
+  "input": {
+    "label": "H1",
+    "text": "/HDQDLUA.POSN38332W080082,RONZZ,135753,320,LEVII,140454,WISTA,M45,20967,194/GAHDQDLUA/CA/TS135753,1411240721"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.553 N, 80.137 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "32000 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "RONZZ@13:57:53 > LEVII@14:04:54 > WISTA"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-45 degrees"
+        },
+        {
+          "type": "ground_address",
+          "code": "GND_ADDR",
+          "label": "Ground Address",
+          "value": "HDQDLUA"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x0721"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 38.553333333333335,
+        "longitude": -80.13666666666667
+      },
+      "altitude": 32000,
+      "route": {
+        "waypoints": [
+          {
+            "name": "RONZZ",
+            "time": 50273
+          },
+          {
+            "name": "LEVII",
+            "time": 50694
+          },
+          {
+            "name": "WISTA"
+          }
+        ]
+      },
+      "outside_air_temperature": -45,
+      "ground_address": "HDQDLUA",
+      "message_timestamp": 1731592673,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 1825
+    },
+    "remaining": {
+      "text": "/HDQDLUA.20967,194/CA"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 40",
+  "input": {
+    "label": "2P",
+    "text": "M80AMC4086POS/ID50007B,RCH4086,ABB02R70E037/DC10022025,051804/MR103,/ET090738/PSN56012W013273,051804,350,,,,,084081,/CG,,/FB0857/VR0322B89"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "50007B"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "RCH4086"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 103
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "9"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "07:38:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "56.020 N, 13.455 W"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "@05:18:04 >> ?"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "35000 feet"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "857"
+        },
+        {
+          "type": "version",
+          "code": "VERSION",
+          "label": "Message Version",
+          "value": "v3.2"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x2b89"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "50007B",
+      "flight_number": "RCH4086",
+      "mission_number": "ABB02R70E037",
+      "message_timestamp": 1739164684,
+      "sequence_number": 103,
+      "day": 9,
+      "eta_time": 27480,
+      "position": {
+        "latitude": 56.02,
+        "longitude": -13.455
+      },
+      "route": {
+        "waypoints": [
+          {
+            "name": "",
+            "time": 19084
+          },
+          {
+            "name": "",
+            "time": 0
+          },
+          {
+            "name": "?"
+          }
+        ]
+      },
+      "altitude": 35000,
+      "fuel_on_board": 857,
+      "version": 3.2,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 11145
+    },
+    "remaining": {
+      "text": "M80/084081,"
+    }
+  }
+}

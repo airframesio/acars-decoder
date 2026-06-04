@@ -1,0 +1,20 @@
+spec_version: "1"
+plugin:
+  name: Label_80
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["80"]
+parse:
+  # Two top-level formats:
+  #   - Single-line CSV with 9 comma-separated parts → parseCsvFormat
+  #   - Multi-line with header + tag-prefixed key/value pairs
+  #     (POS / ALT / FL / MCH / SPD / TAS / SAT / FB / FOB / UTC / ETA /
+  #      HDG / NWYP / SWN / DWN / AD / default)
+  # Multiple inline regex captures (POS lat/lon), unit transforms
+  # (MCH/1000, FL*100, FOB strip non-numeric), and per-tag dispatch make a
+  # whole-plugin hatch the safest path to byte-for-byte parity.
+  custom: label_80_parse
+formatted:
+  description: "Airline Defined Position Report"
+  custom: label_80_format

@@ -1,0 +1,53 @@
+{
+  "spec": "labels/16/Honeywell",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "16",
+    "text": "(2AAAAN37265W 78334-SSI  /O(Z"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-16-honeywell",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "37.442 N, 78.557 W"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "SSI > /O"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 37.44166666666667,
+        "longitude": -78.55666666666667
+      },
+      "route": {
+        "waypoints": [
+          {
+            "name": "SSI"
+          },
+          {
+            "name": "/O"
+          }
+        ]
+      }
+    },
+    "remaining": {
+      "text": "AAAA/O"
+    }
+  }
+}

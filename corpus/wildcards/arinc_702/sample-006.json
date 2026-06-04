@@ -1,0 +1,25 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 6",
+  "input": {
+    "label": "44",
+    "text": "POS02,N38338W121179,GRD,KMHR,KPDX,0807,0003,0112,005.1"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Unknown",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "POS/,POS02,N38338W121179,GRD,KMHR,KPDX,0807,0003,0112,005.1"
+    }
+  }
+}

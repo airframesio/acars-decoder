@@ -1,0 +1,65 @@
+{
+  "spec": "labels/2P/FM3",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "2P",
+    "text": "M40AEY093CFM3 1216,1454,+057.31,-075.58, 38002, 469, 23"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-2p-fm3",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Flight Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "EY093C"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "12:16:00"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "14:54:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "57.310 N, 75.580 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "38002 feet"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "EY093C",
+      "message_timestamp": 44160,
+      "eta_time": 53640,
+      "position": {
+        "latitude": 57.31,
+        "longitude": -75.58
+      },
+      "altitude": 38002
+    },
+    "remaining": {
+      "text": "M40A, 469, 23"
+    }
+  }
+}

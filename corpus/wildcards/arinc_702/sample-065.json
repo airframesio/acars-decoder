@@ -1,0 +1,92 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 65",
+  "input": {
+    "label": "H1",
+    "text": "POSN33204W114082,BLH176-0093,062056,330,SALOM180-0127,062211,KOFFA180-0148,M49,30628,3201251"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "33.340 N, 114.137 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "33000 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "BLH[176° 9.3nm]@06:20:56 > SALOM[180° 12.7nm]@06:22:11 > KOFFA[180° 14.8nm]"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-49 degrees"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x1251"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 33.34,
+        "longitude": -114.13666666666667
+      },
+      "altitude": 33000,
+      "route": {
+        "waypoints": [
+          {
+            "name": "BLH",
+            "offset": {
+              "bearing": 176,
+              "distance": 9.3
+            },
+            "time": 22856
+          },
+          {
+            "name": "SALOM",
+            "offset": {
+              "bearing": 180,
+              "distance": 12.7
+            },
+            "time": 22931
+          },
+          {
+            "name": "KOFFA",
+            "offset": {
+              "bearing": 180,
+              "distance": 14.8
+            }
+          }
+        ]
+      },
+      "outside_air_temperature": -49,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 4689
+    },
+    "remaining": {
+      "text": "30628,320"
+    }
+  }
+}

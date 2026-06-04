@@ -1,0 +1,104 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 69",
+  "input": {
+    "label": "H1",
+    "text": "POSN39220W078258,MRB18,044034,340,EYT19,044427,COL20,M49,27369,436,813/PSN39220W078258,MRB18,044034,340,EYT19,044427,COL20,M49,27369,436,813,ECON CRZ,0,25140035"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.367 N, 78.430 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "34000 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "MRB18@04:40:34 > EYT19@04:44:27 > COL20"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-49 degrees"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.367 N, 78.430 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "34000 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "MRB18@04:40:34 > EYT19@04:44:27 > COL20"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-49 degrees"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x0035"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 39.36666666666667,
+        "longitude": -78.43
+      },
+      "altitude": 34000,
+      "route": {
+        "waypoints": [
+          {
+            "name": "MRB18",
+            "time": 16834
+          },
+          {
+            "name": "EYT19",
+            "time": 17067
+          },
+          {
+            "name": "COL20"
+          }
+        ]
+      },
+      "outside_air_temperature": -49,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 53
+    },
+    "remaining": {
+      "text": "27369,436,27369,436,813,ECON CRZ,0,2514"
+    }
+  }
+}

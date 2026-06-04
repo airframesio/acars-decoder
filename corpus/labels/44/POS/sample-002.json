@@ -1,0 +1,85 @@
+{
+  "spec": "labels/44/POS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "44",
+    "text": "POS02,N38171W077507,319,KJFK,KUZA,0926,0245,0327,004.6"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-44-pos",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.285 N, 77.845 W"
+        },
+        {
+          "type": "month",
+          "code": "MSG_MON",
+          "label": "Month of Year",
+          "value": "9"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "26"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "02:45:00"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "03:27:00"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KJFK"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KUZA"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "31900 feet"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 38.285,
+        "longitude": -77.845
+      },
+      "month": 9,
+      "day": 26,
+      "message_timestamp": 9900,
+      "eta_time": 12420,
+      "fuel_in_tons": 4.6,
+      "departure_icao": "KJFK",
+      "arrival_icao": "KUZA",
+      "altitude": 31900
+    },
+    "remaining": {}
+  }
+}

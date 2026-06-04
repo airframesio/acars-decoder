@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_4A_01
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["4A"]
+  preambles: ["01"]
+parse:
+  # Single multiline regex with 9 capture groups, plus state_change/temperature
+  # emission (non-canonical formatter types) and sign-stripping on altitude/temp.
+  # Whole-plugin hatch.
+  custom: label_4a_01_decode
+formatted:
+  description: "Latest New Format"
+  custom: label_4a_01_format

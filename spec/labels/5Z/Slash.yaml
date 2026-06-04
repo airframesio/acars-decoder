@@ -1,0 +1,20 @@
+spec_version: "1"
+plugin:
+  name: Label_5Z_Slash
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["5Z"]
+  preambles: ["/"]
+parse:
+  # Multi-format airline-defined downlink:
+  #   - /TXT line + remainder as free text (full decode)
+  #   - 25-entry descriptions table dispatch (B1/B3/CD/CG/CM/C3/C4/C5/C6/10/C11/DS/D3/D6/D7/EO/ET/PW/RL/R3/R4/TC/WB/W1)
+  #   - per-type branches with magic-string discriminants
+  #     (e.g. "B3 TO DATA REQ    ", "C3 GATE REQ       ")
+  #   - injects airline=United Airlines + message_type items
+  # Too many specialized branches and magic substrings for declarative variants.
+  custom: label_5z_slash_parse
+formatted:
+  description: "Airline Designated Downlink"
+  custom: label_5z_slash_format

@@ -1,0 +1,51 @@
+{
+  "spec": "labels/22/POS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "22",
+    "text": "N 370824W 760010,-------,194936,30418, ,      , ,M 42,27335  42, 107,"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-22-pos",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "37.082 N, 76.001 W"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "19:49:36"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "30418 feet"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 37.0824,
+        "longitude": -76.001
+      },
+      "message_timestamp": 71376,
+      "altitude": 30418
+    },
+    "remaining": {
+      "text": "-------, ,      , ,M 42,27335  42, 107,"
+    }
+  }
+}

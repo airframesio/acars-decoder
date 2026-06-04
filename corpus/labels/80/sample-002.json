@@ -1,0 +1,122 @@
+{
+  "spec": "labels/80",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "80",
+    "text": "3N01 POSRPT 0581/27 KIAD/MSLP .N962AV/04H 11:02\r\n/NWYP CIGAR /HDG 233/MCH 782\r\n/POS N3539.2W07937.2/FL 360/TAS 445/SAT -060\r\n/SWND 110/DWND 306/FOB N009414/ETA 14:26.0 "
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-80",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined Position Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "0581"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "27"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KIAD"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "MSLP"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "N962AV"
+        },
+        {
+          "type": "heading",
+          "code": "HDG",
+          "label": "Heading",
+          "value": "233"
+        },
+        {
+          "type": "mach",
+          "code": "MACH",
+          "label": "Mach Number",
+          "value": "0.782 mach"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "35.392 N, 79.372 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "36000 feet"
+        },
+        {
+          "type": "airspeed",
+          "code": "ASPD",
+          "label": "True Airspeed",
+          "value": "445 knots"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-60 degrees"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "9414"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "14:26:00"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "0581",
+      "day": 27,
+      "departure_icao": "KIAD",
+      "arrival_icao": "MSLP",
+      "tail": "N962AV",
+      "next_waypoint": "CIGAR",
+      "heading": 233,
+      "mach": 0.782,
+      "position": {
+        "latitude": 35.391999999999996,
+        "longitude": -79.372
+      },
+      "altitude": 36000,
+      "airspeed": 445,
+      "outside_air_temperature": -60,
+      "fuel_on_board": 9414,
+      "eta_time": 51960
+    },
+    "remaining": {
+      "text": "3N01 POSRPT/04H 11:02////SWND 110/DWND 306"
+    }
+  }
+}

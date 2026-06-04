@@ -1,0 +1,35 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 26",
+  "input": {
+    "label": "H1",
+    "text": "#MDREQLDI57CC"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Request for Load Distribution Information",
+      "items": [
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x57cc"
+        }
+      ]
+    },
+    "raw": {
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 22476
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

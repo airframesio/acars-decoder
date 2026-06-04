@@ -1,0 +1,35 @@
+{
+  "spec": "labels/H1/FLR",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "H1",
+    "text": "FLR/FR24030411230034583106FWC2 :NO DATA FROM GPS1 /IDECAM 2 ,ECAM 1 "
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-flr",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Fault Log Report",
+      "items": [
+        {
+          "type": "fault",
+          "code": "FR",
+          "label": "Fault Report",
+          "value": "FWC2 :NO DATA FROM GPS1 /IDECAM 2 ,ECAM 1 "
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1709551380,
+      "fault_message": "FWC2 :NO DATA FROM GPS1 /IDECAM 2 ,ECAM 1 "
+    },
+    "remaining": {
+      "text": "34583106"
+    }
+  }
+}

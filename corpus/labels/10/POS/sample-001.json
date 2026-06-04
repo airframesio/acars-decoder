@@ -1,0 +1,44 @@
+{
+  "spec": "labels/10/POS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "10",
+    "text": "POS082150, N 3885,W 7841,---,308,26922,  51,22290, 529,  19,-225,6"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-10-pos",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.850 N, 78.410 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "22290 feet"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 38.85,
+        "longitude": -78.41
+      },
+      "altitude": 22290
+    },
+    "remaining": {
+      "text": "POS082150,---,308,26922,  51, 529,  19,-225,6"
+    }
+  }
+}

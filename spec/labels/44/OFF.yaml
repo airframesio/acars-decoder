@@ -1,0 +1,50 @@
+spec_version: "1"
+plugin:
+  name: Label_44_OFF
+  type: text
+  decode_level: FULL
+qualifiers:
+  labels: ["44"]
+  preambles: ["00OFF01", "00OFF02", "00OFF03", "OFF01", "OFF02", "OFF03"]
+parse:
+  - { split: ",", into: data }
+  - { require_length: { var: data, min: 8 }, else: fail }
+fields:
+  - name: position
+    from: $data[1]
+    decode:
+      fn: coordinate_decimal_minutes
+      args: { style: combined, format: "NSDDMM_M_EWDDMM_M" }
+  - name: departure_icao
+    from: $data[2]
+    decode: { fn: airport }
+  - name: arrival_icao
+    from: $data[3]
+    decode: { fn: airport }
+  - name: month
+    from: $data[4]
+    decode: { fn: integer, args: { substring_start: 0, substring_length: 2 } }
+  - name: day
+    from: $data[4]
+    decode: { fn: integer, args: { substring_start: 2, substring_length: 2 } }
+  - name: off_time
+    from: $data[5]
+    decode: { fn: timestamp_hhmmss }
+  - name: eta_time
+    from: $data[6]
+    decode: { fn: timestamp_hhmmss }
+  - name: fuel_remaining
+    from: $data[7]
+    when: { not: { in: ["$data[7]", ["---.-"]] } }
+    decode: { fn: float }
+formatted:
+  description: "Off Runway Report"
+  items:
+    - { type: position, value: $position }
+    - { type: airport_origin, value: $departure_icao }
+    - { type: airport_destination, value: $arrival_icao }
+    - { type: timestamp, kind: month, value: $month }
+    - { type: timestamp, kind: day, value: $day }
+    - { type: timestamp, kind: off, value: $off_time }
+    - { type: timestamp, kind: eta, value: $eta_time }
+    - { type: fuel, kind: remaining, value: $fuel_remaining, when_present: true }

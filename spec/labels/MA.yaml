@@ -1,0 +1,19 @@
+spec_version: "1"
+plugin:
+  name: Label_MA
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["MA"]
+parse:
+  # Whole-plugin escape hatch:
+  #   - Calls MIAMCoreUtils.parse(message.text) -- ASCII85 decode, deflate, CRC checks,
+  #     ACARS PDU framing (version-dependent).
+  #   - If MIAM-decoded message has acars data with crcOk & complete & text, recursively
+  #     invokes this.decoder.decode({label, sublabel, text}) and merges raw/items/remaining.
+  #   - Decode level flips between "full" (CRC OK + complete + nested decode) and "partial".
+  # Recursive MessageDecoder use and version-dependent MIAM dispatch live in escape hatches.
+  custom: label_ma_dispatch
+formatted:
+  description: "Unknown"
+  custom: label_ma_format

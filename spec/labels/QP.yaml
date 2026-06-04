@@ -1,0 +1,19 @@
+spec_version: "1"
+plugin:
+  name: Label_QP
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["QP"]
+parse:
+  # Whole-plugin escape hatch:
+  #   - departure_icao = text[0:4], arrival_icao = text[4:8]
+  #   - out_time = HHMMSSToTod(text[8:12])  (4-char HHMM, internally padded "00")
+  #   - remaining.text = text[12:] (via ResultFormatter.unknown side effect)
+  #   - decodeLevel "full" iff remaining empty, else "partial".
+  # The OUT time formatter + remaining.text side-effect from .unknown() doesn't map cleanly
+  # to declarative formatter items, so kept as escape hatch.
+  custom: label_qp_dispatch
+formatted:
+  description: "OUT Report"
+  custom: label_qp_format

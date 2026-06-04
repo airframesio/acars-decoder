@@ -1,0 +1,69 @@
+{
+  "spec": "labels/4A",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "4A",
+    "text": "N22456E077014OSE35 ,192027370VEX36 ,192316,M46,275043309,85220111"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4a",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Latest New Format",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "22.456 N, 77.014 E"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "37000 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "OSE35@19:20:27 > VEX36@19:23:16"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-46 degrees"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 22.456,
+        "longitude": 77.014
+      },
+      "altitude": 37000,
+      "route": {
+        "waypoints": [
+          {
+            "name": "OSE35",
+            "time": 69627
+          },
+          {
+            "name": "VEX36",
+            "time": 69796
+          }
+        ]
+      },
+      "outside_air_temperature": -46
+    },
+    "remaining": {
+      "text": "275043309,85220111"
+    }
+  }
+}

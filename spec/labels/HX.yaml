@@ -1,0 +1,22 @@
+spec_version: "1"
+plugin:
+  name: Label_HX
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["HX"]
+  preambles: ["RA FMT LOCATION", "RA FMT 43"]
+parse:
+  # Whole-plugin escape hatch:
+  #   - Space-split message, dispatch on parts[2] = "LOCATION" or "43".
+  #   - LOCATION variant: parts[3]/parts[4] hold packed coords (e.g. "N4009.6" + "W07540.8").
+  #     Position computed as deg + min/60, signed by N/S and E/W. parts.slice(5) accumulated
+  #     into remaining.text joined by " ".
+  #   - 43 variant: parts[3] is departure airport, parts.slice(4) accumulated into remaining.
+  #   - Other parts[2] => decoded=false, decodeLevel=none.
+  # The packed-coord substring math + unknownArr(parts.slice(N), " ") accumulation is not
+  # cleanly expressible with current DSL primitives, so the whole plugin is a hatch.
+  custom: label_hx_dispatch
+formatted:
+  description: "Undelivered Uplink Report"
+  custom: label_hx_format

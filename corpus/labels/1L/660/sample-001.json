@@ -1,0 +1,64 @@
+{
+  "spec": "labels/1L/660",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "1L",
+    "text": "000000660N50442E005566,100444359SOG-06 ,,--- 21-,83617441"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-1l-660",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "50.737 N, 5.943 E"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "10:04:44"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "35900 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "SOG-06"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 50.736666666666665,
+        "longitude": 5.943333333333333
+      },
+      "message_timestamp": 36284,
+      "altitude": 35900,
+      "route": {
+        "waypoints": [
+          {
+            "name": "SOG-06"
+          }
+        ]
+      }
+    },
+    "remaining": {
+      "text": ",--- 21-,83617441"
+    }
+  }
+}

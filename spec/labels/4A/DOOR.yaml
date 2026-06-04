@@ -1,0 +1,15 @@
+spec_version: "1"
+plugin:
+  name: Label_4A_DOOR
+  type: text
+  decode_level: FULL
+qualifiers:
+  labels: ["4A"]
+  preambles: ["DOOR"]
+parse:
+  # Imperative: split on space, then split fields[0] on '/' to get door name,
+  # emit door_event (non-canonical formatter type). Done as whole-plugin hatch.
+  custom: label_4a_door_decode
+formatted:
+  description: "Latest New Format"
+  custom: label_4a_door_format

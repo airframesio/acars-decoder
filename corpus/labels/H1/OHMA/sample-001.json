@@ -1,0 +1,32 @@
+{
+  "spec": "labels/H1/OHMA",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "H1",
+    "text": "OHMAeJy1Ul2PojAU/SubPiuhlA/ljQHMkAElgDuTXTakqx2nCaAp1WQz8b/vFXTGEcw+LX26veece88p7+jARMO3NbKRpqhohCrWNHTDoH7P0arkrJbBOkd2jhaPkZOjUX6BeFSytqGpmj5WJ2NVyzC2ydTWiWJN9B8teE0lBRSIUS52Ja1ZA+VPqCXl5Xxf/WaiVZkTyzD0bsB2zcr2si1fS755kxfamu2okHvBHNDbCukCuMU+PSzSFk+F4Ada9vqLxLvSuxq9dELDtK56IdukEqZkvOpbVG0VXIJFYnYW2QFCuqzXFm5Jm+YcG2xLKyYFX32CB3V70XXQPzv2EX8R+Vn3BrxuJK1XH2HW9KxYyRgWv5gDJCSx72CnOH8dR1/RLhXl9+4f6MF1xRhgJPuSNUzeI1nE+hY5L7ZtO4/RmFjRQwj+4MNqCJf4pNhp/reosggXbhjEke8Fzrxwk2WQ+kUSZ8U/wgNi5kcxhpy9G2PENBVtqt+kcSZoQ4QJViyTDBO8YDYb4GBDwQTfUOIIx4mfpsvEH1xMhzHmfc7gbkTR1R7HcZ9m4eL53m5YmeAhTjA/jbrDMhULT08P3p0jOv4FG0dfvQ=="
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-ohma",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "OHMA Message",
+      "items": [
+        {
+          "type": "ohma",
+          "code": "OHMA",
+          "label": "OHMA Downlink",
+          "value": "{\n  \"clientId\": \"OHMA\",\n  \"messageDate\": \"2024-08-02T11:39:43.784Z\",\n  \"data\": {\n    \"airplanes\": [\n      {\n        \"tailNumber\": \"N37554\",\n        \"model\": \"\",\n        \"flights\": [\n          {\n            \"departureAirportCode\": \"KBOS\",\n            \"arrivalAirportCode\": \"KORD\",\n            \"flightNumber\": \"UAL567\",\n            \"flightLegStartTime\": \"2024-08-02T10:01:33.736Z\",\n            \"events\": [\n              {\n                \"eventClassId\": \"parametric\",\n                \"eventTime\": \"2024-08-02T11:39:43.784Z\",\n                \"eventType\": \"OHMA_META\",\n                \"instances\": [\n                  {\n                    \"name\": \"mtPartNumber\",\n                    \"values\": [\n                      \"\"\n                    ]\n                  },\n                  {\n                    \"name\": \"mtCarlVersion\",\n                    \"values\": [\n                      \"4.5\"\n                    ]\n                  },\n                  {\n                    \"name\": \"mtRulesetVersion\",\n                    \"values\": [\n                      \"737 MAX:::AHM-37MBL8-000010L:::1\"\n                    ]\n                  }\n                ]\n              },\n              {\n                \"eventClassId\": \"parametric\",\n                \"eventTime\": \"2024-08-02T11:39:43.784Z\",\n                \"eventType\": \"TM1_CLIPMEDIAN_CRUISE_RPT_A\",\n                \"instances\": [\n                  {\n                    \"name\": \"TM1TEMP1_MED\",\n                    \"values\": [\n                      366.294\n                    ]\n                  },\n                  {\n                    \"name\": \"TM1TEMP2_MED\",\n                    \"values\": [\n                      381.763\n                    ]\n                  },\n                  {\n                    \"name\": \"TM1TEMPDIFF_MED\",\n                    \"values\": [\n                      15.131\n                    ]\n                  },\n                  {\n                    \"name\": \"PM1PRESSURE1_MED\",\n                    \"values\": [\n                      34.766\n                    ]\n                  },\n                  {\n                    \"name\": \"PM1PRESSURE2_MED\",\n                    \"values\": [\n                      33.406\n                    ]\n                  },\n                  {\n                    \"name\": \"PACKFLOWDIFF_MED\",\n                    \"values\": [\n                      11.816\n                    ]\n                  },\n                  {\n                    \"name\": \"PACKINPRESDIFF_MED\",\n                    \"values\": [\n                      6.719\n                    ]\n                  }\n                ]\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}"
+        }
+      ]
+    },
+    "raw": {
+      "ohma": "{\"version\":\"2.0\",\"message\":\"{\\\"clientId\\\":\\\"OHMA\\\",\\\"messageDate\\\":\\\"2024-08-02T11:39:43.784Z\\\",\\\"data\\\":{\\\"airplanes\\\":[{\\\"tailNumber\\\":\\\"N37554\\\",\\\"model\\\":\\\"\\\",\\\"flights\\\":[{\\\"departureAirportCode\\\":\\\"KBOS\\\",\\\"arrivalAirportCode\\\":\\\"KORD\\\",\\\"flightNumber\\\":\\\"UAL567\\\",\\\"flightLegStartTime\\\":\\\"2024-08-02T10:01:33.736Z\\\",\\\"events\\\":[{\\\"eventClassId\\\":\\\"parametric\\\",\\\"eventTime\\\":\\\"2024-08-02T11:39:43.784Z\\\",\\\"eventType\\\":\\\"OHMA_META\\\",\\\"instances\\\":[{\\\"name\\\":\\\"mtPartNumber\\\",\\\"values\\\":[\\\"\\\"]},{\\\"name\\\":\\\"mtCarlVersion\\\",\\\"values\\\":[\\\"4.5\\\"]},{\\\"name\\\":\\\"mtRulesetVersion\\\",\\\"values\\\":[\\\"737 MAX:::AHM-37MBL8-000010L:::1\\\"]}]},{\\\"eventClassId\\\":\\\"parametric\\\",\\\"eventTime\\\":\\\"2024-08-02T11:39:43.784Z\\\",\\\"eventType\\\":\\\"TM1_CLIPMEDIAN_CRUISE_RPT_A\\\",\\\"instances\\\":[{\\\"name\\\":\\\"TM1TEMP1_MED\\\",\\\"values\\\":[366.294]},{\\\"name\\\":\\\"TM1TEMP2_MED\\\",\\\"values\\\":[381.763]},{\\\"name\\\":\\\"TM1TEMPDIFF_MED\\\",\\\"values\\\":[15.131]},{\\\"name\\\":\\\"PM1PRESSURE1_MED\\\",\\\"values\\\":[34.766]},{\\\"name\\\":\\\"PM1PRESSURE2_MED\\\",\\\"values\\\":[33.406]},{\\\"name\\\":\\\"PACKFLOWDIFF_MED\\\",\\\"values\\\":[11.816]},{\\\"name\\\":\\\"PACKINPRESDIFF_MED\\\",\\\"values\\\":[6.719]}]}]}]}]}}\"}"
+    },
+    "remaining": {}
+  }
+}

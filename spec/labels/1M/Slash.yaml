@@ -1,0 +1,17 @@
+spec_version: "1"
+plugin:
+  name: Label_1M_Slash
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["1M"]
+  preambles: ["/"]
+parse:
+  # Pure escape hatch: split on slash OR newline, positional access to results
+  # 0..9 for flight number / dep / arr / alternate / arrival runway / ETA,
+  # ETA computed from results[7] + yymmdd date with swapped DDMMYY order,
+  # arrival runway sliced from arrival ICAO prefix.
+  custom: label_1m_slash_decode
+formatted:
+  description: "ETA Report"
+  custom: label_1m_slash_format

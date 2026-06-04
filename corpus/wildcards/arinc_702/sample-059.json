@@ -1,0 +1,80 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 59",
+  "input": {
+    "label": "H1",
+    "text": "POSN38531W078000,CSN-01,112309,310,CYN-02,114151,ACK,M40,26067,22479226"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.885 N, 78.000 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "31000 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "CSN-01@11:23:09 > CYN-02@11:41:51 > ACK"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-40 degrees"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x9226"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 38.885,
+        "longitude": -78
+      },
+      "altitude": 31000,
+      "route": {
+        "waypoints": [
+          {
+            "name": "CSN-01",
+            "time": 40989
+          },
+          {
+            "name": "CYN-02",
+            "time": 42111
+          },
+          {
+            "name": "ACK"
+          }
+        ]
+      },
+      "outside_air_temperature": -40,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 37414
+    },
+    "remaining": {
+      "text": "26067,2247"
+    }
+  }
+}

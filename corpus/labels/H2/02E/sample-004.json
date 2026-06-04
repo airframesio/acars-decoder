@@ -1,0 +1,25 @@
+{
+  "spec": "labels/H2/02E",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "H2",
+    "text": "02E20INVALID MESSAGE TEXT"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-h2-02e",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Weather Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "02E20INVALID MESSAGE TEXT"
+    }
+  }
+}

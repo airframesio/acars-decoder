@@ -1,0 +1,86 @@
+{
+  "spec": "labels/44/Slash",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "44",
+    "text": " /FB ----/AD KTPA/N 27.971,W 82.558,JBU91,FLS03,KTPA,53988,53988,----,1943,1943,1,1L,VIS1L,0,2,0,,"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-44-slash",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Flight Briefing",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "27.971 N, 82.558 W"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "JBU91"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KTPA"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "YYYY-MM-03T06:38:08"
+        },
+        {
+          "type": "fuel_remaining",
+          "code": " FUEL_REM",
+          "label": "Fuel Remaining",
+          "value": "1943"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "1L"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Arrival Procedure",
+          "value": "VIS1L"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 27.971,
+        "longitude": -82.558
+      },
+      "flight_number": "JBU91",
+      "arrival_icao": "KTPA",
+      "eta_time": 196688,
+      "fuel_remaining": 1943,
+      "arrival_runway": "1L",
+      "procedures": [
+        {
+          "type": "arrival",
+          "route": {
+            "name": "VIS1L"
+          }
+        }
+      ]
+    },
+    "remaining": {
+      "text": " /FB ----,FLS03,53988,----,1943,1,0,2,0,,"
+    }
+  }
+}

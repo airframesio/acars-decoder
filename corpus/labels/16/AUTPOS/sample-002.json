@@ -1,0 +1,114 @@
+{
+  "spec": "labels/16/AUTPOS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "16",
+    "text": "289142/AUTPOS/LLD N395538 W0753341 \r\n/ALT 35000/SAT -057\r\n/WND 239065/TAT -027/TAS 476/CRZ 836\r\n/FOB 107600\r\n/DAT 260228/TIM 132714"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-16-autpos",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "28"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "9142"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.927 N, 75.561 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "35000 feet"
+        },
+        {
+          "type": "wind_data",
+          "code": "WIND",
+          "label": "Wind Data",
+          "value": "POSITION at FL350: 239° at 65kt"
+        },
+        {
+          "type": "temperature",
+          "code": "TATEMP",
+          "label": "Total Air Temperature (C)",
+          "value": "-27 degrees"
+        },
+        {
+          "type": "airspeed",
+          "code": "ASPD",
+          "label": "True Airspeed",
+          "value": "476 knots"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-57 degrees"
+        },
+        {
+          "type": "mach",
+          "code": "MACH",
+          "label": "Mach Number",
+          "value": "0.836 mach"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "107600"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "2026-02-28T13:27:14Z"
+        }
+      ]
+    },
+    "raw": {
+      "day": 28,
+      "flight_number": "9142",
+      "position": {
+        "latitude": 39.92722222222222,
+        "longitude": -75.56138888888889
+      },
+      "altitude": 35000,
+      "wind_data": [
+        {
+          "waypoint": {
+            "name": "POSITION"
+          },
+          "flightLevel": 350,
+          "windDirection": 239,
+          "windSpeed": 65
+        }
+      ],
+      "total_air_temperature": -27,
+      "airspeed": 476,
+      "outside_air_temperature": -57,
+      "mach": 0.836,
+      "fuel_on_board": 107600,
+      "message_timestamp": 1772285234
+    },
+    "remaining": {}
+  }
+}

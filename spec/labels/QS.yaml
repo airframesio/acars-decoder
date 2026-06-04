@@ -1,0 +1,17 @@
+spec_version: "1"
+plugin:
+  name: Label_QS
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["QS"]
+parse:
+  # Whole-plugin escape hatch (mirrors QP, but emits IN time instead of OUT):
+  #   - departure_icao = text[0:4], arrival_icao = text[4:8]
+  #   - in_time = HHMMSSToTod(text[8:12])
+  #   - remaining.text = text[12:]
+  #   - decodeLevel "full" iff remaining empty, else "partial".
+  custom: label_qs_dispatch
+formatted:
+  description: "IN Report"
+  custom: label_qs_format

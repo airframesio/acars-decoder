@@ -1,0 +1,63 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 31",
+  "input": {
+    "label": "H1",
+    "text": "PRG/LR,000855,SWA786,KBWI,KBOS,04R,25,1285,1192,93,1284,P4,001004,8,141K,D713,000950,2,291483"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Progress Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "SWA786"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KBWI"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KBOS"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "04R"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x1483"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "SWA786",
+      "departure_icao": "KBWI",
+      "arrival_icao": "KBOS",
+      "arrival_runway": "04R",
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 5251
+    },
+    "remaining": {
+      "text": "000855,25,1285,1192,93,1284,P4,001004,8,141K,D713,000950,2,29"
+    }
+  }
+}

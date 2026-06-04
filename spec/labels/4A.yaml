@@ -1,0 +1,20 @@
+spec_version: "1"
+plugin:
+  name: Label_4A
+  type: text
+  docs: https://github.com/airframesio/acars-message-documentation/blob/main/research/4A/README.md
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["4A"]
+parse:
+  # Whole-plugin hatch. The original Label_4A.ts has three variants selected
+  # by field-count + first-char inspection, with each variant doing inline
+  # ResultFormatter calls (position via substring slicing, route with two
+  # waypoints, temperature, eta, altitude, callsign, tail, airports). The
+  # field-level + format-level decomposition the spec previously attempted
+  # didn't have a clean contract for formatter-owning-raw, so the hatch
+  # form is the right shape here.
+  custom: label_4a_dispatch
+formatted:
+  description: "Latest New Format"
+  custom: label_4a_format

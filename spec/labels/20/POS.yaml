@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_20_POS
+  type: text
+  decode_level: FULL
+qualifiers:
+  labels: ["20"]
+  preambles: ["POS"]
+parse:
+  # Pure escape hatch: preamble preserved to raw, branches on 11-field vs
+  # 5-field count, both extract position from field[0]; behavior tracked
+  # byte-for-byte against TS source.
+  custom: label_20_pos_decode
+formatted:
+  description: "Position Report"
+  custom: label_20_pos_format

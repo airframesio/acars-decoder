@@ -1,0 +1,92 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 27",
+  "input": {
+    "label": "H1",
+    "text": "INI/ID70045B,RCH2050,AJM363201271/MR2,000/AFKDOV,KBHM/TD271115,131545EE"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Initial Report",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "70045B"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "RCH2050"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 2
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ_RESP",
+          "label": "Sequence Response",
+          "value": 0
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KDOV"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KBHM"
+        },
+        {
+          "type": "ptd",
+          "code": "ptd",
+          "label": "Planned Departure Time",
+          "value": "YYYY-MM-27T11:15:00Z"
+        },
+        {
+          "type": "etd",
+          "code": "etd",
+          "label": "Estimated Departure Time",
+          "value": "13:15"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x45ee"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "70045B",
+      "flight_number": "RCH2050",
+      "mission_number": "AJM363201271",
+      "sequence_number": 2,
+      "sequence_response": 0,
+      "departure_icao": "KDOV",
+      "arrival_icao": "KBHM",
+      "planned_departure_time": "271115",
+      "estimated_departure_time": "1315",
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 17902
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

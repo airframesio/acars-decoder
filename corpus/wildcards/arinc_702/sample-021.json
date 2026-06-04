@@ -1,0 +1,79 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 21",
+  "input": {
+    "label": "1J",
+    "text": "M74AMC4086FTX/ID50007B,RCH4086,ABB02R70E037/DC10022025,011728/MR049,/FXGOOD EVENING PLEASE PASS US THE SUPER BOWL SCORE WHEN ABLE. THANK YOU/FB1791/VR0328D70"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Free Text",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "50007B"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "RCH4086"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 49
+        },
+        {
+          "type": "text",
+          "code": "TEXT",
+          "label": "Text Message",
+          "value": "GOOD EVENING PLEASE PASS US THE SUPER BOWL SCORE WHEN ABLE. THANK YOU"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "1791"
+        },
+        {
+          "type": "version",
+          "code": "VERSION",
+          "label": "Message Version",
+          "value": "v3.2"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x8d70"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "50007B",
+      "flight_number": "RCH4086",
+      "mission_number": "ABB02R70E037",
+      "message_timestamp": 1739150248,
+      "sequence_number": 49,
+      "text": "GOOD EVENING PLEASE PASS US THE SUPER BOWL SCORE WHEN ABLE. THANK YOU",
+      "fuel_on_board": 1791,
+      "version": 3.2,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 36208
+    },
+    "remaining": {
+      "text": "M74/"
+    }
+  }
+}

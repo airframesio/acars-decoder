@@ -1,0 +1,100 @@
+{
+  "spec": "labels/80",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "80",
+    "text": "3N01 POSRPT 5891/04 KIAH/MMGL .XA-VOI\r\n/POS N29395W095133/ALT +15608/MCH 558/FOB 0100/ETA 0410"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-80",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined Position Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "5891"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "4"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KIAH"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "MMGL"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "XA-VOI"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "29.395 N, 95.133 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "15608 feet"
+        },
+        {
+          "type": "mach",
+          "code": "MACH",
+          "label": "Mach Number",
+          "value": "0.558 mach"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "100"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "04:10:00"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "5891",
+      "day": 4,
+      "departure_icao": "KIAH",
+      "arrival_icao": "MMGL",
+      "tail": "XA-VOI",
+      "position": {
+        "latitude": 29.395,
+        "longitude": -95.133
+      },
+      "altitude": 15608,
+      "mach": 0.558,
+      "fuel_on_board": 100,
+      "eta_time": 15000
+    },
+    "remaining": {
+      "text": "3N01 POSRPT/"
+    }
+  }
+}

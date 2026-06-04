@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_12_POS
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["12"]
+  preambles: ["POS"]
+parse:
+  # Pure escape hatch: 8-char lat / 8-char lon substring DMS extraction, "FOB"
+  # and "ETA" prefix stripping, currentFuel + eta formatters not in DSL,
+  # interleaved unknown calls with array slices.
+  custom: label_12_pos_decode
+formatted:
+  description: "Position Report"
+  custom: label_12_pos_format

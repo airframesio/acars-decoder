@@ -1,0 +1,58 @@
+{
+  "spec": "labels/2P/FM3",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "2P",
+    "text": "FM3 133818,1607,N 45.206,E 17.726,34030, 440,98"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-2p-fm3",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Flight Report",
+      "items": [
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "13:38:18"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "16:07:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "45.206 N, 17.726 E"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "34030 feet"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 49098,
+      "eta_time": 58020,
+      "position": {
+        "latitude": 45.206,
+        "longitude": 17.726
+      },
+      "altitude": 34030
+    },
+    "remaining": {
+      "text": " 440,98"
+    }
+  }
+}

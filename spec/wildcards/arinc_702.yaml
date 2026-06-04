@@ -1,0 +1,15 @@
+spec_version: "1"
+plugin:
+  name: ARINC_702
+  type: text
+  docs: https://github.com/airframesio/acars-message-documentation/blob/main/research/ARINC_702.md
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["*"]
+parse:
+  # Pure escape hatch: heuristic offset computation, fallback chains, and
+  # recursive H1 message decoding all live in hand-written per-language code.
+  custom: arinc_702_dispatch
+formatted:
+  description: "ARINC 702 Message"
+  custom: arinc_702_format

@@ -1,0 +1,48 @@
+{
+  "spec": "labels/QQ",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "QQ",
+    "text": "CYOWKMEM0058/OFFRPT/090155"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-qq",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "OFF Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "CYOW"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KMEM"
+        },
+        {
+          "type": "time",
+          "code": "OFF",
+          "label": "Takeoff Time",
+          "value": "00:58:00"
+        }
+      ]
+    },
+    "raw": {
+      "departure_icao": "CYOW",
+      "arrival_icao": "KMEM",
+      "off_time": 3480
+    },
+    "remaining": {
+      "text": "/OFFRPT/090155"
+    }
+  }
+}

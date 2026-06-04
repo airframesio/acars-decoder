@@ -1,0 +1,153 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 79",
+  "input": {
+    "label": "H1",
+    "text": "#M1BFPN/RI:DA:KJFK:AA:KPHX:CR:JFKPHX20..KG701..KG702..KP702..KP703..KD601..KD602..PUB..ALS.J102.GUP:A:EAGUL6.GUP:F:HOMRR90E1"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Flight Plan",
+      "items": [
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Inactive"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KJFK"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KPHX"
+        },
+        {
+          "type": "company_route",
+          "code": "CR",
+          "label": "Company Route",
+          "value": "JFKPHX20: >> KG701 >> KG702 >> KP702 >> KP703 >> KD601 >> KD602 >> PUB >> ALS > J102 > GUP"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Arrival Procedure",
+          "value": "EAGUL6 starting at GUP"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "HOMRR"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x90e1"
+        }
+      ]
+    },
+    "raw": {
+      "route_status": "RI",
+      "departure_icao": "KJFK",
+      "arrival_icao": "KPHX",
+      "company_route": {
+        "name": "JFKPHX20",
+        "waypoints": [
+          {
+            "name": ""
+          },
+          {
+            "name": "KG701"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "KG702"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "KP702"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "KP703"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "KD601"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "KD602"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "PUB"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "ALS"
+          },
+          {
+            "name": "J102"
+          },
+          {
+            "name": "GUP"
+          }
+        ]
+      },
+      "procedures": [
+        {
+          "type": "arrival",
+          "route": {
+            "name": "EAGUL6",
+            "waypoints": [
+              {
+                "name": "GUP"
+              }
+            ]
+          }
+        }
+      ],
+      "route": {
+        "waypoints": [
+          {
+            "name": "HOMRR"
+          }
+        ]
+      },
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 37089
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

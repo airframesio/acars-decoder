@@ -1,0 +1,62 @@
+{
+  "spec": "labels/16/POSA1",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "16",
+    "text": "POSA1N38843W 78790,RONZZ  ,005159,390,RAMAY  ,010055,,*****,*****, 744,   0"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-16-posa1",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.843 N, 78.790 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "39000 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "RONZZ@00:51:59 > RAMAY@01:00:55"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 38.843,
+        "longitude": -78.79
+      },
+      "altitude": 39000,
+      "route": {
+        "waypoints": [
+          {
+            "name": "RONZZ",
+            "time": 3119
+          },
+          {
+            "name": "RAMAY",
+            "time": 3655
+          }
+        ]
+      }
+    },
+    "remaining": {
+      "text": ",*****,*****, 744,   0"
+    }
+  }
+}

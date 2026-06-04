@@ -1,0 +1,148 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 77",
+  "input": {
+    "label": "H1",
+    "text": "FPN/TS155631,170224/SN155631/RP:DA:PHNL:AA:KASE:D:MKK5.KOLEA:F:KOLEA,N22354W155133..CLUTS,N23002W154393.R465.CINNY,N36109W124456..OAL,N38002W117462.J58.ILC,N38150W114237..EYELO,N38455W110469..SAKES,N38500W110163.J80.DBL,N39264W106537F5E1"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Flight Plan",
+      "items": [
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Planned"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "PHNL"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KASE"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Departure Procedure",
+          "value": "MKK5 starting at KOLEA"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "KOLEA(22.590 N, 155.222 W) >> CLUTS(23.003 N, 154.655 W) > R465 > CINNY(36.182 N, 124.760 W) >> OAL(38.003 N, 117.770 W) > J58 > ILC(38.250 N, 114.395 W) >> EYELO(38.758 N, 110.782 W) >> SAKES(38.833 N, 110.272 W) > J80 > DBL(39.440 N, 106.895 W)"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xf5e1"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1708185391,
+      "serial_number": "155631",
+      "route_status": "RP",
+      "departure_icao": "PHNL",
+      "arrival_icao": "KASE",
+      "procedures": [
+        {
+          "type": "departure",
+          "route": {
+            "name": "MKK5",
+            "waypoints": [
+              {
+                "name": "KOLEA"
+              }
+            ]
+          }
+        }
+      ],
+      "route": {
+        "waypoints": [
+          {
+            "name": "KOLEA",
+            "latitude": 22.59,
+            "longitude": -155.22166666666666
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "CLUTS",
+            "latitude": 23.003333333333334,
+            "longitude": -154.655
+          },
+          {
+            "name": "R465"
+          },
+          {
+            "name": "CINNY",
+            "latitude": 36.181666666666665,
+            "longitude": -124.76
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "OAL",
+            "latitude": 38.00333333333333,
+            "longitude": -117.77
+          },
+          {
+            "name": "J58"
+          },
+          {
+            "name": "ILC",
+            "latitude": 38.25,
+            "longitude": -114.395
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "EYELO",
+            "latitude": 38.75833333333333,
+            "longitude": -110.78166666666667
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "SAKES",
+            "latitude": 38.833333333333336,
+            "longitude": -110.27166666666666
+          },
+          {
+            "name": "J80"
+          },
+          {
+            "name": "DBL",
+            "latitude": 39.44,
+            "longitude": -106.895
+          }
+        ]
+      },
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 62945
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

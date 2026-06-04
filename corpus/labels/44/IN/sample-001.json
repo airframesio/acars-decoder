@@ -1,0 +1,70 @@
+{
+  "spec": "labels/44/IN",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "44",
+    "text": "IN01,N33528W084181,KCLT,KPDK,1106,0045,---.-"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-44-in",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "In Gate Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "33.880 N, 84.302 W"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KCLT"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KPDK"
+        },
+        {
+          "type": "month",
+          "code": "MSG_MON",
+          "label": "Month of Year",
+          "value": "11"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "6"
+        },
+        {
+          "type": "time",
+          "code": "IN",
+          "label": "In Gate Time",
+          "value": "00:45:00"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 33.88,
+        "longitude": -84.30166666666666
+      },
+      "departure_icao": "KCLT",
+      "arrival_icao": "KPDK",
+      "month": 11,
+      "day": 6,
+      "in_time": 2700
+    },
+    "remaining": {}
+  }
+}

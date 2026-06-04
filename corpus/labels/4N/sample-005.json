@@ -1,0 +1,87 @@
+{
+  "spec": "labels/4N",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 5",
+  "input": {
+    "label": "4N",
+    "text": "285,B,69005074-507,10/12,+36.081,-094.810,35014,002.3,ELP,SDF,SDF,17R/,17L/,0,0,,,,,,0,0,0,0,1,,,,,247.0,014.2,261.2,421A"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4n",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "36.081 N, 94.810 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "35014 feet"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "ELP"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "SDF"
+        },
+        {
+          "type": "icao",
+          "code": "ALT_DST",
+          "label": "Alternate Destination",
+          "value": "SDF"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "17R"
+        },
+        {
+          "type": "runway",
+          "code": "ALT_ARWY",
+          "label": "Alternate Runway",
+          "value": "17L"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x421a"
+        }
+      ]
+    },
+    "raw": {
+      "date": "10/12",
+      "position": {
+        "latitude": 36.081,
+        "longitude": -94.81
+      },
+      "altitude": 35014,
+      "departure_icao": "ELP",
+      "arrival_icao": "SDF",
+      "alternate_icao": "SDF",
+      "arrival_runway": "17R",
+      "alternate_runway": "17L",
+      "checksum": 16922
+    },
+    "remaining": {
+      "text": "B,69005074-507,002.3,0,0,0,0,0,0,1,247.0,014.2,261.2"
+    }
+  }
+}

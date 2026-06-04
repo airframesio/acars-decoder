@@ -1,0 +1,17 @@
+spec_version: "1"
+plugin:
+  name: Label_16_Honeywell
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["16"]
+  preambles: ["(2"]
+parse:
+  # Pure escape hatch: bracket-stripped session ID + decimal-minutes coords,
+  # then a marker-dispatch at offset 17: '-' selects waypoint mode (variable
+  # 1 or 2 waypoints), else route mode (departure/arrival airports). Trailing
+  # 2-char phase tag preserved as unknown.
+  custom: label_16_honeywell_decode
+formatted:
+  description: "Position Report"
+  custom: label_16_honeywell_format

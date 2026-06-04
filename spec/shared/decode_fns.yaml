@@ -1,0 +1,94 @@
+# Canonical semantics of named decode functions referenced from plugin specs.
+# Implementations live in runtimes/<lang>/. This file documents the contract.
+#
+# Source-of-truth behavior matches acars-decoder-typescript/lib/utils/.
+
+version: 1
+
+coordinate:
+  description: "Single-axis or combined latitude/longitude parser."
+  args:
+    style: { type: enum, values: [single_axis, combined] }
+    axis: { type: enum, values: [latitude, longitude], when: { style: single_axis } }
+    prefix_chars: { type: array, items: string }
+    digits: { type: integer, min: 1 }
+    divisor: { type: number, min: 1 }
+    format: { type: string, when: { style: combined } }
+  reference_ts: "acars-decoder-typescript/lib/utils/coordinate_utils.ts"
+  reference_ts_inline_examples:
+    - "Label_10_POS.ts uses inline ((sign) * Number(rest)) / 100"
+
+coordinate_decimal_minutes:
+  description: "DDMM.M decimal-minute coordinate parser."
+  args:
+    style: { type: enum, values: [combined] }
+    format: { type: string }
+  reference_ts: "acars-decoder-typescript/lib/utils/coordinate_utils.ts#decodeStringCoordinatesDecimalMinutes"
+
+integer:
+  description: "Parse a substring as integer, optional multiplier."
+  args:
+    substring_start: { type: integer, default: 0 }
+    substring_length: { type: integer, optional: true }
+    multiplier: { type: number, default: 1 }
+  reference_ts: "Number(s)"
+
+float:
+  description: "Parse string as float."
+  args:
+    multiplier: { type: number, default: 1 }
+  reference_ts: "Number(s)"
+
+string:
+  description: "Pass through as string (with optional trim/case)."
+  args:
+    trim: { type: boolean, default: false }
+
+trim:
+  description: "String.trim()"
+
+uppercase: { description: "String.toUpperCase()" }
+lowercase: { description: "String.toLowerCase()" }
+
+timestamp_hhmmss:
+  description: "HHMMSS → seconds since midnight. Optional 'append' for shorter inputs."
+  args:
+    append: { type: string, optional: true, description: "appended to input before parsing (e.g. '00' to convert HHMM to HHMM00)" }
+  reference_ts: "acars-decoder-typescript/lib/DateTimeUtils.ts#convertHHMMSSToTod"
+
+timestamp_ddhhmm:
+  description: "DDHHMM → epoch-ish."
+  reference_ts: "acars-decoder-typescript/lib/DateTimeUtils.ts#convertDateTimeToEpoch"
+
+callsign:
+  description: "Normalize callsign string."
+
+tail_number:
+  description: "Normalize tail number; optional character stripping."
+  args:
+    strip_chars: { type: string, optional: true, description: "characters to remove from the result" }
+
+flight_number:
+  description: "Normalize flight number string."
+
+airport:
+  description: "ICAO airport code (4 letters typically)."
+
+altitude_feet:
+  description: "Number with feet semantics."
+
+speed_knots: { description: "Number with knots semantics." }
+heading_degrees: { description: "Number with degrees semantics." }
+fuel_kg: { description: "Number with kg semantics." }
+fuel_lb: { description: "Number with lb semantics." }
+
+hex_to_bytes:
+  description: "Hex string → byte array."
+
+json_parse:
+  description: "JSON.parse()."
+
+custom:
+  description: "Per-language native function. See ESCAPE_HATCHES.md."
+  args:
+    custom: { type: identifier, required: true }

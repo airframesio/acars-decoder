@@ -1,0 +1,57 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 94",
+  "input": {
+    "label": "H1",
+    "text": "#MDREQPOS/ID55150A,RCH892,LVZF1185C049/MR1,/AU39310"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Request for Position Report",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "55150A"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "RCH892"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 1
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x9310"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "55150A",
+      "flight_number": "RCH892",
+      "mission_number": "LVZF1185C049",
+      "sequence_number": 1,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 37648
+    },
+    "remaining": {
+      "text": "AU3"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "spec": "labels/83",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 5",
+  "input": {
+    "label": "83",
+    "text": "001PR22035539N4038.6W07427.80292500008"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-83",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "40.643 N, 74.463 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "2925 feet"
+        }
+      ]
+    },
+    "raw": {
+      "day": "22",
+      "position": {
+        "latitude": 40.64333333333333,
+        "longitude": -74.46333333333334
+      },
+      "altitude": 2925
+    },
+    "remaining": {
+      "text": "00008"
+    }
+  }
+}

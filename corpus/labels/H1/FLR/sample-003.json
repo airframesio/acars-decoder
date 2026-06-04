@@ -1,0 +1,35 @@
+{
+  "spec": "labels/H1/FLR",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "H1",
+    "text": "FLR/FR24030409560034423306RA1/IDEFCS 1 ,EFCS 2 "
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-flr",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Fault Log Report",
+      "items": [
+        {
+          "type": "fault",
+          "code": "FR",
+          "label": "Fault Report",
+          "value": "RA1/IDEFCS 1 ,EFCS 2 "
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1709546160,
+      "fault_message": "RA1/IDEFCS 1 ,EFCS 2 "
+    },
+    "remaining": {
+      "text": "34423306"
+    }
+  }
+}

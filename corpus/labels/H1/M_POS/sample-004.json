@@ -1,0 +1,25 @@
+{
+  "spec": "labels/H1/M_POS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "H1",
+    "text": "FLR/FR24030411230034583106FWC2"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-h1-m-pos",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "M-Series Periodic Position Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "FLR/FR24030411230034583106FWC2"
+    }
+  }
+}

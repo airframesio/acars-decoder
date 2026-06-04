@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_15
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["15"]
+  preambles: ["(2"]
+parse:
+  # Pure escape hatch: prefix/suffix bracket trim, two variants (short vs OFF)
+  # branched on length and substring marker, decimal-minutes coords, OFF date
+  # epoch conversion vs HHMMSS-only fallback, temperature M/P sign substitution.
+  custom: label_15_decode
+formatted:
+  description: "Position Report"
+  custom: label_15_format

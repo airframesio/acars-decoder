@@ -1,0 +1,51 @@
+{
+  "spec": "labels/15/Paren2",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "15",
+    "text": "(2N38448W 77216--- 28 20  7(Z"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-15",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.747 N, 77.360 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "2000 feet"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "7 degrees"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 38.74666666666667,
+        "longitude": -77.36
+      },
+      "altitude": 2000,
+      "outside_air_temperature": 7
+    },
+    "remaining": {
+      "text": "--- 28"
+    }
+  }
+}

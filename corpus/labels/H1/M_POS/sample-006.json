@@ -1,0 +1,26 @@
+{
+  "spec": "labels/H1/M_POS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 6",
+  "input": {
+    "label": "H1",
+    "sublabel": "DF",
+    "text": "A350,000354,1,1,TB000000/REP035,01,02;H01,035,01,02,4000,00066,.F-HREV,3,0,08,12,19,06,58,42,071/H02,KSFO LFPO,FBU711  ,S0285,S0385,S0142S0185/H03,  /A10,06,58,40,+26535,+01198,045,+0493,321723,XXXXXX,--------,0423,+0573/A11,06,58,32,+26356,+01221,041,+0502,324326,XXXXXX,--------,0424,+0614/:"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-h1-m-pos",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "M-Series Periodic Position Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "A350,000354,1,1,TB000000/REP035,01,02;H01,035,01,02,4000,00066,.F-HREV,3,0,08,12,19,06,58,42,071/H02,KSFO LFPO,FBU711  ,S0285,S0385,S0142S0185/H03,  /A10,06,58,40,+26535,+01198,045,+0493,321723,XXXXXX,--------,0423,+0573/A11,06,58,32,+26356,+01221,041,+0502,324326,XXXXXX,--------,0424,+0614/:"
+    }
+  }
+}

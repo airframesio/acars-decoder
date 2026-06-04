@@ -1,0 +1,79 @@
+{
+  "spec": "labels/2P/FM5",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "2P",
+    "text": "FM5 EIDW,OMAA,113522,1540,+45.147, +23.384,35002,116.24,502 ,36900,ETD23N ,"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-2p-fm5",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Flight Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "EIDW"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "OMAA"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "11:35:22"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "15:40:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "45.147 N, 23.384 E"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "35002 feet"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "ETD23N"
+        }
+      ]
+    },
+    "raw": {
+      "departure_icao": "EIDW",
+      "arrival_icao": "OMAA",
+      "message_timestamp": 41722,
+      "eta_time": 56400,
+      "position": {
+        "latitude": 45.147,
+        "longitude": 23.384
+      },
+      "altitude": 35002,
+      "flight_number": "ETD23N"
+    },
+    "remaining": {
+      "text": "116.24,502 ,36900,"
+    }
+  }
+}

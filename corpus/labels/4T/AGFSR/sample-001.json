@@ -1,0 +1,86 @@
+{
+  "spec": "labels/4T/AGFSR",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "4T",
+    "text": "AGFSR AC0620/07/08/YYZYHZ/0340Z/453/4435.1N07143.4W/350/ /0063/0035/ /281065/----/ /512/0240/0253/----/----"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4t-agfsr",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "AC0620"
+        },
+        {
+          "type": "day",
+          "code": "DEP_DAY",
+          "label": "Departure Day",
+          "value": "7"
+        },
+        {
+          "type": "day",
+          "code": "ARR_DAY",
+          "label": "Arrival Day",
+          "value": "8"
+        },
+        {
+          "type": "iata",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "YYZ"
+        },
+        {
+          "type": "iata",
+          "code": "DST",
+          "label": "Destination",
+          "value": "YHZ"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "03:40:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "44.585 N, 70.277 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "35000 feet"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "AC0620",
+      "departure_day": 7,
+      "arrival_day": 8,
+      "departure_iata": "YYZ",
+      "arrival_iata": "YHZ",
+      "message_timestamp": 13200,
+      "position": {
+        "latitude": 44.585,
+        "longitude": -70.27666666666667
+      },
+      "altitude": 35000
+    },
+    "remaining": {
+      "text": "453/ /0063/0035/ /281065/----/ /512/0240/0253/----/----"
+    }
+  }
+}

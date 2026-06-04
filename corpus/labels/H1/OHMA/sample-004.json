@@ -1,0 +1,25 @@
+{
+  "spec": "labels/H1/OHMA",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "H1",
+    "text": "OHMA <Invalid text>"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-h1-ohma",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "OHMA Message",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "OHMA <Invalid text>"
+    }
+  }
+}

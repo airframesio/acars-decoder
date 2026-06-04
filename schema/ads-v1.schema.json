@@ -1,0 +1,479 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://airframes.io/spec/ads-v1.schema.json",
+  "title": "Airframes Decoder Spec (ADS) v1",
+  "description": "Declarative DSL for ACARS message decoders. Codegens to TypeScript, Rust, and C.",
+  "type": "object",
+  "required": ["spec_version", "plugin", "qualifiers", "parse", "formatted"],
+  "additionalProperties": false,
+  "properties": {
+    "spec_version": {
+      "const": "1",
+      "description": "ADS spec version. Must be \"1\"."
+    },
+    "plugin": { "$ref": "#/$defs/plugin" },
+    "qualifiers": { "$ref": "#/$defs/qualifiers" },
+    "parse": { "$ref": "#/$defs/parse" },
+    "fields": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/field" },
+      "description": "Field extractions. Mutually exclusive with top-level 'variants'."
+    },
+    "variants": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/variant" },
+      "description": "Variant dispatch. Each variant has a 'when' condition and its own field list."
+    },
+    "checksum": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/checksum_algorithm" }
+    },
+    "on_checksum_fail": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "decoded": { "type": "boolean" }
+      }
+    },
+    "formatted": { "$ref": "#/$defs/formatted" }
+  },
+  "allOf": [
+    {
+      "description": "Top-level fields and variants are mutually exclusive.",
+      "not": { "required": ["fields", "variants"] }
+    }
+  ],
+
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+      "description": "Plugin or variable identifier (snake_case or PascalCase)."
+    },
+    "var_ref": {
+      "type": "string",
+      "pattern": "^\\$[A-Za-z_][A-Za-z0-9_]*(\\.[A-Za-z_][A-Za-z0-9_]*|\\[[0-9-]+(:[0-9-]+(\\.\\.[0-9-]+)?)?\\])*$",
+      "description": "A variable reference: $varname, $varname.field, $varname[N], $varname[N:M], $varname[N:M..K]. Bit-slice notation $byte[bitStart..bitEnd] permitted in bitfield contexts."
+    },
+    "value_expr": {
+      "anyOf": [
+        { "$ref": "#/$defs/var_ref" },
+        { "type": "string" },
+        { "type": "number" },
+        { "type": "boolean" },
+        { "type": "null" }
+      ],
+      "description": "A literal value or a variable reference. Strings starting with $ are interpreted as variable refs at codegen time."
+    },
+
+    "plugin": {
+      "type": "object",
+      "required": ["name", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Za-z0-9_]*$",
+          "description": "Plugin class name (PascalCase). Used verbatim in TS, snake_cased in Rust/C."
+        },
+        "type": {
+          "enum": ["text", "binary"],
+          "description": "text = string-mode parsing (split/regex); binary = byte-mode parsing (bitfields, encodings)."
+        },
+        "docs": {
+          "type": "string",
+          "format": "uri",
+          "description": "Optional URL to human-readable research docs (typically acars-message-documentation)."
+        },
+        "decode_level": {
+          "enum": ["NONE", "PARTIAL", "MESSAGE", "FULL"],
+          "default": "MESSAGE",
+          "description": "Decode-level enum matching DecoderPluginInterface.ts."
+        }
+      }
+    },
+
+    "qualifiers": {
+      "type": "object",
+      "required": ["labels"],
+      "additionalProperties": false,
+      "properties": {
+        "labels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "description": "ACARS label string. Real labels include alphanumeric (10, 4A, H1) plus punctuation forms like ':;' (Label_ColonComma). '*' is the wildcard."
+          },
+          "description": "ACARS labels to match. '*' is wildcard."
+        },
+        "preambles": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Optional preamble strings; first match wins."
+        }
+      }
+    },
+
+    "parse": {
+      "oneOf": [
+        { "$ref": "#/$defs/parse_custom" },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/parse_step" }
+        }
+      ]
+    },
+
+    "parse_custom": {
+      "type": "object",
+      "required": ["custom"],
+      "additionalProperties": false,
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/identifier",
+          "description": "Name of a per-language native function that performs the entire parse. Escape hatch."
+        }
+      }
+    },
+
+    "parse_step": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 4,
+      "oneOf": [
+        { "required": ["split"] },
+        { "required": ["regex"] },
+        { "required": ["substring"] },
+        { "required": ["require_length"] },
+        { "required": ["bitfield"] },
+        { "required": ["decode_ascii85"] },
+        { "required": ["deflate"] },
+        { "required": ["base64"] },
+        { "required": ["text_decode"] },
+        { "required": ["hex_decode"] },
+        { "required": ["concat_bits"] },
+        { "required": ["custom"] }
+      ],
+      "properties": {
+        "split": { "type": "string", "minLength": 1 },
+        "regex": { "type": "string", "minLength": 1 },
+        "substring": {
+          "type": "object",
+          "required": ["from", "start"],
+          "additionalProperties": false,
+          "properties": {
+            "from": { "$ref": "#/$defs/var_ref" },
+            "start": { "type": "integer" },
+            "length": { "type": "integer", "minimum": 0 },
+            "end": { "type": "integer" }
+          }
+        },
+        "require_length": {
+          "type": "object",
+          "required": ["var"],
+          "additionalProperties": false,
+          "properties": {
+            "var": { "$ref": "#/$defs/identifier" },
+            "equals": { "type": "integer", "minimum": 0 },
+            "min": { "type": "integer", "minimum": 0 },
+            "max": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "bitfield": {
+          "type": "object",
+          "required": ["source", "fields"],
+          "additionalProperties": false,
+          "properties": {
+            "source": { "$ref": "#/$defs/var_ref" },
+            "fields": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["name", "bits"],
+                "additionalProperties": false,
+                "properties": {
+                  "name": { "$ref": "#/$defs/identifier" },
+                  "bits": {
+                    "type": "string",
+                    "pattern": "^[0-9]+:[0-9]+$",
+                    "description": "Bit range, inclusive on both ends (e.g. \"0:3\" = bits 0..3 = 4 bits)."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "decode_ascii85": { "$ref": "#/$defs/var_ref" },
+        "deflate": {
+          "type": "object",
+          "required": ["source"],
+          "additionalProperties": false,
+          "properties": {
+            "source": { "$ref": "#/$defs/var_ref" },
+            "offset": { "type": "integer", "minimum": 0 },
+            "format": { "enum": ["raw", "zlib", "gzip"], "default": "raw" }
+          }
+        },
+        "base64": { "$ref": "#/$defs/var_ref" },
+        "text_decode": {
+          "type": "object",
+          "required": ["source"],
+          "additionalProperties": false,
+          "properties": {
+            "source": { "$ref": "#/$defs/var_ref" },
+            "encoding": { "enum": ["utf-8", "ascii", "latin1"], "default": "utf-8" }
+          }
+        },
+        "hex_decode": { "$ref": "#/$defs/var_ref" },
+        "concat_bits": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/var_ref" }
+        },
+        "custom": { "$ref": "#/$defs/identifier" },
+        "into": { "$ref": "#/$defs/identifier" },
+        "else": { "enum": ["fail"] }
+      }
+    },
+
+    "field": {
+      "type": "object",
+      "required": ["name", "from"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "$ref": "#/$defs/identifier" },
+        "from": { "$ref": "#/$defs/value_expr" },
+        "decode": { "$ref": "#/$defs/decode_call" },
+        "when": { "$ref": "#/$defs/condition" },
+        "default": { "$ref": "#/$defs/value_expr" },
+        "description": { "type": "string" }
+      }
+    },
+
+    "decode_call": {
+      "type": "object",
+      "required": ["fn"],
+      "additionalProperties": false,
+      "properties": {
+        "fn": {
+          "enum": [
+            "coordinate",
+            "coordinate_decimal_minutes",
+            "integer",
+            "float",
+            "string",
+            "trim",
+            "uppercase",
+            "lowercase",
+            "timestamp_hhmmss",
+            "timestamp_ddhhmm",
+            "hex_to_bytes",
+            "callsign",
+            "airport",
+            "tail_number",
+            "flight_number",
+            "altitude_feet",
+            "speed_knots",
+            "heading_degrees",
+            "fuel_kg",
+            "fuel_lb",
+            "json_parse",
+            "custom"
+          ]
+        },
+        "args": { "type": "object", "additionalProperties": true },
+        "custom": {
+          "$ref": "#/$defs/identifier",
+          "description": "When fn=custom: name of a per-language helper function."
+        }
+      }
+    },
+
+    "variant": {
+      "type": "object",
+      "oneOf": [
+        {
+          "required": ["when", "fields"],
+          "additionalProperties": false,
+          "properties": {
+            "when": { "$ref": "#/$defs/condition" },
+            "fields": { "type": "array", "items": { "$ref": "#/$defs/field" } },
+            "name": { "type": "string" },
+            "checksum": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/checksum_algorithm" }
+            }
+          }
+        },
+        {
+          "required": ["default"],
+          "additionalProperties": false,
+          "properties": {
+            "default": { "enum": ["fail"] }
+          }
+        }
+      ]
+    },
+
+    "condition": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "equals": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "$ref": "#/$defs/value_expr_or_call" }
+        },
+        "not_equal": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "$ref": "#/$defs/value_expr_or_call" }
+        },
+        "matches": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            { "$ref": "#/$defs/var_ref" },
+            { "type": "string" }
+          ],
+          "items": false
+        },
+        "in": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            { "$ref": "#/$defs/value_expr" },
+            { "type": "array" }
+          ],
+          "items": false
+        },
+        "all": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/condition" }
+        },
+        "any": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/condition" }
+        },
+        "not": { "$ref": "#/$defs/condition" }
+      }
+    },
+
+    "value_expr_or_call": {
+      "anyOf": [
+        { "$ref": "#/$defs/value_expr" },
+        {
+          "type": "object",
+          "description": "Computed expression — e.g. {length: $parts}",
+          "minProperties": 1,
+          "maxProperties": 1,
+          "properties": {
+            "length": { "$ref": "#/$defs/var_ref" }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+
+    "checksum_algorithm": {
+      "type": "object",
+      "required": ["algorithm", "on", "expect"],
+      "additionalProperties": false,
+      "properties": {
+        "algorithm": {
+          "enum": [
+            "ARINC_665_CRC32",
+            "ARINC_6_CRC16",
+            "CRC16_IBM_SDLC_REV",
+            "CRC16_GENIBUS"
+          ]
+        },
+        "when": { "$ref": "#/$defs/condition" },
+        "on": {
+          "type": "string",
+          "pattern": "^-?[0-9]+\\.\\.-?[0-9]+$",
+          "description": "Byte range slice notation, e.g. \"0..-4\" = all bytes except last 4."
+        },
+        "expect": {
+          "type": "string",
+          "pattern": "^(tail[0-9]+|head[0-9]+|[0-9]+\\.\\.-?[0-9]+)$",
+          "description": "Where the expected checksum value is stored."
+        }
+      }
+    },
+
+    "formatted": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["description"],
+          "additionalProperties": false,
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "Human description, may interpolate $varname."
+            },
+            "items": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/formatter_call" }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["custom"],
+          "additionalProperties": false,
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "Human-readable description used in initResult() even when items are custom."
+            },
+            "custom": {
+              "$ref": "#/$defs/identifier",
+              "description": "Escape hatch: per-language native formatter function."
+            }
+          }
+        }
+      ]
+    },
+
+    "formatter_call": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": true,
+      "properties": {
+        "type": {
+          "enum": [
+            "position",
+            "altitude",
+            "speed",
+            "heading",
+            "timestamp",
+            "callsign",
+            "flight_number",
+            "tail_number",
+            "airport_origin",
+            "airport_destination",
+            "fuel",
+            "free_text",
+            "custom"
+          ]
+        },
+        "custom": { "$ref": "#/$defs/identifier" }
+      }
+    }
+  }
+}

@@ -1,0 +1,699 @@
+import { DecodeResult } from '../DecoderPluginInterface';
+import { CoordinateUtils } from './coordinate_utils';
+import { DateTimeUtils } from '../DateTimeUtils';
+import { RouteUtils } from './route_utils';
+import { Route } from '../types/route';
+import { Wind } from '../types/wind';
+
+/**
+ * Class to format the results of common fields
+ */
+export class ResultFormatter {
+  static route(decodeResult: DecodeResult, route: Route) {
+    decodeResult.raw.route = route;
+    decodeResult.formatted.items.push({
+      type: 'aircraft_route',
+      code: 'ROUTE',
+      label: 'Aircraft Route',
+      value: RouteUtils.routeToString(route),
+    });
+  }
+
+  static state_change(decodeResult: DecodeResult, from: string, to: string) {
+    decodeResult.raw.state_change = {
+      from: from,
+      to: to,
+    };
+    from = RouteUtils.formatFlightState(from);
+    to = RouteUtils.formatFlightState(to);
+    decodeResult.formatted.items.push({
+      type: 'state_change',
+      code: 'STATE_CHANGE',
+      label: 'State Change',
+      value: `${from} -> ${to}`,
+    });
+  }
+
+  static door_event(decodeResult: DecodeResult, name: string, state: string) {
+    decodeResult.raw.door_event = {
+      door: name,
+      state: state,
+    };
+
+    decodeResult.formatted.items.push({
+      type: 'door_event',
+      code: 'DOOR',
+      label: 'Door Event',
+      value: `${name} ${state}`,
+    });
+  }
+
+  static position(
+    decodeResult: DecodeResult,
+    value: { latitude: number; longitude: number } | undefined,
+  ) {
+    if (!value || isNaN(value.latitude) || isNaN(value.longitude)) {
+      return;
+    }
+    decodeResult.raw.position = value;
+    decodeResult.formatted.items.push({
+      type: 'aircraft_position',
+      code: 'POS',
+      label: 'Aircraft Position',
+      value: CoordinateUtils.coordinateString(value),
+    });
+  }
+
+  static altitude(decodeResult: DecodeResult, value: number) {
+    if (isNaN(value)) {
+      return;
+    }
+    decodeResult.raw.altitude = value;
+    decodeResult.formatted.items.push({
+      type: 'altitude',
+      code: 'ALT',
+      label: 'Altitude',
+      value: `${decodeResult.raw.altitude} feet`,
+    });
+  }
+
+  static flightNumber(decodeResult: DecodeResult, value: string) {
+    if (value.length === 0) {
+      return;
+    }
+    decodeResult.raw.flight_number = value;
+    decodeResult.formatted.items.push({
+      type: 'flight_number',
+      code: 'FLIGHT',
+      label: 'Flight Number',
+      value: decodeResult.raw.flight_number,
+    });
+  }
+
+  static callsign(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.callsign = value;
+    decodeResult.formatted.items.push({
+      type: 'callsign',
+      code: 'CALLSIGN',
+      label: 'Callsign',
+      value: decodeResult.raw.callsign,
+    });
+  }
+
+  static departureAirport(
+    decodeResult: DecodeResult,
+    value: string,
+    type: 'IATA' | 'ICAO' = 'ICAO',
+  ) {
+    if (type === 'ICAO') {
+      decodeResult.raw.departure_icao = value;
+      decodeResult.formatted.items.push({
+        type: 'icao',
+        code: 'ORG',
+        label: 'Origin',
+        value: value,
+      });
+    } else {
+      decodeResult.raw.departure_iata = value;
+      decodeResult.formatted.items.push({
+        type: 'iata',
+        code: 'ORG',
+        label: 'Origin',
+        value: value,
+      });
+    }
+  }
+
+  static departureRunway(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.departure_runway = value;
+    decodeResult.formatted.items.push({
+      type: 'runway',
+      code: 'DEPRWY',
+      label: 'Departure Runway',
+      value: decodeResult.raw.departure_runway,
+    });
+  }
+
+  static arrivalAirport(
+    decodeResult: DecodeResult,
+    value: string,
+    type: 'IATA' | 'ICAO' = 'ICAO',
+  ) {
+    if (type === 'ICAO') {
+      decodeResult.raw.arrival_icao = value;
+      decodeResult.formatted.items.push({
+        type: 'icao',
+        code: 'DST',
+        label: 'Destination',
+        value: value,
+      });
+    } else {
+      decodeResult.raw.arrival_iata = value;
+      decodeResult.formatted.items.push({
+        type: 'iata',
+        code: 'DST',
+        label: 'Destination',
+        value: value,
+      });
+    }
+  }
+
+  static alternateAirport(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.alternate_icao = value;
+    decodeResult.formatted.items.push({
+      type: 'icao',
+      code: 'ALT_DST',
+      label: 'Alternate Destination',
+      value: decodeResult.raw.alternate_icao,
+    });
+  }
+
+  static eta(decodeResult: DecodeResult, time: number) {
+    decodeResult.raw.eta_time = time;
+    decodeResult.formatted.items.push({
+      type: 'time',
+      code: 'ETA',
+      label: 'Estimated Time of Arrival',
+      value: DateTimeUtils.timestampToString(time),
+    });
+  }
+
+  static arrivalRunway(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.arrival_runway = value;
+    decodeResult.formatted.items.push({
+      type: 'runway',
+      code: 'ARWY',
+      label: 'Arrival Runway',
+      value: decodeResult.raw.arrival_runway,
+    });
+  }
+
+  static alternateRunway(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.alternate_runway = value;
+    decodeResult.formatted.items.push({
+      type: 'runway',
+      code: 'ALT_ARWY',
+      label: 'Alternate Runway',
+      value: decodeResult.raw.alternate_runway,
+    });
+  }
+
+  static currentFuel(decodeResult: DecodeResult, value: number | undefined) {
+    // Tolerate undefined/NaN (e.g. when a spec's when-gated fuel field's
+    // guard failed and the value never got assigned). Matches the
+    // original hand-written plugins' pattern of only calling the
+    // formatter when they had a real value.
+    if (value === undefined || value === null || Number.isNaN(value)) return;
+    decodeResult.raw.fuel_on_board = value;
+    decodeResult.formatted.items.push({
+      type: 'fuel_on_board',
+      code: 'FOB',
+      label: 'Fuel On Board',
+      value: decodeResult.raw.fuel_on_board.toString(),
+    });
+  }
+
+  static burnedFuel(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.fuel_burned = value;
+    decodeResult.formatted.items.push({
+      type: 'fuel_burned',
+      code: 'FB',
+      label: 'Fuel Burned',
+      value: decodeResult.raw.fuel_burned.toString(),
+    });
+  }
+
+  static remainingFuel(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.fuel_remaining = value;
+    decodeResult.formatted.items.push({
+      type: 'fuel_remaining',
+      code: ' FUEL_REM',
+      label: 'Fuel Remaining',
+      value: decodeResult.raw.fuel_remaining.toString(),
+    });
+  }
+
+  static outFuel(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.out_fuel = value;
+    decodeResult.formatted.items.push({
+      type: 'lbs',
+      code: 'FUEL_OUT',
+      label: 'Out of Gate Fuel',
+      value: decodeResult.raw.out_fuel.toString() + ' lbs',
+    });
+  }
+
+  static offFuel(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.off_fuel = value;
+    decodeResult.formatted.items.push({
+      type: 'lbs',
+      code: 'FUEL_OFF',
+      label: 'Takeoff Fuel',
+      value: decodeResult.raw.off_fuel.toString() + ' lbs',
+    });
+  }
+
+  static onFuel(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.on_fuel = value;
+    decodeResult.formatted.items.push({
+      type: 'lbs',
+      code: 'FUEL_ON',
+      label: 'Landing Fuel',
+      value: decodeResult.raw.on_fuel.toString() + ' lbs',
+    });
+  }
+
+  static inFuel(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.in_fuel = value;
+    decodeResult.formatted.items.push({
+      type: 'lbs',
+      code: 'FUEL_IN',
+      label: 'In Gate Fuel',
+      value: decodeResult.raw.in_fuel.toString() + ' lbs',
+    });
+  }
+
+  static startFuel(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.start_fuel = value;
+    decodeResult.formatted.items.push({
+      type: 'lbs',
+      code: 'FUEL_START',
+      label: 'Start Fuel',
+      value: decodeResult.raw.start_fuel.toString() + ' lbs',
+    });
+  }
+
+  static checksumAlgorithm(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.checksum_algorithm = value;
+    // decodeResult.formatted.items.push({
+    //   type: 'message_checksum_algorithm',
+    //   code: 'CHECKSUM_ALGO',
+    //   label: 'Checksum Algorithm',
+    //   value: decodeResult.raw.checksum_algorithm,
+    // });
+  }
+
+  static checksum(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.checksum = value;
+    decodeResult.formatted.items.push({
+      type: 'message_checksum',
+      code: 'CHECKSUM',
+      label: 'Message Checksum',
+      value: '0x' + ('0000' + decodeResult.raw.checksum.toString(16)).slice(-4),
+    });
+  }
+
+  static groundspeed(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.groundspeed = value;
+    decodeResult.formatted.items.push({
+      type: 'aircraft_groundspeed',
+      code: 'GSPD',
+      label: 'Aircraft Groundspeed',
+      value: `${decodeResult.raw.groundspeed} knots`,
+    });
+  }
+
+  static airspeed(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.airspeed = value;
+    decodeResult.formatted.items.push({
+      type: 'airspeed',
+      code: 'ASPD',
+      label: 'True Airspeed',
+      value: `${decodeResult.raw.airspeed} knots`,
+    });
+  }
+
+  static mach(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.mach = value;
+    decodeResult.formatted.items.push({
+      type: 'mach',
+      code: 'MACH',
+      label: 'Mach Number',
+      value: `${decodeResult.raw.mach} mach`,
+    });
+  }
+
+  static temperature(decodeResult: DecodeResult, value: string) {
+    if (value.length === 0) {
+      return;
+    }
+    decodeResult.raw.outside_air_temperature = Number(
+      value.replace('M', '-').replace('P', '+'),
+    );
+    decodeResult.formatted.items.push({
+      type: 'outside_air_temperature',
+      code: 'OATEMP',
+      label: 'Outside Air Temperature (C)',
+      value: `${decodeResult.raw.outside_air_temperature} degrees`,
+    });
+  }
+
+  static totalAirTemp(decodeResult: DecodeResult, value: string) {
+    if (value.length === 0) {
+      return;
+    }
+    decodeResult.raw.total_air_temperature = Number(
+      value.replace('M', '-').replace('P', '+'),
+    );
+    decodeResult.formatted.items.push({
+      type: 'temperature',
+      code: 'TATEMP',
+      label: 'Total Air Temperature (C)',
+      value: `${decodeResult.raw.total_air_temperature} degrees`,
+    });
+  }
+
+  static heading(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.heading = value;
+    decodeResult.formatted.items.push({
+      type: 'heading',
+      code: 'HDG',
+      label: 'Heading',
+      value: `${decodeResult.raw.heading}`,
+    });
+  }
+
+  static tail(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.tail = value;
+    decodeResult.formatted.items.push({
+      type: 'tail',
+      code: 'TAIL',
+      label: 'Tail',
+      value: decodeResult.raw.tail,
+    });
+  }
+
+  static out(decodeResult: DecodeResult, time: number) {
+    decodeResult.raw.out_time = time;
+    decodeResult.formatted.items.push({
+      type: 'time',
+      code: 'OUT',
+      label: 'Out of Gate Time',
+      value: DateTimeUtils.timestampToString(time),
+    });
+  }
+
+  static off(decodeResult: DecodeResult, time: number) {
+    decodeResult.raw.off_time = time;
+    decodeResult.formatted.items.push({
+      type: 'time',
+      code: 'OFF',
+      label: 'Takeoff Time',
+      value: DateTimeUtils.timestampToString(time),
+    });
+  }
+
+  static on(decodeResult: DecodeResult, time: number) {
+    decodeResult.raw.on_time = time;
+    decodeResult.formatted.items.push({
+      type: 'time',
+      code: 'ON',
+      label: 'Landing Time',
+      value: DateTimeUtils.timestampToString(time),
+    });
+  }
+
+  static in(decodeResult: DecodeResult, time: number) {
+    decodeResult.raw.in_time = time;
+    decodeResult.formatted.items.push({
+      type: 'time',
+      code: 'IN',
+      label: 'In Gate Time',
+      value: DateTimeUtils.timestampToString(time),
+    });
+  }
+
+  static engineStart(decodeResult: DecodeResult, time: number) {
+    decodeResult.raw.engine_start_time = time;
+    decodeResult.formatted.items.push({
+      type: 'time',
+      code: 'ENG_START',
+      label: 'Engine Start Time',
+      value: DateTimeUtils.timestampToString(time),
+    });
+  }
+  static engineStop(decodeResult: DecodeResult, time: number) {
+    decodeResult.raw.engine_stop_time = time;
+    decodeResult.formatted.items.push({
+      type: 'time',
+      code: 'ENG_STOP',
+      label: 'Engine Stop Time',
+      value: DateTimeUtils.timestampToString(time),
+    });
+  }
+
+  static day(decodeResult: DecodeResult, day: number) {
+    decodeResult.raw.day = day;
+    decodeResult.formatted.items.push({
+      type: 'day',
+      code: 'MSG_DAY',
+      label: 'Day of Month',
+      value: `${day}`,
+    });
+  }
+
+  static month(decodeResult: DecodeResult, month: number) {
+    decodeResult.raw.month = month;
+    decodeResult.formatted.items.push({
+      type: 'month',
+      code: 'MSG_MON',
+      label: 'Month of Year',
+      value: `${month}`,
+    });
+  }
+
+  static departureDay(decodeResult: DecodeResult, day: number) {
+    decodeResult.raw.departure_day = day;
+    decodeResult.formatted.items.push({
+      type: 'day',
+      code: 'DEP_DAY',
+      label: 'Departure Day',
+      value: `${day}`,
+    });
+  }
+
+  static arrivalDay(decodeResult: DecodeResult, day: number) {
+    decodeResult.raw.arrival_day = day;
+    decodeResult.formatted.items.push({
+      type: 'day',
+      code: 'ARR_DAY',
+      label: 'Arrival Day',
+      value: `${day}`,
+    });
+  }
+
+  static text(decodeResult: DecodeResult, text: string) {
+    decodeResult.raw.text = text;
+    decodeResult.formatted.items.push({
+      type: 'text',
+      code: 'TEXT',
+      label: 'Text Message',
+      value: text,
+    });
+  }
+
+  static mac(decodeResult: DecodeResult, mac: number) {
+    decodeResult.raw.mac = mac;
+    decodeResult.formatted.items.push({
+      type: 'mac',
+      code: 'MAC',
+      label: 'Mean Aerodynamic Chord',
+      value: `${mac} %`,
+    });
+  }
+
+  static trim(decodeResult: DecodeResult, trim: number) {
+    decodeResult.raw.trim = trim;
+    decodeResult.formatted.items.push({
+      type: 'trim',
+      code: 'TRIM',
+      label: 'Trim',
+      value: `${trim} units`,
+    });
+  }
+
+  static windData(decodeResult: DecodeResult, windData: Wind[]) {
+    decodeResult.raw.wind_data = windData;
+    for (const wind of windData) {
+      let text = `${RouteUtils.waypointToString(wind.waypoint)} at FL${wind.flightLevel}: ${wind.windDirection}° at ${wind.windSpeed}kt`;
+      if (wind.temperature) {
+        text += `, ${wind.temperature.degreesC}°C at FL${wind.temperature.flightLevel}`;
+      }
+      decodeResult.formatted.items.push({
+        type: 'wind_data',
+        code: 'WIND',
+        label: 'Wind Data',
+        value: text,
+      });
+    }
+  }
+
+  static cg(
+    decodeResult: DecodeResult,
+    value: number,
+    type: 'center' | 'lower' | 'upper' = 'center',
+  ) {
+    switch (type) {
+      case 'center':
+        decodeResult.raw.center_of_gravity = value;
+        decodeResult.formatted.items.push({
+          type: 'center_of_gravity',
+          code: 'CG',
+          label: 'Center of Gravity',
+          value: `${decodeResult.raw.center_of_gravity} %`,
+        });
+        break;
+      case 'lower':
+        decodeResult.raw.cg_lower_limit = value;
+        decodeResult.formatted.items.push({
+          type: 'cg_lower_limit',
+          code: 'CG_LOWER',
+          label: 'Center of Gravity Lower Limit',
+          value: `${decodeResult.raw.cg_lower_limit} %`,
+        });
+        break;
+      case 'upper':
+        decodeResult.raw.cg_upper_limit = value;
+        decodeResult.formatted.items.push({
+          type: 'cg_upper_limit',
+          code: 'CG_UPPER',
+          label: 'Center of Gravity Upper Limit',
+          value: `${decodeResult.raw.cg_upper_limit} %`,
+        });
+        break;
+    }
+  }
+
+  static version(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.version = value;
+    decodeResult.formatted.items.push({
+      type: 'version',
+      code: 'VERSION',
+      label: 'Message Version',
+      value: `v${decodeResult.raw.version.toFixed(1)}`,
+    });
+  }
+
+  static label(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.label = value;
+    decodeResult.formatted.items.push({
+      type: 'label',
+      code: 'LABEL',
+      label: 'Message Label',
+      value: `${decodeResult.raw.label}`,
+    });
+  }
+
+  static sublabel(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.sublabel = value;
+    decodeResult.formatted.items.push({
+      type: 'sublabel',
+      code: 'SUBLABEL',
+      label: 'Message Sublabel',
+      value: `${decodeResult.raw.sublabel}`,
+    });
+  }
+
+  static requestedAltitudes(decodeResult: DecodeResult, values: number[]) {
+    decodeResult.raw.requested_alts = values;
+    decodeResult.formatted.items.push({
+      type: 'requested_altitudes',
+      code: 'REQ_ALTS',
+      label: 'Requested Altitudes',
+      value: `${decodeResult.raw.requested_alts.join(', ')}`,
+    });
+  }
+
+  static desiredAltitude(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.desired_alt = value;
+    decodeResult.formatted.items.push({
+      type: 'desired_altitude',
+      code: 'DES_ALT',
+      label: 'Desired Altitude',
+      value: `${decodeResult.raw.desired_alt}`,
+    });
+  }
+
+  static startPoint(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.start_point = value;
+    decodeResult.formatted.items.push({
+      type: 'start_point',
+      code: 'START',
+      label: 'Start Point',
+      value: `${decodeResult.raw.start_point}`,
+    });
+  }
+
+  static routeNumber(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.route_number = value;
+    decodeResult.formatted.items.push({
+      type: 'route_number',
+      code: 'RTE_NUM',
+      label: 'Route Number',
+      value: `${decodeResult.raw.route_number}`,
+    });
+  }
+
+  static flightPlan(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.flight_plan = value;
+    decodeResult.formatted.items.push({
+      type: 'flight_plan',
+      code: 'FPN',
+      label: 'Flight Plan',
+      value: `${decodeResult.raw.flight_plan}`,
+    });
+  }
+
+  static groundAddress(decodeResult: DecodeResult, value: string) {
+    decodeResult.raw.ground_address = value;
+    decodeResult.formatted.items.push({
+      type: 'ground_address',
+      code: 'GND_ADDR',
+      label: 'Ground Address',
+      value: `${decodeResult.raw.ground_address}`,
+    });
+  }
+
+  static timestamp(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.message_timestamp = value;
+    decodeResult.formatted.items.push({
+      type: 'time',
+      code: 'TIMESTAMP',
+      label: 'Message Timestamp',
+      value: DateTimeUtils.timestampToString(value),
+    });
+  }
+
+  static sequenceNumber(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.sequence_number = value;
+    decodeResult.formatted.items.push({
+      type: 'sequence',
+      code: 'SEQ',
+      label: 'Sequence Number',
+      value: String(decodeResult.raw.sequence_number),
+    });
+  }
+
+  static sequenceResponse(decodeResult: DecodeResult, value: number) {
+    decodeResult.raw.sequence_response = value;
+    decodeResult.formatted.items.push({
+      type: 'sequence',
+      code: 'SEQ_RESP',
+      label: 'Sequence Response',
+      value: String(decodeResult.raw.sequence_response),
+    });
+  }
+
+  static unknown(decodeResult: DecodeResult, value: string, sep: string = ',') {
+    if (!decodeResult.remaining.text) decodeResult.remaining.text = value;
+    else decodeResult.remaining.text += sep + value;
+  }
+
+  static unknownArr(
+    decodeResult: DecodeResult,
+    value: string[],
+    sep: string = ',',
+  ) {
+    this.unknown(decodeResult, value.join(sep), sep);
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 36",
+  "input": {
+    "label": "H1",
+    "text": "REJPWI,141147,A,70,MCRAY,97E16"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Reject for Pilot Weather Information",
+      "items": [
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x7e16"
+        }
+      ]
+    },
+    "raw": {
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 32278
+    },
+    "remaining": {
+      "text": "141147,A,70,MCRAY,9"
+    }
+  }
+}

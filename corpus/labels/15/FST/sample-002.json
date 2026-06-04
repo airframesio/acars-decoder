@@ -1,0 +1,27 @@
+{
+  "spec": "labels/15/FST",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "15",
+    "text": "INI Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-15-fst",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": []
+    },
+    "raw": {
+      "position": {}
+    },
+    "remaining": {
+      "text": "INI Bogus message"
+    }
+  }
+}

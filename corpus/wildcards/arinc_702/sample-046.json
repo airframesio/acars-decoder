@@ -1,0 +1,25 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 46",
+  "input": {
+    "label": "80",
+    "text": "3D01 RMPSRV 2501/02 LEMD/MMUN .EC-NOI\n/LAV Y/CAB Y/MEDA N/SEC N/WAS N/WAT N/FUEL N/WCHRR 01/WCHRS --/WCHRC --/UMNR --/MAAS N\nBUENAS NOCHES, ETA 0055Z Y NOS HAN PEDIDO UNA WCHR QUE AL PARECER NO TENIAMOS CONSTANCIA DE ELLA, POR SI PODEIS PEDIRLO A OPS CUN. MUCHAS GRACIAS"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Unknown",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "3D0/,3D01 RMPSRV 2501/02 LEMD/MMUN .EC-NOI\n/LAV Y/CAB Y/MEDA N/SEC N/WAS N/WAT N/FUEL N/WCHRR 01/WCHRS --/WCHRC --/UMNR --/MAAS N\nBUENAS NOCHES, ETA 0055Z Y NOS HAN PEDIDO UNA WCHR QUE AL PARECER NO TENIAMOS CONSTANCIA DE ELLA, POR SI PODEIS PEDIRLO A OPS CUN. MUCHAS GRACIAS"
+    }
+  }
+}

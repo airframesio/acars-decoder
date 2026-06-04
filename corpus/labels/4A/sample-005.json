@@ -1,0 +1,58 @@
+{
+  "spec": "labels/4A",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 5",
+  "input": {
+    "label": "4A",
+    "text": "124442,1320, 138,33467,N 41.093,W 72.677"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4a",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Latest New Format",
+      "items": [
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "12:44:42"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "13:20:00"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "33467 feet"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "41.093 N, 72.677 W"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 45882,
+      "eta_time": 48000,
+      "altitude": 33467,
+      "position": {
+        "latitude": 41.093,
+        "longitude": -72.677
+      }
+    },
+    "remaining": {
+      "text": " 138"
+    }
+  }
+}

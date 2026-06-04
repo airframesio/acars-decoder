@@ -1,0 +1,36 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 89",
+  "input": {
+    "label": "H1",
+    "text": "RESPWI/AC,5B/TS140956,070226/DI140953,140956,140956128C"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Response for Pilot Weather Information",
+      "items": [
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x128c"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1770473396,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 4748
+    },
+    "remaining": {
+      "text": "AC,5B/DI140953,140956,140956"
+    }
+  }
+}

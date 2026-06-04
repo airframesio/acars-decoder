@@ -1,0 +1,35 @@
+{
+  "spec": "labels/H1/WRN",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "H1",
+    "text": "WRN/WN24030400580028000006FUEL L TK PUMP 1 2 LO PR "
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-wrn",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Warning Message",
+      "items": [
+        {
+          "type": "warning",
+          "code": "WRN",
+          "label": "Warning Message",
+          "value": "FUEL L TK PUMP 1 2 LO PR "
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1709513880,
+      "warning_message": "FUEL L TK PUMP 1 2 LO PR "
+    },
+    "remaining": {
+      "text": "28000006"
+    }
+  }
+}

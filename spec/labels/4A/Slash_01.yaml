@@ -1,0 +1,14 @@
+spec_version: "1"
+plugin:
+  name: Label_4A_Slash_01
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["4A"]
+  preambles: ["/01"]
+parse:
+  # Trivial but writes to remaining.text (no declarative primitive for that).
+  custom: label_4a_slash_01_decode
+formatted:
+  description: "Latest New Format"
+  custom: label_4a_slash_01_format

@@ -1,0 +1,20 @@
+spec_version: "1"
+plugin:
+  name: Label_H1_ATIS
+  type: text
+  decode_level: FULL
+qualifiers:
+  # NOTE: TS qualifier returns labels=['H1','5Z'] both routed to preamble 'L'.
+  # Encoding both here so the spec qualifier matches the plugin's intent.
+  labels: ["H1", "5Z"]
+  preambles: ["L"]
+parse:
+  # Regex with 6 named groups (seq, flight, facility, code, airport, checksum)
+  # plus conditional ATIS-airport item (only when airport != facility) and
+  # hex-parsed checksum item (parseInt(checksum, 16)). The conditional
+  # second airport item and `atis_code` raw key don't fit the formatter
+  # type enum cleanly — escape hatch preserves item set and ordering.
+  custom: label_h1_atis_parse
+formatted:
+  description: "ATIS Subscription"
+  custom: label_h1_atis_format

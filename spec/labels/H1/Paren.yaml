@@ -1,0 +1,18 @@
+spec_version: "1"
+plugin:
+  name: Label_H1_Paren
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["H1"]
+  preambles: ["("]
+parse:
+  # Multi-line regex (POS-FLT LAT LON / TIMESTAMP F-ALT \n RMK/FUEL F.F M.MM)
+  # with embedded lat/lon parsers (parseLat/parseLon do deg-min decode with
+  # NSEW sign). On a successful match, also pushes a literal 'RMK' unknown
+  # marker. Fuel uses parseFloat (decimal value), mach uses parseFloat, and
+  # altitude is parsed * 100. Whole-plugin hatch for parity.
+  custom: label_h1_paren_parse
+formatted:
+  description: "Position Report"
+  custom: label_h1_paren_format

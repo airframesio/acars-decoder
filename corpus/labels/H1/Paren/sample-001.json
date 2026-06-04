@@ -1,0 +1,72 @@
+{
+  "spec": "labels/H1/Paren",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "H1",
+    "text": "(POS-KLM296  -3911N07600W/234212 F250\r\nRMK/FUEL  37.0 M0.69)"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-paren",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "KLM296"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.183 N, 76.000 W"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "23:42:12"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "25000 feet"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "37"
+        },
+        {
+          "type": "mach",
+          "code": "MACH",
+          "label": "Mach Number",
+          "value": "0.69 mach"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "KLM296",
+      "position": {
+        "latitude": 39.18333333333333,
+        "longitude": -76
+      },
+      "message_timestamp": 85332,
+      "altitude": 25000,
+      "fuel_on_board": 37,
+      "mach": 0.69
+    },
+    "remaining": {
+      "text": "RMK"
+    }
+  }
+}

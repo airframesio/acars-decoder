@@ -1,0 +1,122 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 92",
+  "input": {
+    "label": "H1",
+    "text": "REQPWI/WQ320:GEQUE.HACKS.XUB.VHP.KK60K.KIVDE.KK60E.KOVJY.KD54Y.ACZES.KD48S.DVC.KITTN.KATTS.RUMPS.OAL.INYOE.DYAMD/DQ320/SPGEQUE77CE"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Request for Pilot Weather Information",
+      "items": [
+        {
+          "type": "requested_altitudes",
+          "code": "REQ_ALTS",
+          "label": "Requested Altitudes",
+          "value": "32000"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "GEQUE > HACKS > XUB > VHP > KK60K > KIVDE > KK60E > KOVJY > KD54Y > ACZES > KD48S > DVC > KITTN > KATTS > RUMPS > OAL > INYOE > DYAMD"
+        },
+        {
+          "type": "desired_altitude",
+          "code": "DES_ALT",
+          "label": "Desired Altitude",
+          "value": "32000"
+        },
+        {
+          "type": "start_point",
+          "code": "START",
+          "label": "Start Point",
+          "value": "GEQUE"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x77ce"
+        }
+      ]
+    },
+    "raw": {
+      "requested_alts": [
+        32000
+      ],
+      "route": {
+        "waypoints": [
+          {
+            "name": "GEQUE"
+          },
+          {
+            "name": "HACKS"
+          },
+          {
+            "name": "XUB"
+          },
+          {
+            "name": "VHP"
+          },
+          {
+            "name": "KK60K"
+          },
+          {
+            "name": "KIVDE"
+          },
+          {
+            "name": "KK60E"
+          },
+          {
+            "name": "KOVJY"
+          },
+          {
+            "name": "KD54Y"
+          },
+          {
+            "name": "ACZES"
+          },
+          {
+            "name": "KD48S"
+          },
+          {
+            "name": "DVC"
+          },
+          {
+            "name": "KITTN"
+          },
+          {
+            "name": "KATTS"
+          },
+          {
+            "name": "RUMPS"
+          },
+          {
+            "name": "OAL"
+          },
+          {
+            "name": "INYOE"
+          },
+          {
+            "name": "DYAMD"
+          }
+        ]
+      },
+      "desired_alt": 32000,
+      "start_point": "GEQUE",
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 30670
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

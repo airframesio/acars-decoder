@@ -1,0 +1,82 @@
+# Reusable workflow: language repos call this to verify their committed
+# generated/ directories are up-to-date with the spec.
+#
+# Caller example (in acars-decoder-typescript/.github/workflows/ci.yml):
+#
+#   jobs:
+#     ads-up-to-date:
+#       uses: airframesio/airframes-decoder/.github/workflows/codegen-check.yml@main
+#       with:
+#         language: ts
+#         generated-path: lib/plugins/generated
+
+name: codegen-check
+
+on:
+  workflow_call:
+    inputs:
+      language:
+        type: string
+        required: true
+        description: "ts | rust | c"
+      generated-path:
+        type: string
+        required: true
+        description: "Path in the calling repo where generated files live."
+      spec-path:
+        type: string
+        default: "vendor/airframes-decoder/spec"
+      codegen-path:
+        type: string
+        default: "vendor/airframes-decoder/codegen"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      LANGUAGE: ${{ inputs.language }}
+      GENERATED_PATH: ${{ inputs.generated-path }}
+      SPEC_PATH: ${{ inputs.spec-path }}
+      CODEGEN_PATH: ${{ inputs.codegen-path }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate inputs
+        run: |
+          case "$LANGUAGE" in
+            ts|rust|c) ;;
+            *) echo "::error::language must be one of: ts, rust, c (got '$LANGUAGE')"; exit 1 ;;
+          esac
+          for var in GENERATED_PATH SPEC_PATH CODEGEN_PATH; do
+            val="${!var}"
+            case "$val" in
+              *..*|/*|*$'\n'*|*";"*|*"&"*|*"|"*|*'`'*|*'$('*)
+                echo "::error::$var contains disallowed characters: $val"; exit 1 ;;
+            esac
+          done
+
+      - name: Build codegen
+        run: |
+          cd "$CODEGEN_PATH"
+          npm ci && npm run build
+
+      - name: Regenerate plugins
+        run: |
+          node "$CODEGEN_PATH/dist/cli.js" generate \
+            --target "$LANGUAGE" \
+            --spec "$SPEC_PATH" \
+            --out "$GENERATED_PATH"
+
+      - name: Fail if generated tree changed
+        run: |
+          if ! git diff --quiet -- "$GENERATED_PATH"; then
+            echo "::error::generated/ is out of date. Run ads-gen and commit the changes."
+            git diff --stat -- "$GENERATED_PATH"
+            exit 1
+          fi

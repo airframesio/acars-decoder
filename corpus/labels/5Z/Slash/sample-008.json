@@ -1,0 +1,25 @@
+{
+  "spec": "labels/5Z/Slash",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 8",
+  "input": {
+    "label": "5Z",
+    "text": "/ Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-5z-slash",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Airline Designated Downlink",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "/ Bogus message"
+    }
+  }
+}

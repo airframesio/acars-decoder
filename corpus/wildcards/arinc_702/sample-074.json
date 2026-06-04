@@ -1,0 +1,96 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 74",
+  "input": {
+    "label": "H1",
+    "text": "FPN/FNUAL1187/RP:DA:KSFO:AA:KPHX:F:KAYEX,N36292W120569..LOSHN,N35509W120000..BOILE,N34253W118016..BLH,N33358W114457DDFB"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Flight Plan",
+      "items": [
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Planned"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KSFO"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KPHX"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "KAYEX(36.487 N, 120.948 W) >> LOSHN(35.848 N, 120.000 W) >> BOILE(34.422 N, 118.027 W) >> BLH(33.597 N, 114.762 W)"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xddfb"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "UAL1187",
+      "route_status": "RP",
+      "departure_icao": "KSFO",
+      "arrival_icao": "KPHX",
+      "route": {
+        "waypoints": [
+          {
+            "name": "KAYEX",
+            "latitude": 36.486666666666665,
+            "longitude": -120.94833333333334
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "LOSHN",
+            "latitude": 35.848333333333336,
+            "longitude": -120
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "BOILE",
+            "latitude": 34.42166666666667,
+            "longitude": -118.02666666666667
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "BLH",
+            "latitude": 33.596666666666664,
+            "longitude": -114.76166666666667
+          }
+        ]
+      },
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 56827
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

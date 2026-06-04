@@ -1,0 +1,28 @@
+spec_version: "1"
+plugin:
+  name: Label_H1_OHMA
+  type: binary
+  docs: https://github.com/airframesio/acars-message-documentation/blob/main/research/H1/OHMA.md
+  decode_level: FULL
+qualifiers:
+  labels: ["H1"]
+  preambles: ["OHMA", "/RTNBOCR.OHMA", "#T1B/RTNBOCR.OHMA"]
+parse:
+  # message.text contains "...OHMA<base64>". Strip prefix, base64-decode,
+  # deflate (raw), UTF-8 decode → JSON text.
+  - { split: "OHMA", into: ohma_parts }
+  - { require_length: { var: ohma_parts, min: 2 }, else: fail }
+  - { base64: "$ohma_parts[1]", into: deflated_bytes }
+  - { deflate: { source: $deflated_bytes, format: raw }, into: json_bytes }
+  - { text_decode: { source: $json_bytes, encoding: utf-8 }, into: json_text }
+fields:
+  - name: ohma
+    from: $json_text
+    decode:
+      fn: custom
+      custom: ohma_unwrap_message
+formatted:
+  description: "OHMA Message"
+  items:
+    - type: custom
+      custom: ohma_message_item

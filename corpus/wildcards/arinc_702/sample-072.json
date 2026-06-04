@@ -1,0 +1,153 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 72",
+  "input": {
+    "label": "H1",
+    "text": "FPN/RI:DA:KEWR:AA:KDFW:CR:EWRDFW01(17L)..SAAME.J6.HVQ.Q68.LITTR..MEEOW..FEWWW:A:SEEVR4.FEWWW:F:VECTOR..DISCO..RIVET:AP:ILS 17L.RIVET:F:TACKEC8B5"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Flight Plan",
+      "items": [
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Inactive"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KEWR"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KDFW"
+        },
+        {
+          "type": "company_route",
+          "code": "CR",
+          "label": "Company Route",
+          "value": "EWRDFW01(17L): >> SAAME > J6 > HVQ > Q68 > LITTR >> MEEOW >> FEWWW"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Arrival Procedure",
+          "value": "SEEVR4 starting at FEWWW"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "VECTOR >> DISCO >> RIVET"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Approach Procedure",
+          "value": "ILS 17L starting at RIVET"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "TACKE"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xc8b5"
+        }
+      ]
+    },
+    "raw": {
+      "route_status": "RI",
+      "departure_icao": "KEWR",
+      "arrival_icao": "KDFW",
+      "company_route": {
+        "name": "EWRDFW01",
+        "runway": "17L",
+        "waypoints": [
+          {
+            "name": ""
+          },
+          {
+            "name": "SAAME"
+          },
+          {
+            "name": "J6"
+          },
+          {
+            "name": "HVQ"
+          },
+          {
+            "name": "Q68"
+          },
+          {
+            "name": "LITTR"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "MEEOW"
+          },
+          {
+            "name": ""
+          },
+          {
+            "name": "FEWWW"
+          }
+        ]
+      },
+      "procedures": [
+        {
+          "type": "arrival",
+          "route": {
+            "name": "SEEVR4",
+            "waypoints": [
+              {
+                "name": "FEWWW"
+              }
+            ]
+          }
+        },
+        {
+          "type": "approach",
+          "route": {
+            "name": "ILS 17L",
+            "waypoints": [
+              {
+                "name": "RIVET"
+              }
+            ]
+          }
+        }
+      ],
+      "route": {
+        "waypoints": [
+          {
+            "name": "TACKE"
+          }
+        ]
+      },
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 51381
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

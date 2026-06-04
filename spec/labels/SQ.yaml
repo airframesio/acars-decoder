@@ -1,0 +1,23 @@
+spec_version: "1"
+plugin:
+  name: Label_SQ
+  type: text
+  decode_level: MESSAGE
+qualifiers:
+  labels: ["SQ"]
+parse:
+  # Whole-plugin escape hatch:
+  #   - preamble=text[0:4]; version=Number(text[1:2]); network=text[3:4]
+  #   - When version === 2, run the v2 regex
+  #       /0(\d)X(?<org>\w)(?<iata>\w{3})(?<icao>\w{4})(?<station>\d)
+  #         (?<lat>\d+)(?<latd>[NS])(?<lng>\d+)(?<lngd>[EW])V(?<vfreq>\d+)\/.*/
+  #     and populate groundStation + vdlFrequency.
+  #   - Network formatted text from A/S/other -> ARINC/SITA/Unknown.
+  #   - Many optional formatted.items only emitted when their respective fields exist
+  #     (groundStation, iataCode, icaoCode, coordinates.latitude, airport, vdlFrequency).
+  # The optional-emit logic, custom NETT/VER/GNDSTN/IATA/ICAO/COORD/APT/VDLFRQ item types
+  # all live in escape hatches for byte-for-byte parity.
+  custom: label_sq_dispatch
+formatted:
+  description: "Ground Station Squitter"
+  custom: label_sq_format

@@ -1,0 +1,19 @@
+spec_version: "1"
+plugin:
+  name: Label_H1_StarPOS
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["H1"]
+  preambles: ["*POS"]
+parse:
+  # Fixed-length (43 char) message with mandatory '*POS' prefix; fixed
+  # substring offsets for: month [4..6], day [6..8], time HHMM [8..12],
+  # lat NSDM [12..17] split as N|S sign + 2-digit deg + 2-digit decimal-min,
+  # lon EWDM [17..23] split as E|W sign + 3-digit deg + 2-digit decimal-min,
+  # altitude [23..28], trailing unknown [28..]. The lat/lon math is
+  # deg + min/60 (not the standard decodeStringCoordinates).
+  custom: label_h1_starpos_parse
+formatted:
+  description: "Position Report"
+  custom: label_h1_starpos_format

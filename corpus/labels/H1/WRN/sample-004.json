@@ -1,0 +1,35 @@
+{
+  "spec": "labels/H1/WRN",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "H1",
+    "text": "WRN/PNRC12860AA07/WN24030316580030210006ENG 1 A.ICE "
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-wrn",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Warning Message",
+      "items": [
+        {
+          "type": "warning",
+          "code": "WRN",
+          "label": "Warning Message",
+          "value": "ENG 1 A.ICE "
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1709485080,
+      "warning_message": "ENG 1 A.ICE "
+    },
+    "remaining": {
+      "text": "PNRC12860AA07/30210006"
+    }
+  }
+}

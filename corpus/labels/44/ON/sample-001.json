@@ -1,0 +1,72 @@
+{
+  "spec": "labels/44/ON",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "44",
+    "text": "ON01,N33522W084181,KCLT,KPDK,1106,004023,---.-,"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-44-on",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "On Runway Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "33.870 N, 84.302 W"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KCLT"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KPDK"
+        },
+        {
+          "type": "month",
+          "code": "MSG_MON",
+          "label": "Month of Year",
+          "value": "11"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "6"
+        },
+        {
+          "type": "time",
+          "code": "ON",
+          "label": "Landing Time",
+          "value": "00:40:23"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 33.87,
+        "longitude": -84.30166666666666
+      },
+      "departure_icao": "KCLT",
+      "arrival_icao": "KPDK",
+      "month": 11,
+      "day": 6,
+      "on_time": 2423
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

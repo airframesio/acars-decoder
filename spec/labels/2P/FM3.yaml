@@ -1,0 +1,15 @@
+spec_version: "1"
+plugin:
+  name: Label_2P_FM3
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["2P"]
+parse:
+  # Splits on ',' (7 fields), then header = parts[0].split('FM3 ').
+  # Variant on whether header[0] is non-empty (flight number padding),
+  # then char-prefix-or-bare coord parsing with space stripping. Whole-plugin hatch.
+  custom: label_2p_fm3_decode
+formatted:
+  description: "Flight Report"
+  custom: label_2p_fm3_format

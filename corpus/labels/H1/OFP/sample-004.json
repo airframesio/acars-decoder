@@ -1,0 +1,25 @@
+{
+  "spec": "labels/H1/OFP",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "H1",
+    "text": "FPN/RI:DA:KSFO:AA:KLAX:F:KSFO..KLAX"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-h1-ofp",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Operational Flight Plan",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "FPN/RI:DA:KSFO:AA:KLAX:F:KSFO..KLAX"
+    }
+  }
+}

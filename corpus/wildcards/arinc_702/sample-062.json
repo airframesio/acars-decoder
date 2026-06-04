@@ -1,0 +1,80 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 62",
+  "input": {
+    "label": "H1",
+    "text": "#M1BPOSN37533W096476,ROKNE,185212,330,DOSOA,190059,BUM,M50,272100,1571541"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "37.888 N, 96.793 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "33000 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "ROKNE@18:52:12 > DOSOA@19:00:59 > BUM"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-50 degrees"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x1541"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 37.888333333333335,
+        "longitude": -96.79333333333334
+      },
+      "altitude": 33000,
+      "route": {
+        "waypoints": [
+          {
+            "name": "ROKNE",
+            "time": 67932
+          },
+          {
+            "name": "DOSOA",
+            "time": 68459
+          },
+          {
+            "name": "BUM"
+          }
+        ]
+      },
+      "outside_air_temperature": -50,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 5441
+    },
+    "remaining": {
+      "text": "272100,157"
+    }
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 87",
+  "input": {
+    "label": "4J",
+    "text": "POS/ID91459S,BANKR31,/DC03032024,142813/MR64,0/ET31539/PSN39277W077359,142800,240,N39300W077110,031430,N38560W077150,M28,27619,MT370/CG311,160,350/FB732/VR329071"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "91459S"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "BANKR31"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 64
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ_RESP",
+          "label": "Sequence Response",
+          "value": 0
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "3"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "15:39:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "39.462 N, 77.598 W"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "(39.500 N, 77.183 W)@14:28:00 > (38.933 N, 77.250 W)@03:14:30 > ?"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "24000 feet"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-28 degrees"
+        },
+        {
+          "type": "center_of_gravity",
+          "code": "CG",
+          "label": "Center of Gravity",
+          "value": "31.1 %"
+        },
+        {
+          "type": "cg_lower_limit",
+          "code": "CG_LOWER",
+          "label": "Center of Gravity Lower Limit",
+          "value": "16 %"
+        },
+        {
+          "type": "cg_upper_limit",
+          "code": "CG_UPPER",
+          "label": "Center of Gravity Upper Limit",
+          "value": "35 %"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "732"
+        },
+        {
+          "type": "version",
+          "code": "VERSION",
+          "label": "Message Version",
+          "value": "v3.2"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x9071"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "91459S",
+      "flight_number": "BANKR31",
+      "mission_number": "",
+      "message_timestamp": 1709476093,
+      "sequence_number": 64,
+      "sequence_response": 0,
+      "day": 3,
+      "eta_time": 56340,
+      "position": {
+        "latitude": 39.461666666666666,
+        "longitude": -77.59833333333333
+      },
+      "route": {
+        "waypoints": [
+          {
+            "name": "",
+            "latitude": 39.5,
+            "longitude": -77.18333333333334,
+            "time": 52080
+          },
+          {
+            "name": "",
+            "latitude": 38.93333333333333,
+            "longitude": -77.25,
+            "time": 11670
+          },
+          {
+            "name": "?"
+          }
+        ]
+      },
+      "altitude": 24000,
+      "outside_air_temperature": -28,
+      "center_of_gravity": 31.1,
+      "cg_lower_limit": 16,
+      "cg_upper_limit": 35,
+      "fuel_on_board": 732,
+      "version": 3.2,
+      "checksum_algorithm": "GENIBUS",
+      "checksum": 36977
+    },
+    "remaining": {
+      "text": "27619,MT370"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 28",
+  "input": {
+    "label": "H1",
+    "text": "- #MDINI/ID99206A,RCH206,AAM7029H1275/MR0,0/AFKSUU,KBUR/TD011535,1535EE66"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Initial Report",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "99206A"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "RCH206"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 0
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ_RESP",
+          "label": "Sequence Response",
+          "value": 0
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KSUU"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KBUR"
+        },
+        {
+          "type": "ptd",
+          "code": "ptd",
+          "label": "Planned Departure Time",
+          "value": "YYYY-MM-01T15:35:00Z"
+        },
+        {
+          "type": "etd",
+          "code": "etd",
+          "label": "Estimated Departure Time",
+          "value": "15:35"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xee66"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "99206A",
+      "flight_number": "RCH206",
+      "mission_number": "AAM7029H1275",
+      "sequence_number": 0,
+      "sequence_response": 0,
+      "departure_icao": "KSUU",
+      "arrival_icao": "KBUR",
+      "planned_departure_time": "011535",
+      "estimated_departure_time": "1535",
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 61030
+    },
+    "remaining": {
+      "text": "- #MD/"
+    }
+  }
+}

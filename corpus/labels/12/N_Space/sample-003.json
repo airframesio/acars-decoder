@@ -1,0 +1,25 @@
+{
+  "spec": "labels/12/N_Space",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "12",
+    "text": "N Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-12-n-space",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "N Bogus message"
+    }
+  }
+}

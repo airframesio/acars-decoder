@@ -1,0 +1,35 @@
+{
+  "spec": "labels/H1/WRN",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "H1",
+    "text": "WRN/PNRC12860AA07/WN24030322050027000002F/CTL ELAC 1 FAULT "
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-wrn",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Warning Message",
+      "items": [
+        {
+          "type": "warning",
+          "code": "WRN",
+          "label": "Warning Message",
+          "value": "F/CTL ELAC 1 FAULT "
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1709503500,
+      "warning_message": "F/CTL ELAC 1 FAULT "
+    },
+    "remaining": {
+      "text": "PNRC12860AA07/27000002"
+    }
+  }
+}

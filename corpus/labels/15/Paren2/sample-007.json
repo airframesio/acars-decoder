@@ -1,0 +1,25 @@
+{
+  "spec": "labels/15/Paren2",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 7",
+  "input": {
+    "label": "15",
+    "text": "(2 Bogus message"
+  },
+  "expected": {
+    "decoded": false,
+    "decoder": {
+      "name": "label-15",
+      "type": "pattern-match",
+      "decodeLevel": "none"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": []
+    },
+    "raw": {},
+    "remaining": {
+      "text": "(2 Bogus message"
+    }
+  }
+}

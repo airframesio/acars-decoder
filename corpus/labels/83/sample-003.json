@@ -1,0 +1,74 @@
+{
+  "spec": "labels/83",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 3",
+  "input": {
+    "label": "83",
+    "text": "KLAX,KEWR,220103, 40.53,- 74.47, 3836,212, 140.0, 19700"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-83",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KLAX"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KEWR"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "40.530 N, 74.470 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "3836 feet"
+        },
+        {
+          "type": "aircraft_groundspeed",
+          "code": "GSPD",
+          "label": "Aircraft Groundspeed",
+          "value": "212 knots"
+        },
+        {
+          "type": "heading",
+          "code": "HDG",
+          "label": "Heading",
+          "value": "140"
+        }
+      ]
+    },
+    "raw": {
+      "departure_icao": "KLAX",
+      "arrival_icao": "KEWR",
+      "day": "22",
+      "time": "0103",
+      "position": {
+        "latitude": 40.53,
+        "longitude": -74.47
+      },
+      "altitude": 3836,
+      "groundspeed": 212,
+      "heading": 140
+    },
+    "remaining": {
+      "text": "19700"
+    }
+  }
+}

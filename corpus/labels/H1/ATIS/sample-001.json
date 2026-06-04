@@ -1,0 +1,53 @@
+{
+  "spec": "labels/H1/ATIS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "H1",
+    "text": "L95AQF0073/KSFO.TI2/030KSFOAFF5C"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-h1-atis",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "ATIS Subscription",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "QF0073"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KSFO"
+        },
+        {
+          "type": "atis",
+          "code": "ATIS_CODE",
+          "label": "ATIS Code",
+          "value": "030"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xff5c"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "QF0073",
+      "arrival_icao": "KSFO",
+      "atis_code": "030",
+      "checksum": 720732
+    },
+    "remaining": {}
+  }
+}

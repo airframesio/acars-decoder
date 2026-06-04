@@ -1,0 +1,16 @@
+spec_version: "1"
+plugin:
+  name: Label_44_Slash
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["44"]
+  preambles: [" /FB"]
+parse:
+  # Splits on '/' (4 fields), then inner split of fields[3] on ',' with
+  # nested length-based branch for 18-field extended form (runway + procedure
+  # via FlightPlanUtils). Char-prefix sign decoding for coords. Whole-plugin hatch.
+  custom: label_44_slash_decode
+formatted:
+  description: "Flight Briefing"
+  custom: label_44_slash_format

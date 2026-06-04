@@ -1,0 +1,109 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 60",
+  "input": {
+    "label": "H1",
+    "text": "POS/RFSCOOB.KEMPR.ECG.OHPEA.TOMMZ.OXANA.ZZTOP.OMALA.WILYY.KANUX.GALVN.KASAR.LNHOM.SLUKA.FIPEK.PUYYA.PLING.KOLAO.JETSSF2FC"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Filed"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "SCOOB > KEMPR > ECG > OHPEA > TOMMZ > OXANA > ZZTOP > OMALA > WILYY > KANUX > GALVN > KASAR > LNHOM > SLUKA > FIPEK > PUYYA > PLING > KOLAO > JETSS"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0xf2fc"
+        }
+      ]
+    },
+    "raw": {
+      "route_status": "RF",
+      "route": {
+        "waypoints": [
+          {
+            "name": "SCOOB"
+          },
+          {
+            "name": "KEMPR"
+          },
+          {
+            "name": "ECG"
+          },
+          {
+            "name": "OHPEA"
+          },
+          {
+            "name": "TOMMZ"
+          },
+          {
+            "name": "OXANA"
+          },
+          {
+            "name": "ZZTOP"
+          },
+          {
+            "name": "OMALA"
+          },
+          {
+            "name": "WILYY"
+          },
+          {
+            "name": "KANUX"
+          },
+          {
+            "name": "GALVN"
+          },
+          {
+            "name": "KASAR"
+          },
+          {
+            "name": "LNHOM"
+          },
+          {
+            "name": "SLUKA"
+          },
+          {
+            "name": "FIPEK"
+          },
+          {
+            "name": "PUYYA"
+          },
+          {
+            "name": "PLING"
+          },
+          {
+            "name": "KOLAO"
+          },
+          {
+            "name": "JETSS"
+          }
+        ]
+      },
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 62204
+    },
+    "remaining": {
+      "text": ""
+    }
+  }
+}

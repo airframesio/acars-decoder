@@ -1,0 +1,149 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 80",
+  "input": {
+    "label": "H1",
+    "text": "F37AKL0767#M1BFPN/TS232008,022324/RP:DA:TNCA:AA:TNCB:R:11O:D:ADRI1F..IRLEP.A574..PJG:AP:RNV10(10O)/PR,,110,,183,7,13,,M7,25,,,P30,M40,36090,13,3455,300/DTTNCB,10O,119,23440847C0"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Flight Plan",
+      "items": [
+        {
+          "type": "status",
+          "code": "ROUTE_STATUS",
+          "label": "Route Status",
+          "value": "Route Planned"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "TNCA"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "TNCB"
+        },
+        {
+          "type": "runway",
+          "code": "DEPRWY",
+          "label": "Departure Runway",
+          "value": "11O"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Departure Procedure",
+          "value": "ADRI1F: >> IRLEP > A574 >> PJG"
+        },
+        {
+          "type": "procedure",
+          "code": "proc",
+          "label": "Approach Procedure",
+          "value": "RNV10(10O)"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "11000 feet"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "-7 degrees"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "10O"
+        },
+        {
+          "type": "fuel_on_board",
+          "code": "FOB",
+          "label": "Fuel On Board",
+          "value": "119"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "23:44:08"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x47c0"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "KL0767"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 1708730408,
+      "route_status": "RP",
+      "departure_icao": "TNCA",
+      "arrival_icao": "TNCB",
+      "departure_runway": "11O",
+      "procedures": [
+        {
+          "type": "departure",
+          "route": {
+            "name": "ADRI1F",
+            "waypoints": [
+              {
+                "name": ""
+              },
+              {
+                "name": "IRLEP"
+              },
+              {
+                "name": "A574"
+              },
+              {
+                "name": ""
+              },
+              {
+                "name": "PJG"
+              }
+            ]
+          }
+        },
+        {
+          "type": "approach",
+          "route": {
+            "name": "RNV10(10O)"
+          }
+        }
+      ],
+      "altitude": 11000,
+      "outside_air_temperature": -7,
+      "arrival_runway": "10O",
+      "fuel_on_board": 119,
+      "eta_time": 85448,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 18368,
+      "flight_number": "KL0767"
+    },
+    "remaining": {
+      "text": "F37A#M1B/,,,183,7,13,,25,,,P30,M40,36090,13,3455,300"
+    }
+  }
+}

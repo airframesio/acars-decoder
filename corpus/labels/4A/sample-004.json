@@ -1,0 +1,69 @@
+{
+  "spec": "labels/4A",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "4A",
+    "text": "N45129W093113MSP/07 ,204436123VECTORS,,P04,268044858,46904221"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-4a",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Latest New Format",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "45.129 N, 93.113 W"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "12300 feet"
+        },
+        {
+          "type": "aircraft_route",
+          "code": "ROUTE",
+          "label": "Aircraft Route",
+          "value": "MSP/07@20:44:36 > VECTORS"
+        },
+        {
+          "type": "outside_air_temperature",
+          "code": "OATEMP",
+          "label": "Outside Air Temperature (C)",
+          "value": "4 degrees"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 45.129,
+        "longitude": -93.113
+      },
+      "altitude": 12300,
+      "route": {
+        "waypoints": [
+          {
+            "name": "MSP/07",
+            "time": 74676
+          },
+          {
+            "name": "VECTORS",
+            "time": 0
+          }
+        ]
+      },
+      "outside_air_temperature": 4
+    },
+    "remaining": {
+      "text": "268044858,46904221"
+    }
+  }
+}

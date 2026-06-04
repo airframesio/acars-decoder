@@ -1,0 +1,142 @@
+{
+  "spec": "wildcards/arinc_702",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 2",
+  "input": {
+    "label": "2A",
+    "text": "M90AMC2010SUM/ID70044B,RCH2010,PVZF504QP059/DC04032026,225050/MR196,/SM041038,3004,042250,041047,3000,041055,2985,042245,0526,042250,0521/VR0320E8B"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "arinc-702",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Summary Report",
+      "items": [
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "70044B"
+        },
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "RCH2010"
+        },
+        {
+          "type": "sequence",
+          "code": "SEQ",
+          "label": "Sequence Number",
+          "value": 196
+        },
+        {
+          "type": "time",
+          "code": "ENG_START",
+          "label": "Engine Start Time",
+          "value": "YYYY-MM-05T10:38:00"
+        },
+        {
+          "type": "lbs",
+          "code": "FUEL_START",
+          "label": "Start Fuel",
+          "value": "300400 lbs"
+        },
+        {
+          "type": "time",
+          "code": "ENG_STOP",
+          "label": "Engine Stop Time",
+          "value": "YYYY-MM-05T22:50:00"
+        },
+        {
+          "type": "time",
+          "code": "OUT",
+          "label": "Out of Gate Time",
+          "value": "YYYY-MM-05T10:47:00"
+        },
+        {
+          "type": "lbs",
+          "code": "FUEL_OUT",
+          "label": "Out of Gate Fuel",
+          "value": "300000 lbs"
+        },
+        {
+          "type": "time",
+          "code": "OFF",
+          "label": "Takeoff Time",
+          "value": "YYYY-MM-05T10:55:00"
+        },
+        {
+          "type": "lbs",
+          "code": "FUEL_OFF",
+          "label": "Takeoff Fuel",
+          "value": "298500 lbs"
+        },
+        {
+          "type": "time",
+          "code": "ON",
+          "label": "Landing Time",
+          "value": "YYYY-MM-05T22:45:00"
+        },
+        {
+          "type": "lbs",
+          "code": "FUEL_ON",
+          "label": "Landing Fuel",
+          "value": "52600 lbs"
+        },
+        {
+          "type": "time",
+          "code": "IN",
+          "label": "In Gate Time",
+          "value": "YYYY-MM-05T22:50:00"
+        },
+        {
+          "type": "lbs",
+          "code": "FUEL_IN",
+          "label": "In Gate Fuel",
+          "value": "52100 lbs"
+        },
+        {
+          "type": "version",
+          "code": "VERSION",
+          "label": "Message Version",
+          "value": "v3.2"
+        },
+        {
+          "type": "message_checksum",
+          "code": "CHECKSUM",
+          "label": "Message Checksum",
+          "value": "0x0e8b"
+        }
+      ]
+    },
+    "raw": {
+      "tail": "70044B",
+      "flight_number": "RCH2010",
+      "mission_number": "PVZF504QP059",
+      "message_timestamp": 1772664650,
+      "sequence_number": 196,
+      "engine_start_time": 383880,
+      "start_fuel": 300400,
+      "engine_stop_time": 427800,
+      "out_time": 384420,
+      "out_fuel": 300000,
+      "off_time": 384900,
+      "off_fuel": 298500,
+      "on_time": 427500,
+      "on_fuel": 52600,
+      "in_time": 427800,
+      "in_fuel": 52100,
+      "version": 3.2,
+      "checksum_algorithm": "IBM-SDLC reversed",
+      "checksum": 3723
+    },
+    "remaining": {
+      "text": "M90/"
+    }
+  }
+}

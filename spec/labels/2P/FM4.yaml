@@ -1,0 +1,15 @@
+spec_version: "1"
+plugin:
+  name: Label_2P_FM4
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["2P"]
+parse:
+  # Splits on ',' (10 fields), then header = parts[0].split('FM4').
+  # Day from parts[2].substring(0,2), time from parts[2].substring(2),
+  # bare-number coords with space stripping. Whole-plugin hatch.
+  custom: label_2p_fm4_decode
+formatted:
+  description: "Flight Report"
+  custom: label_2p_fm4_format

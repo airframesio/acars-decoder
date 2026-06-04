@@ -1,0 +1,44 @@
+{
+  "spec": "labels/15/Paren2",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 5",
+  "input": {
+    "label": "15",
+    "text": "(2N42589W 83520OFF------13280606--------(Z"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-15",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "42.982 N, 83.867 W"
+        },
+        {
+          "type": "time",
+          "code": "OFF",
+          "label": "Takeoff Time",
+          "value": "13:28:00"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 42.98166666666667,
+        "longitude": -83.86666666666666
+      },
+      "off_time": 48480
+    },
+    "remaining": {
+      "text": "0606--------"
+    }
+  }
+}

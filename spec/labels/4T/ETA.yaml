@@ -1,0 +1,18 @@
+spec_version: "1"
+plugin:
+  name: Label_4T_ETA
+  type: text
+  decode_level: FULL
+qualifiers:
+  labels: ["4T"]
+  preambles: ["ETA"]
+parse:
+  # message.text.substring(3).split('/') with strict 3-part length, then a
+  # second split-on-space inside data[2]. Uses IATA-coded airport
+  # ResultFormatter and HHMM→TOD timestamp via convertHHMMSSToTod on a
+  # 4-char prefix. Departure/arrival "day" formatters aren't represented in
+  # the formatter type enum — escape hatch keeps byte-for-byte parity.
+  custom: label_4t_eta_parse
+formatted:
+  description: "ETA Report"
+  custom: label_4t_eta_format

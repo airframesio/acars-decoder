@@ -1,0 +1,62 @@
+{
+  "spec": "labels/80",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 9",
+  "input": {
+    "label": "80",
+    "text": "3D01 RMPSRV 2501/02 LEMD/MMUN .EC-NOI\n/LAV Y/CAB Y/MEDA N/SEC N/WAS N/WAT N/FUEL N/WCHRR 01/WCHRS --/WCHRC --/UMNR --/MAAS N\nBUENAS NOCHES, ETA 0055Z Y NOS HAN PEDIDO UNA WCHR QUE AL PARECER NO TENIAMOS CONSTANCIA DE ELLA, POR SI PODEIS PEDIRLO A OPS CUN. MUCHAS GRACIAS"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-80",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Airline Defined Position Report",
+      "items": [
+        {
+          "type": "flight_number",
+          "code": "FLIGHT",
+          "label": "Flight Number",
+          "value": "2501"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "2"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "LEMD"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "MMUN"
+        },
+        {
+          "type": "tail",
+          "code": "TAIL",
+          "label": "Tail",
+          "value": "EC-NOI"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "2501",
+      "day": 2,
+      "departure_icao": "LEMD",
+      "arrival_icao": "MMUN",
+      "tail": "EC-NOI"
+    },
+    "remaining": {
+      "text": "3D01 RMPSRV//LAV Y/CAB Y/MEDA N/SEC N/WAS N/WAT N/FUEL N/WCHRR 01/WCHRS --/WCHRC --/UMNR --/MAAS N/BUENAS NOCHES, ETA 0055Z Y NOS HAN PEDIDO UNA WCHR QUE AL PARECER NO TENIAMOS CONSTANCIA DE ELLA, POR SI PODEIS PEDIRLO A OPS CUN. MUCHAS GRACIAS"
+    }
+  }
+}

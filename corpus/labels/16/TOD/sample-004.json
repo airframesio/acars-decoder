@@ -1,0 +1,58 @@
+{
+  "spec": "labels/16/TOD",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 4",
+  "input": {
+    "label": "16",
+    "text": "001415,20274,0047, 3740,N3835.95 W07858.88"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-16-tod",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "00:14:15"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "20274 feet"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "00:47:00"
+        },
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.359 N, 78.589 W"
+        }
+      ]
+    },
+    "raw": {
+      "message_timestamp": 855,
+      "altitude": 20274,
+      "eta_time": 2820,
+      "position": {
+        "latitude": 38.3595,
+        "longitude": -78.5888
+      }
+    },
+    "remaining": {
+      "text": " 3740"
+    }
+  }
+}

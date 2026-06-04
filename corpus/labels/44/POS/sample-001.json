@@ -1,0 +1,85 @@
+{
+  "spec": "labels/44/POS",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "44",
+    "text": "POS02,N38338W121179,GRD,KMHR,KPDX,0807,0003,0112,005.1"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-44-pos",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "Position Report",
+      "items": [
+        {
+          "type": "aircraft_position",
+          "code": "POS",
+          "label": "Aircraft Position",
+          "value": "38.563 N, 121.298 W"
+        },
+        {
+          "type": "month",
+          "code": "MSG_MON",
+          "label": "Month of Year",
+          "value": "8"
+        },
+        {
+          "type": "day",
+          "code": "MSG_DAY",
+          "label": "Day of Month",
+          "value": "7"
+        },
+        {
+          "type": "time",
+          "code": "TIMESTAMP",
+          "label": "Message Timestamp",
+          "value": "00:03:00"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "01:12:00"
+        },
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "KMHR"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "KPDX"
+        },
+        {
+          "type": "altitude",
+          "code": "ALT",
+          "label": "Altitude",
+          "value": "0 feet"
+        }
+      ]
+    },
+    "raw": {
+      "position": {
+        "latitude": 38.56333333333333,
+        "longitude": -121.29833333333333
+      },
+      "month": 8,
+      "day": 7,
+      "message_timestamp": 180,
+      "eta_time": 4320,
+      "fuel_in_tons": 5.1,
+      "departure_icao": "KMHR",
+      "arrival_icao": "KPDX",
+      "altitude": 0
+    },
+    "remaining": {}
+  }
+}

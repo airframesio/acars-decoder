@@ -1,0 +1,17 @@
+spec_version: "1"
+plugin:
+  name: Label_21_POS
+  type: text
+  decode_level: PARTIAL
+qualifiers:
+  labels: ["21"]
+  preambles: ["POS"]
+parse:
+  # Pure escape hatch: 9-field comma split, position from fixed 16-char layout
+  # (NSEW signs at offsets 0 and 8), HHMMSS timestamp + altitude + temperature
+  # (whitespace-stripped) + ETA + arrival airport, with interleaved unknownArr
+  # at indices 1/4/5.
+  custom: label_21_pos_decode
+formatted:
+  description: "Position Report"
+  custom: label_21_pos_format

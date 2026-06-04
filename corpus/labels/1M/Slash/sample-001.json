@@ -1,0 +1,61 @@
+{
+  "spec": "labels/1M/Slash",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "1M",
+    "text": "/BA0843/ETA01/230822/LDSP/EGLL/EGSS/2JK0\n1940/EGLL27L/10"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-1m-slash",
+      "type": "pattern-match",
+      "decodeLevel": "partial"
+    },
+    "formatted": {
+      "description": "ETA Report",
+      "items": [
+        {
+          "type": "icao",
+          "code": "ORG",
+          "label": "Origin",
+          "value": "LDSP"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "EGLL"
+        },
+        {
+          "type": "icao",
+          "code": "ALT_DST",
+          "label": "Alternate Destination",
+          "value": "EGSS"
+        },
+        {
+          "type": "runway",
+          "code": "ARWY",
+          "label": "Arrival Runway",
+          "value": "27L"
+        },
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "2023-08-22T19:40:00Z"
+        }
+      ]
+    },
+    "raw": {
+      "flight_number": "BA0843",
+      "departure_icao": "LDSP",
+      "arrival_icao": "EGLL",
+      "alternate_icao": "EGSS",
+      "arrival_runway": "27L",
+      "eta_time": 1692733200
+    },
+    "remaining": {}
+  }
+}

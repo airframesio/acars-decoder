@@ -1,0 +1,39 @@
+{
+  "spec": "labels/8E",
+  "source": "extracted from acars-decoder-typescript test suite via /tmp/corpus-extractor.js",
+  "description": "Auto-extracted sample 1",
+  "input": {
+    "label": "8E",
+    "text": "EGSS,1618"
+  },
+  "expected": {
+    "decoded": true,
+    "decoder": {
+      "name": "label-8e",
+      "type": "pattern-match",
+      "decodeLevel": "full"
+    },
+    "formatted": {
+      "description": "ETA Report",
+      "items": [
+        {
+          "type": "time",
+          "code": "ETA",
+          "label": "Estimated Time of Arrival",
+          "value": "16:18:00"
+        },
+        {
+          "type": "icao",
+          "code": "DST",
+          "label": "Destination",
+          "value": "EGSS"
+        }
+      ]
+    },
+    "raw": {
+      "eta_time": 58680,
+      "arrival_icao": "EGSS"
+    },
+    "remaining": {}
+  }
+}
