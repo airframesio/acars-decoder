@@ -95,8 +95,10 @@ void ads_fmt_month(ads_decode_result_t *r, ads_value_t *v);
 void ads_fmt_mach(ads_decode_result_t *r, ads_value_t *v);
 void ads_fmt_groundspeed(ads_decode_result_t *r, ads_value_t *v);
 void ads_fmt_airspeed(ads_decode_result_t *r, ads_value_t *v);
-void ads_fmt_temperature(ads_decode_result_t *r, ads_value_t *v);
-void ads_fmt_total_air_temp(ads_decode_result_t *r, ads_value_t *v);
+/* TS signature: takes the raw STRING and converts M→- / P→+ before
+ * numeric parse; no-ops on empty input. */
+void ads_fmt_temperature(ads_decode_result_t *r, const char *value);
+void ads_fmt_total_air_temp(ads_decode_result_t *r, const char *value);
 
 /* Fuel formatters. */
 void ads_fmt_current_fuel(ads_decode_result_t *r, ads_value_t *v);
