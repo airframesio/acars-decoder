@@ -43,8 +43,9 @@ formatted:
     - { type: position, value: $position }
     - { type: airport_origin, value: $departure_icao }
     - { type: airport_destination, value: $arrival_icao }
-    - { type: timestamp, kind: month, value: $month }
-    - { type: timestamp, kind: day, value: $day }
-    - { type: timestamp, kind: off, value: $off_time }
-    - { type: timestamp, kind: eta, value: $eta_time }
-    - { type: fuel, kind: remaining, value: $fuel_remaining, when_present: true }
+    - { type: month, value: $month }
+    - { type: day, value: $day }
+    - { type: off, value: $off_time }
+    - { type: eta, value: $eta_time }
+    - { type: fuel_remaining, value: $fuel_remaining }
+    - { type: remaining_fields, from: $data, start: 8 }

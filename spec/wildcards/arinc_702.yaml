@@ -11,5 +11,7 @@ parse:
   # recursive H1 message decoding all live in hand-written per-language code.
   custom: arinc_702_dispatch
 formatted:
-  description: "ARINC 702 Message"
+  # Legacy plugin used defaultResult() — description stays "Unknown" unless
+  # Arinc702Helper sets one on a successful decode.
+  description: "Unknown"
   custom: arinc_702_format

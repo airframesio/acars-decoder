@@ -87,6 +87,8 @@ export interface FieldIR {
   decode?: DecodeCall;
   when?: Condition;
   default?: ValueExpr;
+  /** false = intermediate field; do not auto-emit into result.raw. */
+  raw?: boolean;
   description?: string;
 }
 
@@ -126,12 +128,23 @@ export interface FormatterCall {
     | "speed"
     | "heading"
     | "timestamp"
+    | "eta"
+    | "out"
+    | "off"
+    | "on"
+    | "in"
+    | "day"
+    | "month"
+    | "departure_day"
+    | "arrival_day"
     | "callsign"
     | "flight_number"
     | "tail_number"
     | "airport_origin"
     | "airport_destination"
     | "fuel"
+    | "fuel_remaining"
+    | "remaining_fields"
     | "free_text"
     | "custom";
   customName?: string;

@@ -20,6 +20,8 @@ fields:
 
   - name: flight_level_raw
     from: $m.flight_level_or_ground
+    # Intermediate value feeding `altitude`; legacy never stored it in raw.
+    raw: false
     decode:
       fn: custom
       custom: parse_flight_level_or_ground
@@ -58,11 +60,12 @@ formatted:
   description: "Position Report"
   items:
     - { type: position, value: $position }
-    - { type: timestamp, kind: month, value: $month }
-    - { type: timestamp, kind: day, value: $day }
-    - { type: timestamp, kind: current, value: $timestamp }
-    - { type: timestamp, kind: eta, value: $eta }
-    - { type: fuel, units: tons, value: $fuel_in_tons, when_present: true }
+    - { type: month, value: $month }
+    - { type: day, value: $day }
+    - { type: timestamp, value: $timestamp }
+    - { type: eta, value: $eta }
+    # fuel_in_tons is raw-only in the legacy plugin (no formatted item);
+    # the field's auto-raw emit covers it now that no formatter consumes it.
     - { type: airport_origin, value: $departure_icao }
     - { type: airport_destination, value: $arrival_icao }
     - { type: altitude, value: $altitude }

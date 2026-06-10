@@ -252,6 +252,11 @@
         "decode": { "$ref": "#/$defs/decode_call" },
         "when": { "$ref": "#/$defs/condition" },
         "default": { "$ref": "#/$defs/value_expr" },
+        "raw": {
+          "type": "boolean",
+          "default": true,
+          "description": "Set false for intermediate fields that feed later fields/formatters but must NOT auto-emit into result.raw."
+        },
         "description": { "type": "string" }
       }
     },
@@ -468,6 +473,17 @@
             "airport_origin",
             "airport_destination",
             "fuel",
+            "fuel_remaining",
+            "eta",
+            "out",
+            "off",
+            "on",
+            "in",
+            "day",
+            "month",
+            "departure_day",
+            "arrival_day",
+            "remaining_fields",
             "free_text",
             "custom"
           ]
