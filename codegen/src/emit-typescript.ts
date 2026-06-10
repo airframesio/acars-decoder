@@ -224,7 +224,7 @@ function emitField(
   const decodeExpr = field.decode
     ? renderDecodeCall(field.decode, renderExpr(field.from))
     : renderExpr(field.from);
-  const skipAutoRaw = consumedByFormatter.has(field.name);
+  const skipAutoRaw = consumedByFormatter.has(field.name) || field.raw === false;
   if (field.when) {
     // Declare outside the if so downstream formatters / variant-shared code
     // can still reference the variable when the guard fails — it'll be

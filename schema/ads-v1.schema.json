@@ -252,6 +252,11 @@
         "decode": { "$ref": "#/$defs/decode_call" },
         "when": { "$ref": "#/$defs/condition" },
         "default": { "$ref": "#/$defs/value_expr" },
+        "raw": {
+          "type": "boolean",
+          "default": true,
+          "description": "Set false for intermediate fields that feed later fields/formatters but must NOT auto-emit into result.raw."
+        },
         "description": { "type": "string" }
       }
     },

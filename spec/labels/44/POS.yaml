@@ -20,6 +20,8 @@ fields:
 
   - name: flight_level_raw
     from: $m.flight_level_or_ground
+    # Intermediate value feeding `altitude`; legacy never stored it in raw.
+    raw: false
     decode:
       fn: custom
       custom: parse_flight_level_or_ground

@@ -153,6 +153,7 @@ function lowerField(field: any): FieldIR {
     decode: field.decode ? lowerDecode(field.decode) : undefined,
     when: field.when ? lowerCondition(field.when) : undefined,
     default: field.default !== undefined ? lowerExpr(field.default) : undefined,
+    raw: field.raw,
     description: field.description,
   };
 }

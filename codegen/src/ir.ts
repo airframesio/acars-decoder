@@ -87,6 +87,8 @@ export interface FieldIR {
   decode?: DecodeCall;
   when?: Condition;
   default?: ValueExpr;
+  /** false = intermediate field; do not auto-emit into result.raw. */
+  raw?: boolean;
   description?: string;
 }
 
