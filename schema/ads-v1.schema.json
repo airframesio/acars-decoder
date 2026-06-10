@@ -468,6 +468,17 @@
             "airport_origin",
             "airport_destination",
             "fuel",
+            "fuel_remaining",
+            "eta",
+            "out",
+            "off",
+            "on",
+            "in",
+            "day",
+            "month",
+            "departure_day",
+            "arrival_day",
+            "remaining_fields",
             "free_text",
             "custom"
           ]

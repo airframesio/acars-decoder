@@ -14,5 +14,7 @@ parse:
   # altitude is parsed * 100. Whole-plugin hatch for parity.
   custom: label_h1_paren_parse
 formatted:
-  description: "Position Report"
+  # Legacy plugin used defaultResult() — description stays "Unknown" on
+  # failed decodes; the hatch sets "Position Report" on its success path.
+  description: "Unknown"
   custom: label_h1_paren_format

@@ -75,29 +75,48 @@ export function emitTypeScript(spec: SpecIR): string {
   // the hand-written plugins (which only have raw.position).
   const consumedByFormatter = collectFormatterRefs(spec.formatted);
 
+  // Binary decode chains (ascii85 / base64 / deflate / text_decode /
+  // hex_decode) throw on malformed input. The hand-written plugins wrapped
+  // those chains in try/catch and failed gracefully; mirror that.
+  const binaryKinds = new Set([
+    "decode_ascii85",
+    "base64",
+    "deflate",
+    "text_decode",
+    "hex_decode",
+  ]);
+  const needsTryCatch = spec.parse.steps.some((s) => binaryKinds.has(s.kind));
+  const bodyIndent = needsTryCatch ? "      " : "    ";
+  if (needsTryCatch) out.push(`    try {`);
+
   for (const step of spec.parse.steps) {
-    emitParseStep(step, out, "    ");
+    emitParseStep(step, out, bodyIndent);
   }
 
   // Fields or Variants.
   if (spec.variants) {
-    emitVariants(spec.variants, out, "    ", consumedByFormatter);
+    emitVariants(spec.variants, out, bodyIndent, consumedByFormatter);
   } else if (spec.fields) {
     for (const field of spec.fields) {
-      emitField(field, out, "    ", consumedByFormatter);
+      emitField(field, out, bodyIndent, consumedByFormatter);
     }
   }
 
   // Formatter.
-  emitFormatted(spec.formatted, out, "    ");
+  emitFormatted(spec.formatted, out, bodyIndent);
 
   // Success path.
   if (!hasExplicitDecodeLevelSetting(spec)) {
     const level = spec.plugin.decodeLevel.toLowerCase();
     const tsLevel = level === "full" ? "'full'" : "'partial'";
-    out.push(`    this.setDecodeLevel(result, true, ${tsLevel});`);
+    out.push(`${bodyIndent}this.setDecodeLevel(result, true, ${tsLevel});`);
   }
-  out.push(`    return result;`);
+  out.push(`${bodyIndent}return result;`);
+  if (needsTryCatch) {
+    out.push(`    } catch {`);
+    out.push(`      return this.failUnknown(result, message.text, options);`);
+    out.push(`    }`);
+  }
   out.push(`  }`);
   out.push(`}`);
   return out.join("\n") + "\n";
@@ -294,6 +313,16 @@ function emitFormatterCall(item: FormatterCall, out: string[], indent: string): 
     out.push(`${indent}hatches.${item.customName}(result);`);
     return;
   }
+  // remaining_fields: trailing CSV fields → remaining.text (mirrors the
+  // Label_44_Base.addRemainingFields pattern).
+  if (item.type === "remaining_fields") {
+    const from = renderArg(item.args["from"]);
+    const start = Number(item.args["start"] ?? 0);
+    out.push(`${indent}if (${from}.length > ${start}) {`);
+    out.push(`${indent}  ResultFormatter.unknownArr(result, ${from}.slice(${start}));`);
+    out.push(`${indent}}`);
+    return;
+  }
   // Map IR formatter type → ResultFormatter method.
   const methodMap: Record<string, string> = {
     position: "position",
@@ -301,12 +330,22 @@ function emitFormatterCall(item: FormatterCall, out: string[], indent: string): 
     speed: "speed",
     heading: "heading",
     timestamp: "timestamp",
+    eta: "eta",
+    out: "out",
+    off: "off",
+    on: "on",
+    in: "in",
+    day: "day",
+    month: "month",
+    departure_day: "departureDay",
+    arrival_day: "arrivalDay",
     callsign: "callsign",
     flight_number: "flightNumber",
     tail_number: "tail",
     airport_origin: "departureAirport",
     airport_destination: "arrivalAirport",
     fuel: "currentFuel",
+    fuel_remaining: "remainingFuel",
     free_text: "unknownArr",
   };
   const method = methodMap[item.type];

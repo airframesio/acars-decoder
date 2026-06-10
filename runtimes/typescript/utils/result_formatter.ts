@@ -223,7 +223,11 @@ export class ResultFormatter {
     });
   }
 
-  static remainingFuel(decodeResult: DecodeResult, value: number) {
+  static remainingFuel(decodeResult: DecodeResult, value: number | undefined) {
+    // Tolerate undefined/NaN — mirrors the legacy parseFuel() isNaN guard
+    // (and the currentFuel precedent) so when-gated spec fields can call
+    // this unconditionally.
+    if (value === undefined || value === null || Number.isNaN(value)) return;
     decodeResult.raw.fuel_remaining = value;
     decodeResult.formatted.items.push({
       type: 'fuel_remaining',
